@@ -7,6 +7,8 @@
 
 using namespace std;
 
+Scene* Scene::current = nullptr;
+
 Scene::Scene() {
     this->window = new Window();
     this->window->sdlWindow = initSDL();
@@ -16,6 +18,7 @@ Scene::Scene() {
 }
 void Scene::setAsCurrentScene() {
     Texture::setCurrentRenderer(this->renderer);
+    this->current = this;
 }
 void Scene::render() {
     Node* root = Scene::root;

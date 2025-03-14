@@ -63,21 +63,8 @@ Scene* createUI() {
 }
 
 int main(int argc, char* argv[]) {
-    KeyboardEvent::Initialize();
     Scene* scene = createUI();
-
-    SDL_Event e;
-    while (true)
-    {
-        KeyboardEvent::Update();
-        scene->render();
-        // cout << KeyboardEvent::isPressed(KeyboardType::Right);
-        if (SDL_PollEvent(&e) != 0 && (e.type == SDL_QUIT)) {
-            return 0;
-        }
-        SDL_Delay(int(DELAY_TIME));
-    }
-
+    GameLoop::start();
     return 0;
 }
 // Todo

@@ -12,6 +12,8 @@ public:
     Window* window;
     Node* root;
 
+    static Scene* current;
+
     Scene();
     void render();
     void setAsCurrentScene();
