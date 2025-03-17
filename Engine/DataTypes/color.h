@@ -12,5 +12,7 @@ public:
     Color(int r, int g, int b);
     Color(int r, int g, int b, int a);
 
-    SDL_Color toSDL();
+    SDL_Color ToSDL();
+
+    bool operator==(const Color& other) const;
 };

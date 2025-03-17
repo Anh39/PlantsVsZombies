@@ -4,7 +4,7 @@ Color::Color(): r(0), g(0), b(0), a(255) {};
 Color::Color(int r, int g, int b): r(r), g(g), b(b), a(255) {};
 Color::Color(int r, int g, int b, int a): r(r), g(g), b(b), a(a) {};
 
-SDL_Color Color::toSDL() {
+SDL_Color Color::ToSDL() {
     SDL_Color color;
     color.r = this->r;
     color.g = this->g;
@@ -13,3 +13,6 @@ SDL_Color Color::toSDL() {
     return color;
 }
 
+bool Color::operator==(const Color& other) const {
+    return this->r == other.r && this->g == other.g && this->b == other.b && this->a == other.a;
+}

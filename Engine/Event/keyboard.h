@@ -29,14 +29,15 @@ public:
     bool justReleased;
     bool justPressed;
 
-    static KeyboardEvent getEvent(KeyboardType type);
-    static bool isPressed(KeyboardType type);
+    static KeyboardEvent GetEvent(KeyboardType type);
+    static bool IsPressing(KeyboardType type);
+    static bool JustReleased(KeyboardType type);
+    static bool JustPressed(KeyboardType type);
     static void Initialize();
     static void Update();
 private:
     KeyboardEvent(KeyboardType type);
     static bool initialized;
     static map<KeyboardType, KeyboardEvent> events;
-    // static const KeyboardType types[NUM_TYPES];
     static map<SDL_Scancode, KeyboardType> keyMap;
 };

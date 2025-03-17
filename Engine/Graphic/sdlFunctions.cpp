@@ -26,7 +26,7 @@ SDL_Texture* loadTextureX(const char* filePath, SDL_Renderer* renderer) {
     return texture;
 }
 
-SDL_Window* initSDL() {
+SDL_Window* InitSDL() {
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
         logErrorAndExit("SDL_init", SDL_GetError());
     }
@@ -51,16 +51,16 @@ SDL_Renderer* createRenderer(SDL_Window* window) {
 }
 
 void renderTexture(Renderer* renderer, Texture* texture, Rect dest) {
-    SDL_Rect sdlDest = dest.toSDL();
+    SDL_Rect sdlDest = dest.ToSDL();
     SDL_RenderCopy(renderer->sdlRenderer, texture->sdlTexture, NULL, &sdlDest);
 }
 void renderRectangle(Renderer* renderer, Rect dest, Color color) {
-    SDL_Rect sdlDest = dest.toSDL();
+    SDL_Rect sdlDest = dest.ToSDL();
     SDL_SetRenderDrawColor(renderer->sdlRenderer, color.r, color.g, color.b, color.a);
     SDL_RenderFillRect(renderer->sdlRenderer, &sdlDest);
 }
 void renderTexture(Renderer* renderer, Texture* texture, Rect dest, Color color) {
-    SDL_Rect sdlDest = dest.toSDL();
+    SDL_Rect sdlDest = dest.ToSDL();
     SDL_SetRenderDrawColor(renderer->sdlRenderer, color.r, color.g, color.b, color.a);
     SDL_RenderFillRect(renderer->sdlRenderer, &sdlDest);
     SDL_RenderCopy(renderer->sdlRenderer, texture->sdlTexture, NULL, &sdlDest);

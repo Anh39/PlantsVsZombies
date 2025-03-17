@@ -14,11 +14,11 @@ public:
     Rect(float x, float y);
     Rect(float x, float y, int w, int h);
 
-    SDL_Rect toSDL();
+    SDL_Rect ToSDL();
     Rect operator+(const Vector2F& pos) const;
     Rect operator-(const Vector2F& pos) const;
 
-    Vector2F getPosition();
+    Vector2F GetPosition();
     Rect copy();
 
     explicit operator std::string() const;

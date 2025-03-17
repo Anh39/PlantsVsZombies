@@ -6,7 +6,7 @@ Vector2::Vector2(): x(0), y(0) {};
 Vector2::Vector2(Vector2F floatVector): x(round(floatVector.x)), y(round(floatVector.y)) {};
 Vector2::Vector2(int x, int y): x(x), y(y) {};
 
-Vector2F Vector2::toFloat() {
+Vector2F Vector2::ToFloat() {
     return Vector2F(this->x, this->y);
 }
 

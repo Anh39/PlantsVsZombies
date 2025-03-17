@@ -24,16 +24,16 @@ public:
     void RemoveChildren(Node* child);
     void SetParent(Node* par);
 
-    void setPosition(Vector2F position);
-    Vector2F getPosition();
-    void setSize(Vector2 size);
-    Vector2 getSize();
-    void setAbsolutePosition(Vector2F abosulePosition);
-    Vector2F getAbsolutePosition();
+    void SetPosition(Vector2F position);
+    Vector2F GetPosition();
+    void SetSize(Vector2 size);
+    Vector2 GetSize();
+    void SetAbsolutePosition(Vector2F abosulePosition);
+    Vector2F GetAbsolutePosition();
 
-    virtual void draw(Renderer* renderer, Vector2F absolutePosition);
-    virtual void update(float delta);
+    virtual void Draw(Renderer* renderer, Vector2F absolutePosition);
+    virtual void Update(float delta);
     virtual ~Node();
 private:
-    const char* generateId();
+    const char* GenerateId();
 };
