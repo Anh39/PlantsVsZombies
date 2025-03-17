@@ -3,7 +3,7 @@
 Rect::Rect(): x(0), y(0), w(-1), h(-1) {};
 Rect::Rect(float x, float y): x(x), y(y), w(-1), h(-1) {};
 Rect::Rect(float x, float y, int w, int h): x(x), y(y), w(w), h(h) {};
-SDL_Rect Rect::toSDL() {
+SDL_Rect Rect::ToSDL() {
     SDL_Rect rect;
     rect.x = round(this->x);
     rect.y = round(this->y);
@@ -19,7 +19,7 @@ Rect Rect::operator-(const Vector2F& pos) const {
     return Rect(this->x - pos.x, this->y - pos.y, this->w, this->h);
 }
 
-Vector2F Rect::getPosition() {
+Vector2F Rect::GetPosition() {
     return Vector2F(this->x, this->y);
 }
 Rect Rect::copy() {

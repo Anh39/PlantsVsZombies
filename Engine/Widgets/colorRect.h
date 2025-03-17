@@ -10,6 +10,6 @@ public:
     Color color;
 
     ColorRect();
-    void draw(Renderer *renderer, Vector2F absolutePosition);
+    void Draw(Renderer *renderer, Vector2F absolutePosition);
     // virtual void update(float delta);
 };

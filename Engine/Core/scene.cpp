@@ -11,16 +11,16 @@ Scene* Scene::current = nullptr;
 
 Scene::Scene() {
     this->window = new Window();
-    this->window->sdlWindow = initSDL();
+    this->window->sdlWindow = InitSDL();
     this->renderer = new Renderer();
     this->renderer->sdlRenderer = createRenderer(this->window->sdlWindow);
     this->root = new Node();
 }
-void Scene::setAsCurrentScene() {
+void Scene::SetAsCurrentScene() {
     Texture::setCurrentRenderer(this->renderer);
     this->current = this;
 }
-void Scene::render() {
+void Scene::Render() {
     Node* root = Scene::root;
     Renderer* renderer = this->renderer;
     SDL_SetRenderDrawColor(renderer->sdlRenderer, 0, 0, 0, 255);
@@ -51,13 +51,13 @@ void Scene::render() {
     {
         Node* current = updateQueue.front();
         updateQueue.pop();
-        current->update(DELAY_TIME/1000);
+        current->Update(DELAY_TIME/1000);
     }
     while (!renderQueue.empty())
     {
         Node* current = renderQueue.front();
         renderQueue.pop();
-        current->draw(renderer, current->getAbsolutePosition());
+        current->Draw(renderer, current->GetAbsolutePosition());
     }
 
     // cout << "Render completed !" << endl;

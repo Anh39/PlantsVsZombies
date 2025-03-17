@@ -44,7 +44,7 @@ void KeyboardEvent::Initialize() {
     }
 }
 
-KeyboardEvent KeyboardEvent::getEvent(KeyboardType type) {
+KeyboardEvent KeyboardEvent::GetEvent(KeyboardType type) {
     return KeyboardEvent::events[type];
 }
 KeyboardEvent updateEvent(map<KeyboardType, KeyboardEvent> &events, KeyboardType type, bool isPressing) {
@@ -74,7 +74,15 @@ void KeyboardEvent::Update() {
         KeyboardEvent::events[type] = updateEvent(KeyboardEvent::events, type, keyStates[key]);
     }
 }
-bool KeyboardEvent::isPressed(KeyboardType type) {
-    KeyboardEvent event = getEvent(type);
+bool KeyboardEvent::IsPressing(KeyboardType type) {
+    KeyboardEvent event = GetEvent(type);
     return event.isPressing;
+}
+bool KeyboardEvent::JustPressed(KeyboardType type) {
+    KeyboardEvent event = GetEvent(type);
+    return event.justPressed;
+}
+bool KeyboardEvent::JustReleased(KeyboardType type) {
+    KeyboardEvent event = GetEvent(type);
+    return event.justReleased;
 }

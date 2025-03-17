@@ -3,5 +3,5 @@
 class GameLoop
 {
 public:
-    static void start();
+    static void Start();
 };

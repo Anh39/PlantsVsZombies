@@ -10,7 +10,7 @@ public:
     Vector2();
     Vector2(Vector2F floatVector);
     Vector2(int x, int y);
-    Vector2F toFloat();
+    Vector2F ToFloat();
 
     Vector2 operator+(const Vector2& other) const;
     Vector2& operator+=(const Vector2& other);

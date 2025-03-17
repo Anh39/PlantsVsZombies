@@ -8,29 +8,51 @@ class Player: public TextureRect
 public:
     float speed = 100;
     float runSpeedModifier = 2;
-    void update(float delta) {
+    void Update(float delta) {
         float localSpeed = speed;
-        if (KeyboardEvent::isPressed(KeyboardType::LShift)) {
+        if (KeyboardEvent::IsPressing(KeyboardType::LShift)) {
             localSpeed *= runSpeedModifier;
         }
-        if (KeyboardEvent::isPressed(KeyboardType::Right) || KeyboardEvent::isPressed(KeyboardType::D)) {
+        if (KeyboardEvent::IsPressing(KeyboardType::Right) || KeyboardEvent::IsPressing(KeyboardType::D)) {
             this->rect.x += delta * localSpeed;
         }
-        if (KeyboardEvent::isPressed(KeyboardType::Left) || KeyboardEvent::isPressed(KeyboardType::A)) {
+        if (KeyboardEvent::IsPressing(KeyboardType::Left) || KeyboardEvent::IsPressing(KeyboardType::A)) {
             this->rect.x -= delta * localSpeed;
         }
-        if (KeyboardEvent::isPressed(KeyboardType::Up) || KeyboardEvent::isPressed(KeyboardType::W)) {
+        if (KeyboardEvent::IsPressing(KeyboardType::Up) || KeyboardEvent::IsPressing(KeyboardType::W)) {
             this->rect.y -= delta * localSpeed;
         }
-        if (KeyboardEvent::isPressed(KeyboardType::Down) || KeyboardEvent::isPressed(KeyboardType::S)) {
+        if (KeyboardEvent::IsPressing(KeyboardType::Down) || KeyboardEvent::IsPressing(KeyboardType::S)) {
             this->rect.y += delta * localSpeed;
+        }
+        if (MouseEvent::JustPressed(MouseType::MouseLeft)) {
+            cout << "Mouse pressed " << MouseEvent::Position().x << "|" << MouseEvent::Position().y << endl;
+        }
+    }
+};
+class SpecialColorRect: public ColorRect 
+{
+public:
+    void Update(float delta) {
+        Color red = Color(255, 0, 0, 255);
+        Color green = Color(0, 255, 0, 255);
+        Color blue = Color(0, 0, 255, 255);
+        if (MouseEvent::JustPressed(MouseType::MouseLeft)) {
+            if (this->color == red) {
+                this->color = green;
+            } else if (this-> color == green) {
+                this->color = blue;
+            } else {
+                this->color = red;
+            }
         }
     }
 };
 
+
 Scene* createUI() {
     Scene* scene = new Scene();
-    scene->setAsCurrentScene();
+    scene->SetAsCurrentScene();
 
     ColorRect* redRect = new ColorRect();
     redRect->rect = Rect(0, 0, 100, 100);
@@ -48,7 +70,7 @@ Scene* createUI() {
     player->rect = Rect(50, 60, 100, 100);
     player->texture = new Texture("images/Spongebob.png");
 
-    ColorRect* playerChild = new ColorRect();
+    ColorRect* playerChild = new SpecialColorRect();
     playerChild->rect = Rect(50, 50, 50, 50);
     playerChild->color = Color(255, 255, 0, 255);
 
@@ -64,7 +86,7 @@ Scene* createUI() {
 
 int main(int argc, char* argv[]) {
     Scene* scene = createUI();
-    GameLoop::start();
+    GameLoop::Start();
     return 0;
 }
 // Todo

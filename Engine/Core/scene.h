@@ -15,6 +15,6 @@ public:
     static Scene* current;
 
     Scene();
-    void render();
-    void setAsCurrentScene();
+    void Render();
+    void SetAsCurrentScene();
 };

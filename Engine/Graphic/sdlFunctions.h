@@ -12,7 +12,7 @@
 
 void logErrorAndExit(const char* msg, const char* error);
 void waitUntilKeyPressed();
-SDL_Window* initSDL();
+SDL_Window* InitSDL();
 SDL_Renderer* createRenderer(SDL_Window* window);
 void renderTexture(Renderer* renderer, Texture* texture, Rect dest);
 void renderTexture(Renderer* renderer, Texture* texture, Rect dest, Color color);

@@ -9,6 +9,6 @@ public:
     Texture* texture;
 
     TextureRect();
-    void draw(Renderer *renderer, Vector2F absolutePosition);
+    void Draw(Renderer *renderer, Vector2F absolutePosition);
     // virtual void update(float delta);
 };
