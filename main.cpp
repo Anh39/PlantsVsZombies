@@ -2,10 +2,33 @@
 #include <iostream>
 #include "Engine/init.h"
 
+class Bullet : public ColorRect
+{
+public:
+    const char* className = "Bullet";
+
+    Vector2F velocity;
+    void Update(float delta) {
+        this->rect = this->rect + velocity * delta;
+    }
+    Bullet() {
+        this->velocity = Vector2F(0, 0);
+    }
+    void OnCollide(Node* other) override {
+        this->parent->RemoveChildren(this);
+        this->Delete();
+        this->Delete();
+
+    }
+    const string GetClassName() { return "Bullet"; }
+
+};
 
 class Player: public TextureRect 
 {
 public:
+    const char* className = "Player";
+
     float speed = 100;
     float runSpeedModifier = 2;
     void Update(float delta) {
@@ -25,14 +48,50 @@ public:
         if (KeyboardEvent::IsPressing(KeyboardType::Down) || KeyboardEvent::IsPressing(KeyboardType::S)) {
             this->rect.y += delta * localSpeed;
         }
-        if (MouseEvent::JustPressed(MouseType::MouseLeft)) {
+        if (MouseEvent::JustPressed(MouseType::MouseLeft)  && this->rect.contain(MouseEvent::Position())) {
             cout << "Mouse pressed " << MouseEvent::Position().x << "|" << MouseEvent::Position().y << endl;
         }
+
+        if (KeyboardEvent::JustPressed(KeyboardType::Space)) {
+            cout << "Spawn" << endl;
+            spawn();
+        }
     }
+    void spawn() {
+        Bullet* bullet = new Bullet();
+        bullet->velocity = Vector2F(20, 0);
+        bullet->rect = Rect(0, 0, 50, 50);
+        bullet->color = Color(255, 255, 255);
+        bullet->collideMask = 1;
+
+        this->AddChildren(bullet);
+    }
+    const string GetClassName() { return "Player"; }
+
+    string Info() {
+        return "Player Id " + string(this->id) + "\n";
+    }
+};
+class Target: public ColorRect 
+{
+public:
+    const char* className = "Target";
+    void OnCollided(Node* other) override {
+        cout << other->GetClassName() << "|" << this->GetClassName() << endl;
+        Bullet* bullet = dynamic_cast<Bullet*>(other);
+        if (bullet) {
+            cout << bullet->GetClassName() << " collide with " << this->GetClassName() << endl;
+        } else {
+            cout << "Failed to cast" << endl;
+        }
+    }
+    const string GetClassName() { return "Target"; }
 };
 class SpecialColorRect: public ColorRect 
 {
 public:
+    const char* className = "SpecialColorRect";
+
     void Update(float delta) {
         Color red = Color(255, 0, 0, 255);
         Color green = Color(0, 255, 0, 255);
@@ -45,8 +104,11 @@ public:
             } else {
                 this->color = red;
             }
+            cout << this->className << endl;
         }
     }
+    const string GetClassName() { return "SpecialColorRect"; }
+ 
 };
 
 
@@ -72,7 +134,14 @@ Scene* createUI() {
 
     ColorRect* playerChild = new SpecialColorRect();
     playerChild->rect = Rect(50, 50, 50, 50);
-    playerChild->color = Color(255, 255, 0, 255);
+    playerChild->color = Color(255, 255, 0);
+
+
+
+    Target* target = new Target();
+    target->rect = Rect(500, 0, 100, 100);
+    target->color = Color(255, 0, 0);
+    target->collideFilter = 1;
 
     scene->root->AddChildren(redRect);
     redRect->AddChildren(greenRect);
@@ -80,6 +149,7 @@ Scene* createUI() {
 
     redRect->AddChildren(blueRect);
     player->AddChildren(playerChild);
+    redRect->AddChildren(target);
 
     return scene;
 }

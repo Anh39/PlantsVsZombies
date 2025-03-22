@@ -17,6 +17,8 @@ public:
     SDL_Rect ToSDL();
     Rect operator+(const Vector2F& pos) const;
     Rect operator-(const Vector2F& pos) const;
+    bool intersect(const Rect& other) const;
+    bool contain(const Vector2F& pos) const;
 
     Vector2F GetPosition();
     Rect copy();

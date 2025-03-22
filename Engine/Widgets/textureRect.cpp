@@ -14,3 +14,7 @@ void TextureRect::Draw(Renderer* renderer, Vector2F absolutePosition) {
 // void TextureRect::update(float delta) {
 
 // }
+
+// string TextureRect::GetClassName() {
+//     return string(this->className);
+// }

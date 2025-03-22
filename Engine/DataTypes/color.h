@@ -15,4 +15,5 @@ public:
     SDL_Color ToSDL();
 
     bool operator==(const Color& other) const;
+    
 };

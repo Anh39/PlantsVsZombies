@@ -6,13 +6,37 @@
 using namespace std;
 
 Node::Node() {
-    this->isVisible = true;
-    this->isDirty = true;
     this->id = GenerateId();
     this->rect = Rect();
+    this->children = vector<Node*>();
 };
 Node::~Node() {
 
+}
+void Node::Delete() {
+    this->isDeleted = true;
+    for (auto child : this->children)
+    {
+        child->Delete();
+    }
+}
+void Node::Draw(Renderer* renderer, Vector2F absolutePosition) {
+
+}
+void Node::Update(float delta) {
+
+}
+void Node::OnCollide(Node* other) {
+
+}
+void Node::OnCollided(Node* other) {
+    
+}
+string Node::Info() {
+    return "Name " + string(this->GetClassName()) + " | Id " + string(this->id) + "\n";
+}
+string Node::Serialize() {
+    return string("Empty");
 }
 const char* Node::GenerateId() {
     int randomNumber = rand();
@@ -25,8 +49,11 @@ const char* Node::GenerateId() {
 
 void Node::AddChildren(Node* child) {
     child->parent = this;
-    children.emplace_back(child);
+    // cout << "A" << endl;
+    this->children.push_back(child);
+    // cout << "B" << endl;
 }
+
 void Node::RemoveChildren(Node* child) {
     child->parent = nullptr;
     int size = children.size();
@@ -42,12 +69,6 @@ void Node::SetParent(Node* par) {
         parent->RemoveChildren(parent);
     }
     par->AddChildren(this);
-}
-void Node::Draw(Renderer* renderer, Vector2F absolutePosition) {
-
-}
-void Node::Update(float delta) {
-
 }
 Vector2F Node::GetPosition() {
     auto x = this->rect.x;

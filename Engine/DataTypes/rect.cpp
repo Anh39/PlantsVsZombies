@@ -29,3 +29,13 @@ Rect Rect::copy() {
 Rect::operator std::string() const {
     return "x" + std::to_string(this->x) + " y" + std::to_string(this->y) + " w" + std::to_string(this->w) + " h" + std::to_string(this->h);
 }
+
+bool Rect::intersect(const Rect& other) const {
+    return !(this->x + this->w <= other.x || // left
+             other.x + other.w <= this->x || // right
+             this->y + this->h <= other.y || // up
+             other.y + other.h <= this->y);  // down
+}
+bool Rect::contain(const Vector2F& pos) const {
+    return pos.x >= this->x & pos.y >= this->y && pos.x <= this->x + this->w && pos.y <= this->y + this->h;
+}

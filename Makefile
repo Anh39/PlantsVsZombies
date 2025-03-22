@@ -26,3 +26,5 @@ clean:
 	rm -f $(OBJ) $(TARGET)
 run: $(TARGET)
 	./$(TARGET)
+
+play: clean all run
