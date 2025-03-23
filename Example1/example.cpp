@@ -1,6 +1,6 @@
 #include <SDL2/SDL.h>
 #include <iostream>
-#include "../Engine/init.h"
+#include "engine.h"
 
 Scene* CreateScene1();
 Scene* CreateScene2();
