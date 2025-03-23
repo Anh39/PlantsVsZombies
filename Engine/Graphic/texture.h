@@ -8,13 +8,17 @@ class Renderer;
 class Texture 
 {
 public:
+    static int instanceCount;
+
     Texture(string filePath);
     ~Texture();
     SDL_Texture* SDL();
     Vector2 GetImageSize();
-    static void SetCurrentRenderer(Renderer* renderer);
+
+    static string GetDebugInfo() {
+        return "Instance count " + to_string(Texture::instanceCount);
+    }
 private:
     SDL_Texture* sdlTexture = nullptr;
-    static Renderer* currentRenderer;
     static SDL_Texture* LoadTexture(const char* filePath);
 };

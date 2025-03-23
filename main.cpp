@@ -2,6 +2,9 @@
 #include <iostream>
 #include "Engine/init.h"
 
+Scene* CreateScene1();
+Scene* CreateScene2();
+
 class Bullet : public ColorRect
 {
 public:
@@ -56,6 +59,21 @@ public:
             cout << "Spawn" << endl;
             spawn();
         }
+
+        if (KeyboardEvent::JustReleased(KeyboardType::F3)) {
+            cout << "Switch to scene 2" << endl;
+            delete Scene::current;
+            Scene* scene = CreateScene2();
+            scene->SetAsCurrentScene();
+            throw runtime_error("Switch scene");
+        }
+        if (KeyboardEvent::JustReleased(KeyboardType::F4)) {
+            cout << "Switch to scene 1" << endl;
+            delete Scene::current;
+            Scene* scene = CreateScene1();
+            scene->SetAsCurrentScene();
+            throw runtime_error("Switch scene");
+        }   
     }
     void spawn() {
         Bullet* bullet = new Bullet();
@@ -63,13 +81,12 @@ public:
         bullet->rect = Rect(0, 0, 50, 50);
         bullet->color = Color(255, 255, 255);
         bullet->collideMask = 1;
-
         this->AddChildren(bullet);
     }
     const string GetClassName() { return "Player"; }
 
     string Info() {
-        return "Player Id " + string(this->id) + "|" + string(this->rect) + "\n";
+        return "Player Id " + string(this->id) + "|" + string(this->rect);
     }
 };
 class Target: public ColorRect 
@@ -112,9 +129,8 @@ public:
 };
 
 
-Scene* createUI() {
+Scene* CreateScene1() {
     Scene* scene = new Scene();
-    scene->SetAsCurrentScene();
 
     ColorRect* redRect = new ColorRect();
     redRect->rect = Rect(0, 0, 100, 100);
@@ -154,8 +170,35 @@ Scene* createUI() {
     return scene;
 }
 
+Scene* CreateScene2() {
+    Scene* scene = new Scene();
+
+
+    Player* player = new Player();
+    player->rect = Rect(50, 60, 100, 100);
+    player->texture = new Texture("images/Spongebob.png");
+
+    ColorRect* playerChild = new SpecialColorRect();
+    playerChild->rect = Rect(50, 50, 50, 50);
+    playerChild->color = Color(255, 255, 0);
+
+
+
+    Target* target = new Target();
+    target->rect = Rect(500, 0, 100, 100);
+    target->color = Color(255, 0, 0);
+    target->collideFilter = 1;
+
+    scene->root->AddChildren(player);
+
+    player->AddChildren(playerChild);
+    scene->root->AddChildren(target);
+
+    return scene;
+}
 int main(int argc, char* argv[]) {
-    Scene* scene = createUI();
+    Scene* scene = CreateScene1();
+    scene->SetAsCurrentScene();
     GameLoop::Start();
     return 0;
 }

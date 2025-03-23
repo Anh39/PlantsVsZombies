@@ -18,7 +18,11 @@ enum KeyboardType
     A,
     S,
     D,
-    F1
+    F1,
+    F2,
+    F3,
+    F4,
+    F5
 };
 class KeyboardEvent: public Event
 {

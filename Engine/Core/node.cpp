@@ -5,13 +5,16 @@
 #include <cmath>
 using namespace std;
 
+int Node::instanceCount = 0;
+
 Node::Node() {
+    Node::instanceCount++;
     this->id = GenerateId();
     this->rect = Rect();
     this->children = vector<Node*>();
 };
 Node::~Node() {
-
+    Node::instanceCount--;
 }
 void Node::Delete() {
     this->isDeleted = true;
@@ -33,7 +36,7 @@ void Node::OnCollided(Node* other) {
     
 }
 string Node::Info() {
-    return "Name " + string(this->GetClassName()) + " | Id " + string(this->id) + "\n";
+    return "Name " + string(this->GetClassName()) + " | Id " + string(this->id);
 }
 string Node::Serialize() {
     return string("Empty");

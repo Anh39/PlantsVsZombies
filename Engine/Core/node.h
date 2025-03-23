@@ -25,6 +25,8 @@ enum CollideMask
 class Node 
 {
 public:
+    static int instanceCount;
+
     Rect rect;
     unsigned int collideMask = 0;
     unsigned int collideFilter = 0;
@@ -57,6 +59,9 @@ public:
     virtual void Delete();
 
     virtual const string GetClassName() { return "Node"; }
+    static string GetDebugInfo() {
+        return "Instance count " + to_string(Node::instanceCount);
+    }
 private:
     const char* GenerateId();
 };

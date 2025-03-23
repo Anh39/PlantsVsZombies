@@ -33,7 +33,11 @@ map<SDL_Scancode, KeyboardType> KeyboardEvent::keyMap = {
     {SDL_SCANCODE_D, KeyboardType::D},
     {SDL_SCANCODE_S, KeyboardType::S},
     {SDL_SCANCODE_A, KeyboardType::A},
-    {SDL_SCANCODE_F1, KeyboardType::F1}
+    {SDL_SCANCODE_F1, KeyboardType::F1},
+    {SDL_SCANCODE_F2, KeyboardType::F2},
+    {SDL_SCANCODE_F3, KeyboardType::F3},
+    {SDL_SCANCODE_F4, KeyboardType::F4},
+    {SDL_SCANCODE_F5, KeyboardType::F5}
 };
 
 void KeyboardEvent::Initialize() {

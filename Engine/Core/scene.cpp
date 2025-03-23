@@ -11,20 +11,47 @@
 using namespace std;
 
 Scene* Scene::current = nullptr;
+Window* Scene::window = new Window("Game", Vector2(800, 600));
+Renderer* Scene::renderer = new Renderer(Scene::window);
+int Scene::instanceCount = 0;
 
 Scene::Scene() {
-    this->window = new Window("Game", Vector2(800, 600));
-    this->renderer = new Renderer(this->window);
     this->root = new Node();
+    Scene::instanceCount++;
 }
 Scene::~Scene() {
-    this->root->Delete();
-    this->ProcessFrame(1);
-    delete this->renderer;
-    delete this->window;
+    Scene::instanceCount--;
+    Node* root = Scene::root;
+    Renderer* renderer = this->renderer;
+    SDL_SetRenderDrawColor(renderer->SDL(), 0, 0, 0, 255);
+    SDL_RenderClear(renderer->SDL());
+
+    queue<pair<Node*, int>> travelQueue;
+    queue<Node*> markedForDelete;
+    
+    travelQueue.push(make_pair(root, 0));
+    while (!travelQueue.empty())
+    {
+        auto front = travelQueue.front();
+        Node* current = front.first;
+        int level = front.second;
+        travelQueue.pop();
+        if (current == nullptr) continue;
+        int size = current->children.size();
+        for(int i=0; i<size; i++) {
+            travelQueue.push(make_pair(current->children[i], level+1));
+        }
+        markedForDelete.push(current);
+    }
+    while (!markedForDelete.empty())
+    {
+        Node* node = markedForDelete.front();
+        markedForDelete.pop();
+        delete node;
+    }
 }
 void Scene::SetAsCurrentScene() {
-    Texture::SetCurrentRenderer(this->renderer);
+    // Texture::SetCurrentRenderer(this->renderer);
     this->current = this;
 }
 void Scene::ProcessFrame(float delta) {
@@ -57,7 +84,7 @@ void Scene::ProcessFrame(float delta) {
             for(int i=0; i<level; i++) {
                 prefix += "-";
             }
-            log += prefix + current->Info();
+            log += prefix + current->Info() + "\n";
         }
         int size = current->children.size();
         for(int i=0; i<size; i++) {
@@ -69,11 +96,17 @@ void Scene::ProcessFrame(float delta) {
         renderQueue.push(current);
         updateQueue.push(current);
     }
-    while (!updateQueue.empty())
-    {
-        Node* current = updateQueue.front();
-        updateQueue.pop();
-        current->Update(delta);
+    try {
+        while (!updateQueue.empty())
+        {
+            Node* current = updateQueue.front();
+            updateQueue.pop();
+            current->Update(delta);
+        }
+    } catch (exception &e) {
+        cout << "Scene exit" << endl;
+        cout << "Reason : " << e.what() << endl;
+        return;
     }
     while (!renderQueue.empty())
     {
@@ -111,9 +144,9 @@ void Scene::ProcessFrame(float delta) {
         delete node;
     }
     if (isLogging) {
-        cout << "--------------------" << endl;
-        cout << log << endl;
-        cout << "--------------------" << endl;
+        cout << "-----Node tree-----" << endl;
+        cout << log;
+        cout << "--------End--------" << endl;
     }
     SDL_RenderPresent(renderer->SDL());
 }

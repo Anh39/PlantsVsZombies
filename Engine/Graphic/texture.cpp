@@ -1,18 +1,20 @@
 #include "texture.h"
 #include "renderer.h"
+#include "../core.h"
 using namespace std;
 
-Renderer* Texture::currentRenderer = nullptr;
+int Texture::instanceCount = 0;
 
 SDL_Texture* Texture::LoadTexture(const char* filePath) {
     SDL_LogMessage(SDL_LOG_CATEGORY_APPLICATION, SDL_LOG_PRIORITY_INFO, "Loading %s", filePath);
-    SDL_Texture* texture = IMG_LoadTexture(Texture::currentRenderer->SDL(), filePath);
+    SDL_Texture* texture = IMG_LoadTexture(Scene::renderer->SDL(), filePath);
     if (texture == nullptr) {
         SDL_LogMessage(SDL_LOG_CATEGORY_APPLICATION, SDL_LOG_PRIORITY_ERROR, "Load texture %s", IMG_GetError());
     }
     return texture;
 }
 Texture::Texture(string filePath = "") {
+    Texture::instanceCount ++;
     if (filePath == "") {
         sdlTexture = nullptr;
     } else {
@@ -20,6 +22,7 @@ Texture::Texture(string filePath = "") {
     }
 }
 Texture::~Texture() {
+    Texture::instanceCount --;
     if (this->sdlTexture) {
         SDL_DestroyTexture(this->sdlTexture);
         this->sdlTexture = nullptr;
@@ -27,9 +30,6 @@ Texture::~Texture() {
 }
 SDL_Texture* Texture::SDL() {
     return this->sdlTexture;
-}
-void Texture::SetCurrentRenderer(Renderer* renderer) {
-    Texture::currentRenderer = renderer;
 }
 Vector2 Texture::GetImageSize() {
     int w, h;
