@@ -1,30 +1,37 @@
 CXX = g++
-CXXFLAGS = -I -Wall -Wextra -std=c++17 
+CXXFLAGS = -I -Wall -Wextra -std=c++17 -IEngine
 LDFLAGS = -lmingw32 -lSDL2main -lSDL2 -lSDL2_image
 
-SRC = main.cpp \
-	$(wildcard Engine/*.cpp) \
+ENGINE_SRC = $(wildcard Engine/*.cpp) \
 	$(wildcard Engine/Core/*.cpp) \
 	$(wildcard Engine/DataTypes/*.cpp) \
 	$(wildcard Engine/Graphic/*.cpp) \
 	$(wildcard Engine/Widgets/*.cpp) \
-	$(wildcard Engine/Event/*.cpp) 
-	
-OBJ = $(SRC:.cpp=.o)
+	$(wildcard Engine/Event/*.cpp) 	
+ENGINE_OBJ = $(ENGINE_SRC:.cpp=.o)
+
+GAME_SRC = main.cpp \
+	$(wildcard Prototype/UI/*.cpp) \
+	$(wildcard Prototype/Plants/*.cpp) \
+	$(wildcard Prototype/Zombies/*.cpp)
+GAME_OBJ = $(GAME_SRC:.cpp=.o)
 
 TARGET = main
-
-all: $(TARGET)
-
-$(TARGET): $(OBJ)
-	$(CXX) $(OBJ) -o $(TARGET) $(LDFLAGS)
-
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-clean:
-	rm -f $(OBJ) $(TARGET)
+compile_all: $(TARGET)
+$(TARGET): $(ENGINE_OBJ) $(GAME_OBJ)
+	$(CXX) $(ENGINE_OBJ) $(GAME_OBJ) -o $(TARGET) $(LDFLAGS)
+clean_all:
+	rm -f $(ENGINE_OBJ) $(GAME_OBJ) $(TARGET)
+run_all: $(TARGET)
+	./$(TARGET)
+play_all: clean_all compile_all run_all
+
+compile: $(GAME_OBJ)
 run: $(TARGET)
 	./$(TARGET)
-
-play: clean all run
+clean:
+	rm -f $(GAME_OBJ) $(TARGET)
+play: clean compile run
