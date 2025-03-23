@@ -1,17 +1,30 @@
 #pragma once
 #include "../dataTypes.h"
-#include "wrapper.h"
 #include <SDL2/SDL_image.h>
 #include <iostream>
 using namespace std;
 
+class Renderer;
+
+/// @class Texture
+/// @brief Wrapper class
 class Texture 
 {
 public:
-    SDL_Texture* sdlTexture;
-    Texture(string filePath);
+    static int instanceCount;
 
-    static void setCurrentRenderer(Renderer* renderer);
+    /// @brief Create new texture with file path to image.
+    Texture(string filePath);
+    ~Texture();
+
+    SDL_Texture* SDL();
+    /// @brief Get real image size.
+    Vector2 GetImageSize();
+    /// @brief Get class debug info
+    static string GetDebugInfo() {
+        return "Instance count " + to_string(Texture::instanceCount);
+    }
 private:
-    static Renderer* currentRenderer;
+    SDL_Texture* sdlTexture = nullptr;
+    static SDL_Texture* LoadTexture(const char* filePath);
 };

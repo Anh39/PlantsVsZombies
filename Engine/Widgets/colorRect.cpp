@@ -1,10 +1,10 @@
 #include "colorRect.h"
-#include "drawFunctions.h"
 
 ColorRect::ColorRect() {
 
 }
-void ColorRect::Draw(Renderer* renderer, Vector2F absolutePosition) {
-    Rect targetRect = Rect(absolutePosition.x, absolutePosition.y, this->rect.w, this->rect.h);
-    renderRectangle(renderer, targetRect, this->color);
+void ColorRect::Draw(Renderer* renderer, Vector2 absolutePosition) {
+    Rect targetRect = this->rect;
+    targetRect.SetPosition(absolutePosition);
+    renderer->RenderRectangle(targetRect, this->color);
 }

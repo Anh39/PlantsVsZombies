@@ -1,16 +1,19 @@
 #pragma once
-#include "vector2f.h"
+#include <SDL2/SDL_image.h>
+#include <math.h>
+#include <iostream>
 
-
+/// @struct Vector2
+/// @brief Struct to hold info like Position, Size
 struct Vector2 
 {
 public:
-    int x;
-    int y;
+    float x;
+    float y;
     Vector2();
-    Vector2(Vector2F floatVector);
-    Vector2(int x, int y);
-    Vector2F ToFloat();
+    Vector2(float x, float y);
+    /// @brief Convert to SDL_Point
+    SDL_Point ToSDL();
 
     Vector2 operator+(const Vector2& other) const;
     Vector2& operator+=(const Vector2& other);
@@ -20,4 +23,11 @@ public:
     Vector2& operator*=(float scalar);
     Vector2 operator/(float scalar) const;
     Vector2& operator/=(float scalar);
+
+    /// @brief Get length of Vector
+    float GetLength() const;
+    /// @brief Get squarred length of Vector 
+    float GetSqrLength() const;
+
+    explicit operator std::string() const;
 };

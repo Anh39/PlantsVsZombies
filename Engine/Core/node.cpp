@@ -5,14 +5,41 @@
 #include <cmath>
 using namespace std;
 
+int Node::instanceCount = 0;
+
 Node::Node() {
-    this->isVisible = true;
-    this->isDirty = true;
+    Node::instanceCount++;
     this->id = GenerateId();
     this->rect = Rect();
+    this->children = vector<Node*>();
 };
 Node::~Node() {
+    Node::instanceCount--;
+}
+void Node::Delete() {
+    this->isDeleted = true;
+    for (auto child : this->children)
+    {
+        child->Delete();
+    }
+}
+void Node::Draw(Renderer* renderer, Vector2 absolutePosition) {
 
+}
+void Node::Update(float delta) {
+
+}
+void Node::OnCollide(Node* other) {
+
+}
+void Node::OnCollided(Node* other) {
+    
+}
+string Node::Info() {
+    return "Name " + string(this->GetClassName()) + " | Id " + string(this->id);
+}
+string Node::Serialize() {
+    return string("Empty");
 }
 const char* Node::GenerateId() {
     int randomNumber = rand();
@@ -25,8 +52,11 @@ const char* Node::GenerateId() {
 
 void Node::AddChildren(Node* child) {
     child->parent = this;
-    children.emplace_back(child);
+    // cout << "A" << endl;
+    this->children.push_back(child);
+    // cout << "B" << endl;
 }
+
 void Node::RemoveChildren(Node* child) {
     child->parent = nullptr;
     int size = children.size();
@@ -43,18 +73,12 @@ void Node::SetParent(Node* par) {
     }
     par->AddChildren(this);
 }
-void Node::Draw(Renderer* renderer, Vector2F absolutePosition) {
-
-}
-void Node::Update(float delta) {
-
-}
-Vector2F Node::GetPosition() {
+Vector2 Node::GetPosition() {
     auto x = this->rect.x;
     auto y = this->rect.y;
-    return Vector2F(x, y);
+    return Vector2(x, y);
 }
-void Node::SetPosition(Vector2F pos) {
+void Node::SetPosition(Vector2 pos) {
     this->rect.x = pos.x;
     this->rect.y = pos.y;
 }
@@ -67,12 +91,12 @@ void Node::SetSize(Vector2 size) {
     this->rect.w = size.x;
     this->rect.h = size.y;
 }
-Vector2F Node::GetAbsolutePosition() {
-    Vector2F absPosition = this->GetPosition();
+Vector2 Node::GetAbsolutePosition() {
+    Vector2 absPosition = this->GetPosition();
     Node* parent = this->parent;
     while (parent != nullptr)
     {
-        Vector2F parentRelativePosition = parent->GetPosition();
+        Vector2 parentRelativePosition = parent->GetPosition();
         absPosition.x += parentRelativePosition.x;
         absPosition.y += parentRelativePosition.y;
         parent = parent->parent;
@@ -81,8 +105,8 @@ Vector2F Node::GetAbsolutePosition() {
     }
     return absPosition;
 }
-void Node::SetAbsolutePosition(Vector2F pos) {
-    Vector2F absPosition = this->GetAbsolutePosition();
+void Node::SetAbsolutePosition(Vector2 pos) {
+    Vector2 absPosition = this->GetAbsolutePosition();
     this->SetPosition(pos-absPosition);
 }
 

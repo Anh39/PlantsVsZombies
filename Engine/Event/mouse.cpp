@@ -10,7 +10,7 @@ MouseEvent::~MouseEvent() {
 }
 
 bool MouseEvent::initialized = false;
-Vector2F MouseEvent::_position = Vector2F(0, 0);
+Vector2 MouseEvent::_position = Vector2(0, 0);
 MouseEvent MouseEvent::leftMouseEvent = MouseEvent(MouseType::MouseLeft);
 MouseEvent MouseEvent::rightMouseEvent = MouseEvent(MouseType::MouseRight);
 MouseEvent MouseEvent::middleMouseEvent = MouseEvent(MouseType::MouseMiddle);
@@ -41,6 +41,7 @@ MouseEvent MouseEvent::GetEvent(MouseType type) {
         return MouseEvent::middleMouseEvent;
         break;
     default:
+        throw runtime_error("Invalid case");
         break;
     }
 }
@@ -69,13 +70,13 @@ void MouseEvent::Update() {
     UpdateEvent(MouseEvent::leftMouseEvent, state & SDL_BUTTON(SDL_BUTTON_LEFT));
     UpdateEvent(MouseEvent::rightMouseEvent, state & SDL_BUTTON(SDL_BUTTON_RIGHT));
     UpdateEvent(MouseEvent::middleMouseEvent, state & SDL_BUTTON(SDL_BUTTON_MIDDLE));
-    Vector2F position = Vector2F(x, y);
+    Vector2 position = Vector2(x, y);
     MouseEvent::leftMouseEvent.position = position;
     MouseEvent::rightMouseEvent.position = position;
     MouseEvent::middleMouseEvent.position = position;
     MouseEvent::_position = position;
 }
-Vector2F MouseEvent::Position() {
+Vector2 MouseEvent::Position() {
     return MouseEvent::_position;
 }
 bool MouseEvent::IsPressing(MouseType type) {

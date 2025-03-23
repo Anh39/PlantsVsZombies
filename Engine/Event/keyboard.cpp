@@ -25,13 +25,19 @@ map<SDL_Scancode, KeyboardType> KeyboardEvent::keyMap = {
     {SDL_SCANCODE_UP, KeyboardType::Up},
     {SDL_SCANCODE_DOWN, KeyboardType::Down},
     {SDL_SCANCODE_ESCAPE, KeyboardType::Esc},
+    {SDL_SCANCODE_SPACE, KeyboardType::Space},
     {SDL_SCANCODE_KP_ENTER, KeyboardType::Enter},
     {SDL_SCANCODE_LSHIFT, KeyboardType::LShift},
     {SDL_SCANCODE_RSHIFT, KeyboardType::RShift},
     {SDL_SCANCODE_W, KeyboardType::W},
     {SDL_SCANCODE_D, KeyboardType::D},
     {SDL_SCANCODE_S, KeyboardType::S},
-    {SDL_SCANCODE_A, KeyboardType::A}
+    {SDL_SCANCODE_A, KeyboardType::A},
+    {SDL_SCANCODE_F1, KeyboardType::F1},
+    {SDL_SCANCODE_F2, KeyboardType::F2},
+    {SDL_SCANCODE_F3, KeyboardType::F3},
+    {SDL_SCANCODE_F4, KeyboardType::F4},
+    {SDL_SCANCODE_F5, KeyboardType::F5}
 };
 
 void KeyboardEvent::Initialize() {
@@ -48,7 +54,7 @@ KeyboardEvent KeyboardEvent::GetEvent(KeyboardType type) {
     return KeyboardEvent::events[type];
 }
 KeyboardEvent updateEvent(map<KeyboardType, KeyboardEvent> &events, KeyboardType type, bool isPressing) {
-    KeyboardEvent event = events[KeyboardType::Right];
+    KeyboardEvent event = events[type];
     if (isPressing) {
         if (!event.isPressing) {
             event.justReleased = false;
