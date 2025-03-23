@@ -6,7 +6,7 @@ void LogErrorAndExit(const char* msg, const char* error) {
     SDL_Quit();
 }
 
-void waitUntilKeyPressed() {
+void WaitUntilKeyPressed() {
     SDL_Event e;
     while (true)
     {

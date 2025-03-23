@@ -4,11 +4,12 @@
 #include "../dataTypes.h"
 #include "../graphic.h"
 
+/// @class ColorRect
+/// @brief Basic Node that render a Rectangle with color
 class ColorRect: public Node 
 {
 public:
-    const char* className = "ColorRect";
-
+    /// @brief Color of rect
     Color color;
 
     ColorRect();

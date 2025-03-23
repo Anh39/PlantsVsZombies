@@ -5,6 +5,8 @@
 
 using namespace std;
 
+/// @class Window
+/// @brief Wrapper class
 class Window
 {
 public:
@@ -13,7 +15,9 @@ public:
 
     SDL_Window* SDL();
 
+    /// @brief Get window title
     const string GetTitle();
+    /// @brief Get window size
     const Vector2 GetSize();
 private:
     string WindowTitle;

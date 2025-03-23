@@ -10,7 +10,9 @@ struct Rect
 public:
     float x;
     float y;
+    /// @brief Width 
     float w;
+    /// @brief Height
     float h;
     Rect();
     Rect(float x, float y);

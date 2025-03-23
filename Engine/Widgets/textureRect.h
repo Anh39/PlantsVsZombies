@@ -3,11 +3,12 @@
 #include "../core.h"
 #include "../graphic.h"
 
+/// @class TextureRect
+/// @brief Basic Node that render a Rectangle with image
 class TextureRect: public Node 
 {
 public:
-    const char* className = "TextureRect";
-
+    /// @brief Texture of rect
     Texture* texture;
 
     TextureRect();

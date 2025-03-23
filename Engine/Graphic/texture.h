@@ -5,16 +5,22 @@
 using namespace std;
 
 class Renderer;
+
+/// @class Texture
+/// @brief Wrapper class
 class Texture 
 {
 public:
     static int instanceCount;
 
+    /// @brief Create new texture with file path to image.
     Texture(string filePath);
     ~Texture();
-    SDL_Texture* SDL();
-    Vector2 GetImageSize();
 
+    SDL_Texture* SDL();
+    /// @brief Get real image size.
+    Vector2 GetImageSize();
+    /// @brief Get class debug info
     static string GetDebugInfo() {
         return "Instance count " + to_string(Texture::instanceCount);
     }
