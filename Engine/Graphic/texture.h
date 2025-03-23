@@ -1,17 +1,20 @@
 #pragma once
 #include "../dataTypes.h"
-#include "wrapper.h"
 #include <SDL2/SDL_image.h>
 #include <iostream>
 using namespace std;
 
+class Renderer;
 class Texture 
 {
 public:
-    SDL_Texture* sdlTexture;
     Texture(string filePath);
-
-    static void setCurrentRenderer(Renderer* renderer);
+    ~Texture();
+    SDL_Texture* SDL();
+    Vector2 GetImageSize();
+    static void SetCurrentRenderer(Renderer* renderer);
 private:
+    SDL_Texture* sdlTexture = nullptr;
     static Renderer* currentRenderer;
+    static SDL_Texture* LoadTexture(const char* filePath);
 };

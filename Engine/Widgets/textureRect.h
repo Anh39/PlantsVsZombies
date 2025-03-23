@@ -11,7 +11,7 @@ public:
     Texture* texture;
 
     TextureRect();
-    void Draw(Renderer *renderer, Vector2F absolutePosition);
+    void Draw(Renderer *renderer, Vector2 absolutePosition);
     // virtual void update(float delta);
     const string GetClassName() { return "TextureRect"; }
 };

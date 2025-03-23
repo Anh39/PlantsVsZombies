@@ -20,7 +20,7 @@ void Node::Delete() {
         child->Delete();
     }
 }
-void Node::Draw(Renderer* renderer, Vector2F absolutePosition) {
+void Node::Draw(Renderer* renderer, Vector2 absolutePosition) {
 
 }
 void Node::Update(float delta) {
@@ -70,12 +70,12 @@ void Node::SetParent(Node* par) {
     }
     par->AddChildren(this);
 }
-Vector2F Node::GetPosition() {
+Vector2 Node::GetPosition() {
     auto x = this->rect.x;
     auto y = this->rect.y;
-    return Vector2F(x, y);
+    return Vector2(x, y);
 }
-void Node::SetPosition(Vector2F pos) {
+void Node::SetPosition(Vector2 pos) {
     this->rect.x = pos.x;
     this->rect.y = pos.y;
 }
@@ -88,12 +88,12 @@ void Node::SetSize(Vector2 size) {
     this->rect.w = size.x;
     this->rect.h = size.y;
 }
-Vector2F Node::GetAbsolutePosition() {
-    Vector2F absPosition = this->GetPosition();
+Vector2 Node::GetAbsolutePosition() {
+    Vector2 absPosition = this->GetPosition();
     Node* parent = this->parent;
     while (parent != nullptr)
     {
-        Vector2F parentRelativePosition = parent->GetPosition();
+        Vector2 parentRelativePosition = parent->GetPosition();
         absPosition.x += parentRelativePosition.x;
         absPosition.y += parentRelativePosition.y;
         parent = parent->parent;
@@ -102,8 +102,8 @@ Vector2F Node::GetAbsolutePosition() {
     }
     return absPosition;
 }
-void Node::SetAbsolutePosition(Vector2F pos) {
-    Vector2F absPosition = this->GetAbsolutePosition();
+void Node::SetAbsolutePosition(Vector2 pos) {
+    Vector2 absPosition = this->GetAbsolutePosition();
     this->SetPosition(pos-absPosition);
 }
 

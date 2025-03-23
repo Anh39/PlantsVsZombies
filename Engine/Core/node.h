@@ -7,19 +7,21 @@
 #include <queue>
 
 using namespace std;
+/// @brief Mask for collision handling
 enum CollideMask 
 {
-    Layer1 = 0x1,
-    Layer2 = 0x10,
-    Layer3 = 0x100,
-    Layer4 = 0x1000,
-    Layer5 = 0x10000,
-    Layer6 = 0x100000,
-    Layer7 = 0x1000000,
-    Layer8 = 0x10000000
+    CollideLayer1 = 0x1,
+    CollideLayer2 = 0x10,
+    CollideLayer3 = 0x100,
+    CollideLayer4 = 0x1000,
+    CollideLayer5 = 0x10000,
+    CollideLayer6 = 0x100000,
+    CollideLayer7 = 0x1000000,
+    CollideLayer8 = 0x10000000
 };
 
-
+/// @class Node
+/// @brief Base class for all Game Object
 class Node 
 {
 public:
@@ -33,22 +35,21 @@ public:
     bool isDirty = true;
     bool isDeleted = false;
 
-
     Node();
     void AddChildren(Node* child);
     void RemoveChildren(Node* child);
     void SetParent(Node* par);
 
-    void SetPosition(Vector2F position);
-    Vector2F GetPosition();
+    void SetPosition(Vector2 position);
+    Vector2 GetPosition();
     void SetSize(Vector2 size);
     Vector2 GetSize();
-    void SetAbsolutePosition(Vector2F abosulePosition);
-    Vector2F GetAbsolutePosition();
+    void SetAbsolutePosition(Vector2 abosulePosition);
+    Vector2 GetAbsolutePosition();
 
     virtual void OnCollide(Node* other);
     virtual void OnCollided(Node* other);
-    virtual void Draw(Renderer* renderer, Vector2F absolutePosition);
+    virtual void Draw(Renderer* renderer, Vector2 absolutePosition);
     virtual void Update(float delta);
     virtual ~Node();
     virtual string Info();

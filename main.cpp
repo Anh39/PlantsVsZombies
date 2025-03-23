@@ -7,12 +7,12 @@ class Bullet : public ColorRect
 public:
     const char* className = "Bullet";
 
-    Vector2F velocity;
+    Vector2 velocity;
     void Update(float delta) {
         this->rect = this->rect + velocity * delta;
     }
     Bullet() {
-        this->velocity = Vector2F(0, 0);
+        this->velocity = Vector2(0, 0);
     }
     void OnCollide(Node* other) override {
         this->parent->RemoveChildren(this);
@@ -48,7 +48,7 @@ public:
         if (KeyboardEvent::IsPressing(KeyboardType::Down) || KeyboardEvent::IsPressing(KeyboardType::S)) {
             this->rect.y += delta * localSpeed;
         }
-        if (MouseEvent::JustPressed(MouseType::MouseLeft)  && this->rect.contain(MouseEvent::Position())) {
+        if (MouseEvent::JustPressed(MouseType::MouseLeft)  && this->rect.Contain(MouseEvent::Position())) {
             cout << "Mouse pressed " << MouseEvent::Position().x << "|" << MouseEvent::Position().y << endl;
         }
 
@@ -59,7 +59,7 @@ public:
     }
     void spawn() {
         Bullet* bullet = new Bullet();
-        bullet->velocity = Vector2F(20, 0);
+        bullet->velocity = Vector2(20, 0);
         bullet->rect = Rect(0, 0, 50, 50);
         bullet->color = Color(255, 255, 255);
         bullet->collideMask = 1;
@@ -69,7 +69,7 @@ public:
     const string GetClassName() { return "Player"; }
 
     string Info() {
-        return "Player Id " + string(this->id) + "\n";
+        return "Player Id " + string(this->id) + "|" + string(this->rect) + "\n";
     }
 };
 class Target: public ColorRect 
@@ -159,5 +159,3 @@ int main(int argc, char* argv[]) {
     GameLoop::Start();
     return 0;
 }
-// Todo
-// Log scene tree

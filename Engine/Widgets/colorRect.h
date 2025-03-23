@@ -12,9 +12,7 @@ public:
     Color color;
 
     ColorRect();
-    void Draw(Renderer *renderer, Vector2F absolutePosition);
-    // virtual void update(float delta);
-    // virtual string GetClassName() override;
+    void Draw(Renderer *renderer, Vector2 absolutePosition);
 
     const string GetClassName() { return "ColorRect"; }
 };

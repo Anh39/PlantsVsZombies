@@ -19,8 +19,8 @@ public:
     bool isPressing;
     bool justPressed;
     bool justReleased;
-    Vector2F position;
-    static Vector2F Position();
+    Vector2 position;
+    static Vector2 Position();
     static MouseEvent GetEvent(MouseType type);
     static bool IsPressing(MouseType type);
     static bool JustPressed(MouseType type);
@@ -28,7 +28,7 @@ public:
     static void Initialize();
     static void Update();
 private:
-    static Vector2F _position;
+    static Vector2 _position;
     MouseEvent(MouseType type);
     static bool initialized;
     static MouseEvent leftMouseEvent;
