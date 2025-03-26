@@ -64,7 +64,6 @@ void Scene::ProcessFrame(float delta) {
     queue<pair<Node*, int>> travelQueue;
     queue<Node*> updateQueue;
     queue<Node*> renderQueue;
-    queue<Node*> markedForDelete;
     vector<Node*> collideInvoker;
     vector<Node*> collideReceiver;
     
@@ -90,7 +89,7 @@ void Scene::ProcessFrame(float delta) {
         for(int i=0; i<size; i++) {
             travelQueue.push(make_pair(current->children[i], level+1));
         }
-        if (current->isDeleted) markedForDelete.push(current);
+        // if (current->isDeleted) markedForDelete.push(current);
         if (current->collideMask) collideInvoker.push_back(current);
         if (current->collideFilter) collideReceiver.push_back(current);
         renderQueue.push(current);
@@ -137,11 +136,27 @@ void Scene::ProcessFrame(float delta) {
             }
         }
     }
+    queue<Node*> markedForDelete;
+    travelQueue.push(make_pair(root, 0));
+    while (!travelQueue.empty())
+    {
+        auto front = travelQueue.front();
+        Node* current = front.first;
+        int level = front.second;
+        travelQueue.pop();
+        int size = current->children.size();
+        for(int i=0; i<size; i++) {
+            travelQueue.push(make_pair(current->children[i], level+1));
+        }
+        if (current == nullptr) continue;
+        if (current->isDeleted) markedForDelete.push(current);
+    }
     while (!markedForDelete.empty())
     {
         Node* node = markedForDelete.front();
         markedForDelete.pop();
         delete node;
+
     }
     if (isLogging) {
         cout << "-----Node tree-----" << endl;

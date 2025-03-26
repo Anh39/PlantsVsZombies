@@ -17,6 +17,9 @@ Node::~Node() {
     Node::instanceCount--;
 }
 void Node::Delete() {
+    if (this->parent != nullptr) {
+        this->parent->RemoveChildren(this);
+    }
     this->isDeleted = true;
     for (auto child : this->children)
     {
