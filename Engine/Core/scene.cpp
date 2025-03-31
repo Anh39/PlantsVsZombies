@@ -4,6 +4,7 @@
 #include <cstring>
 #include <iostream>
 #include <queue>
+#include <stack>
 #include <vector>
 #include "../event.h"
 #include <iostream>
@@ -60,40 +61,62 @@ void Scene::ProcessFrame(float delta) {
     SDL_SetRenderDrawColor(renderer->SDL(), 0, 0, 0, 255);
     SDL_RenderClear(renderer->SDL());
 
+    bool isLogging = false;
+    if (KeyboardEvent::JustPressed(KeyboardType::F1)) isLogging = true;
+    if (isLogging) {
+        string log = "";
+        stack<pair<Node*, int>> loggingStack;
+        loggingStack.push(make_pair(root, 0));
+        while (!loggingStack.empty())
+        {
+            auto top = loggingStack.top();
+            loggingStack.pop();
+            Node* current = top.first;
+            int level = top.second;
+            if (isLogging) {
+                string prefix = "";
+                for(int i=0; i<level; i++) {
+                    prefix += "-";
+                }
+                log += prefix + current->Info() + "\n";
+            }
+            int size = current->children.size();
+            for(int i=0; i<size; i++) {
+                loggingStack.push(make_pair(current->children[i], level+1));
+            }
+        }
+        cout << "-----Node tree-----" << endl;
+        cout << log;
+        cout << "--------End--------" << endl;
+        
+    }
 
-    queue<pair<Node*, int>> travelQueue;
+    
+
+    queue<Node*> travelQueue;
     queue<Node*> updateQueue;
+    queue<Node*> processEventQueue;
     queue<Node*> renderQueue;
     vector<Node*> collideInvoker;
     vector<Node*> collideReceiver;
+    vector<Event*> events = EventQueue::PopAll();
     
-    travelQueue.push(make_pair(root, 0));
-    string log = "";
-    bool isLogging = false;
-    if (KeyboardEvent::JustPressed(KeyboardType::F1)) isLogging = true;
+    travelQueue.push(root);
+
     while (!travelQueue.empty())
     {
-        auto front = travelQueue.front();
-        Node* current = front.first;
-        int level = front.second;
+        Node* current = travelQueue.front();
         travelQueue.pop();
         if (current == nullptr) continue;
-        if (isLogging) {
-            string prefix = "";
-            for(int i=0; i<level; i++) {
-                prefix += "-";
-            }
-            log += prefix + current->Info() + "\n";
-        }
         int size = current->children.size();
         for(int i=0; i<size; i++) {
-            travelQueue.push(make_pair(current->children[i], level+1));
+            travelQueue.push(current->children[i]);
         }
-        // if (current->isDeleted) markedForDelete.push(current);
         if (current->collideMask) collideInvoker.push_back(current);
         if (current->collideFilter) collideReceiver.push_back(current);
         renderQueue.push(current);
         updateQueue.push(current);
+        processEventQueue.push(current);
     }
     try {
         while (!updateQueue.empty())
@@ -106,6 +129,25 @@ void Scene::ProcessFrame(float delta) {
         cout << "Scene exit" << endl;
         cout << "Reason : " << e.what() << endl;
         return;
+    }
+    while (!processEventQueue.empty())
+    {
+        Node* current = processEventQueue.front();
+        processEventQueue.pop();
+        for (Event* event : events)
+        {
+            current->ProcessEvent(event);
+        }
+        for (int i=0; i<events.size(); i++) {
+            if (events[i]->handled) {
+                delete events[i];
+                events.erase(events.begin() + i);
+                i--;
+            }
+        }
+    }
+    for (int i=0; i<events.size(); i++) {
+        delete events[i];
     }
     while (!renderQueue.empty())
     {
@@ -137,16 +179,14 @@ void Scene::ProcessFrame(float delta) {
         }
     }
     queue<Node*> markedForDelete;
-    travelQueue.push(make_pair(root, 0));
+    travelQueue.push(root);
     while (!travelQueue.empty())
     {
-        auto front = travelQueue.front();
-        Node* current = front.first;
-        int level = front.second;
+        Node* current = travelQueue.front();
         travelQueue.pop();
         int size = current->children.size();
         for(int i=0; i<size; i++) {
-            travelQueue.push(make_pair(current->children[i], level+1));
+            travelQueue.push(current->children[i]);
         }
         if (current == nullptr) continue;
         if (current->isDeleted) markedForDelete.push(current);
@@ -157,11 +197,6 @@ void Scene::ProcessFrame(float delta) {
         markedForDelete.pop();
         delete node;
 
-    }
-    if (isLogging) {
-        cout << "-----Node tree-----" << endl;
-        cout << log;
-        cout << "--------End--------" << endl;
     }
     SDL_RenderPresent(renderer->SDL());
 }

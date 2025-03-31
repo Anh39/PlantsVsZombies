@@ -1,5 +1,5 @@
 #pragma once
-#include "engine.h"
+#include "basePlant.h"
 
 class PeaBullet: public ColorRect
 {
@@ -9,11 +9,12 @@ public:
     PeaBullet();
     ~PeaBullet();
     void Update(float delta) override;
+    void OnCollide(Node* other) override;
     const string GetClassName() override {return "PeaBullet";}
 };
 
 
-class PeaShooter: public ColorRect
+class PeaShooter: public BasePlant
 {
 public:
     float time;
@@ -24,6 +25,8 @@ public:
 
     void Update(float delta) override;
     const string GetClassName() override {return "PeaShooter";}
+    BasePlant* Copy() override;
+
 
     bool isMoving;
     Vector2 startPosition;

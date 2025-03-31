@@ -38,6 +38,9 @@ void Node::OnCollide(Node* other) {
 void Node::OnCollided(Node* other) {
     
 }
+void Node::ProcessEvent(Event* event) {
+
+}
 string Node::Info() {
     return "Name " + string(this->GetClassName()) + " | Id " + string(this->id);
 }

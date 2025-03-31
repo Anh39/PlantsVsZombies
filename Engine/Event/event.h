@@ -7,5 +7,6 @@ using namespace std;
 class Event
 {
 public:
+    bool handled = false;
     virtual ~Event();
 };
