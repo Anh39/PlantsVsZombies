@@ -10,6 +10,9 @@ public:
     void LoadMap(string filePath);
     void SaveMap(string filePath);
     Map();
+    void LoadDefault();
+
+    void Update(float delta) override;
     void SetSize(Vector2 size) override;
     void ProcessEvent(Event* event) override;
     const string GetClassName() override {return "Map";}

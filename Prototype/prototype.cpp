@@ -11,8 +11,9 @@ int run() {
     scene->root->AddChildren(mainUI);
 
     Map* map = new Map();
+    map->LoadMap("map.txt");
     map->SetPosition(Vector2(50, 150));
-    map->SetSize(Vector2(630, 350));
+    map->SetSize(Vector2(720, 400));
     scene->root->AddChildren(map);
 
     Node* plants = new Node();

@@ -1,6 +1,7 @@
 #pragma once
 #include "engine.h"
 #include "../Plants/basePlant.h"
+#include <map>
 
 enum MapType 
 {
@@ -9,7 +10,7 @@ enum MapType
     TILE_WATER,
     TILE_ROOF
 };
-enum GraphicMapType
+enum MapGraphicType
 {
     TILE_NONE_1,
     TILE_NONE_2,
@@ -23,10 +24,14 @@ enum GraphicMapType
 class MapTile: public TextureRect
 {
 public:
+    static vector<pair<MapGraphicType, int>> serializeCodeMapping;
+    static map<MapGraphicType, string> texturePathMapping;
+
     MapType GetType();
+    MapGraphicType GetGraphicType();
     Texture* GetTexture();
 
-    MapTile(MapType type, Texture* texture);    
+    MapTile(MapType type, MapGraphicType graphicType);
     ~MapTile();
     const string GetClassName() override {return "MapTile";}
     string Info() override;
@@ -34,4 +39,5 @@ public:
     void SetPlant(BasePlant* plant);
 private:
     MapType type;
+    MapGraphicType graphicType;
 };
