@@ -3,6 +3,7 @@
 #include <SDL2/SDL_image.h>
 #include "../dataTypes.h"
 #include "../graphic.h"
+#include "../event.h"
 #include <iostream>
 #include <queue>
 
@@ -59,7 +60,7 @@ public:
     /// @brief Get relative position of Rect this Node.
     Vector2 GetPosition();
     /// @brief Set size of Rect of this node.
-    void SetSize(Vector2 size);
+    virtual void SetSize(Vector2 size);
     /// @brief Get size of Rect of this node.
     Vector2 GetSize();
     /// @brief Set absolute position of Rect of this node.
@@ -75,6 +76,8 @@ public:
     virtual void Draw(Renderer* renderer, Vector2 absolutePosition);
     /// @brief Update function to change Node behaviour.
     virtual void Update(float delta);
+    /// @brief Process event
+    virtual void ProcessEvent(Event* event);
     virtual ~Node();
     /// @brief Get basic info for debug purpose
     virtual string Info();

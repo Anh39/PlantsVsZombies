@@ -17,6 +17,9 @@ Node::~Node() {
     Node::instanceCount--;
 }
 void Node::Delete() {
+    if (this->parent != nullptr) {
+        this->parent->RemoveChildren(this);
+    }
     this->isDeleted = true;
     for (auto child : this->children)
     {
@@ -34,6 +37,9 @@ void Node::OnCollide(Node* other) {
 }
 void Node::OnCollided(Node* other) {
     
+}
+void Node::ProcessEvent(Event* event) {
+
 }
 string Node::Info() {
     return "Name " + string(this->GetClassName()) + " | Id " + string(this->id);

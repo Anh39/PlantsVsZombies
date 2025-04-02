@@ -6,6 +6,8 @@ public:
     UI();
     ~UI();
 
+    ColorRect* topBar;
+
     const string GetClassName() override {return "UI";}
     
 private:
