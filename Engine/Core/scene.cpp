@@ -6,14 +6,16 @@
 #include <queue>
 #include <stack>
 #include <vector>
-#include "../event.h"
 #include <iostream>
+#include "node.h"
+#include "../nodes.h"
 
 using namespace std;
 
 Scene* Scene::current = nullptr;
-Window* Scene::window = new Window("Game", Vector2(800, 600));
+Window* Scene::window = new Window("Game");
 Renderer* Scene::renderer = new Renderer(Scene::window);
+Vector2 Scene::scale = Vector2(1, 1);
 int Scene::instanceCount = 0;
 
 Scene::Scene() {
@@ -27,20 +29,18 @@ Scene::~Scene() {
     SDL_SetRenderDrawColor(renderer->SDL(), 0, 0, 0, 255);
     SDL_RenderClear(renderer->SDL());
 
-    queue<pair<Node*, int>> travelQueue;
+    queue<Node*> travelQueue;
     queue<Node*> markedForDelete;
     
-    travelQueue.push(make_pair(root, 0));
+    travelQueue.push(root);
     while (!travelQueue.empty())
     {
-        auto front = travelQueue.front();
-        Node* current = front.first;
-        int level = front.second;
+        Node* current = travelQueue.front();
         travelQueue.pop();
         if (current == nullptr) continue;
         int size = current->children.size();
         for(int i=0; i<size; i++) {
-            travelQueue.push(make_pair(current->children[i], level+1));
+            travelQueue.push(current->children[i]);
         }
         markedForDelete.push(current);
     }
@@ -52,8 +52,14 @@ Scene::~Scene() {
     }
 }
 void Scene::SetAsCurrentScene() {
-    // Texture::SetCurrentRenderer(this->renderer);
     this->current = this;
+    Scene::window->onResized = std::bind(&Scene::OnWindowResized, this, std::placeholders::_1);
+}
+void Scene::OnWindowResized(const Vector2& size) {
+    if (this->renderer != nullptr) {
+        SDL_RenderSetViewport(this->renderer->SDL(), NULL);
+        this->scale = Vector2(size.x/NAIVE_WIDTH, size.y/NAIVE_HEIGHT);
+    }
 }
 void Scene::ProcessFrame(float delta) {
     Node* root = Scene::root;
@@ -91,14 +97,12 @@ void Scene::ProcessFrame(float delta) {
         
     }
 
-    
-
     queue<Node*> travelQueue;
     queue<Node*> updateQueue;
-    queue<Node*> processEventQueue;
-    queue<Node*> renderQueue;
-    vector<Node*> collideInvoker;
-    vector<Node*> collideReceiver;
+    queue<EventNode*> processEventQueue;
+    queue<RenderNode*> renderQueue;
+    vector<CollideNode*> collideInvoker;
+    vector<CollideNode*> collideReceiver;
     vector<Event*> events = EventQueue::PopAll();
     
     travelQueue.push(root);
@@ -112,11 +116,20 @@ void Scene::ProcessFrame(float delta) {
         for(int i=0; i<size; i++) {
             travelQueue.push(current->children[i]);
         }
-        if (current->collideMask) collideInvoker.push_back(current);
-        if (current->collideFilter) collideReceiver.push_back(current);
-        renderQueue.push(current);
         updateQueue.push(current);
-        processEventQueue.push(current);
+        if (current->feature & NodeFeatureMask::COLLIDE_NODE) {
+            CollideNode* collideNode = static_cast<CollideNode*>(current);
+            if (collideNode->collideMask) collideInvoker.push_back(collideNode);
+            if (collideNode->collideFilter) collideReceiver.push_back(collideNode);
+        }
+        if (current->feature & NodeFeatureMask::RENDER_NODE) {
+            RenderNode* renderNode = static_cast<RenderNode*>(current);
+            renderQueue.push(renderNode);
+        }
+        if (current->feature & NodeFeatureMask::EVENT_NODE) {
+            EventNode* eventNode = static_cast<EventNode*>(current);
+            processEventQueue.push(eventNode);
+        }
     }
     try {
         while (!updateQueue.empty())
@@ -132,13 +145,13 @@ void Scene::ProcessFrame(float delta) {
     }
     while (!processEventQueue.empty())
     {
-        Node* current = processEventQueue.front();
+        EventNode* current = processEventQueue.front();
         processEventQueue.pop();
         for (Event* event : events)
         {
             current->ProcessEvent(event);
         }
-        for (int i=0; i<events.size(); i++) {
+        for (unsigned int i=0; i<events.size(); i++) {
             if (events[i]->handled) {
                 delete events[i];
                 events.erase(events.begin() + i);
@@ -146,27 +159,27 @@ void Scene::ProcessFrame(float delta) {
             }
         }
     }
-    for (int i=0; i<events.size(); i++) {
+    for (unsigned int i=0; i<events.size(); i++) {
         delete events[i];
     }
     while (!renderQueue.empty())
     {
-        Node* current = renderQueue.front();
+        RenderNode* current = renderQueue.front();
         renderQueue.pop();
         current->Draw(renderer, current->GetAbsolutePosition());
     }
     int invokerSize = collideInvoker.size();
     int receiverSize = collideReceiver.size();
     for(int i=0; i<invokerSize; i++) {
-        Node* invoker = collideInvoker[i];
-        Rect invokerRect = invoker->rect;
+        CollideNode* invoker = collideInvoker[i];
+        Rect invokerRect = invoker->GetRect();
         Vector2 invokerAbsolutePosition = invoker->GetAbsolutePosition();
         invokerRect.x = invokerAbsolutePosition.x;
         invokerRect.y = invokerAbsolutePosition.y;
         for(int j=0; j<receiverSize; j++) {
-            Node* receiver = collideReceiver[j];
+            CollideNode* receiver = collideReceiver[j];
             if (invoker->collideMask & receiver->collideFilter ) {
-                Rect receiverRect = receiver->rect;
+                Rect receiverRect = receiver->GetRect();
                 Vector2 receiverAbsolutePosition = receiver->GetAbsolutePosition();
                 receiverRect.x = receiverAbsolutePosition.x;
                 receiverRect.y = receiverAbsolutePosition.y;
@@ -175,6 +188,7 @@ void Scene::ProcessFrame(float delta) {
                     invoker->OnCollide(receiver);
                     receiver->OnCollided(invoker);
                 }
+                // cout << string(invokerRect) << "|" << string(receiverRect) << endl;
             }
         }
     }

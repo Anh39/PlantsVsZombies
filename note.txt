@@ -1,0 +1,6 @@
+Một vài phím tắt
+
+F1: In ra cây các Node
+F2: In ra một vài thông số debug (số Node, Texture, ...)
+F3: Chuyển sang scene1
+F4: Chuyển sang scene2

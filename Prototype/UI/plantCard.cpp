@@ -4,11 +4,15 @@
 PlantCard::PlantCard() {
     this->target = nullptr;
     this->isMoving = false;
+    this->Name = "PlantCard";
 }
 PlantCard::~PlantCard() {
-    delete this->target;
 }
-
+void PlantCard::SetTargetSize(const Vector2& size) {
+    if (this->target != nullptr) {
+        this->target->size = size;
+    }
+}
 void PlantCard::SetTarget(BasePlant* target) {
     if (this->target != nullptr) {
         this->RemoveChildren(target);
@@ -21,19 +25,20 @@ BasePlant* PlantCard::CreateTarget() {
 }
 
 void PlantCard::Update(float delta) {
-    Rect rect =  this->rect;
+    if (this->target == nullptr) return;
+    Rect rect =  this->target->GetRect();
     rect.SetPosition(this->GetAbsolutePosition());
     if (!this->isMoving && MouseEvent::JustPressed(MouseType::MouseLeft)) {
         if (rect.Contain(MouseEvent::Position())) {
             this->isMoving = true;
-            this->startPosition = this->GetPosition();
+            this->startPosition = this->position;
             this->startMousePosition = MouseEvent::Position();
         }
         this->instanceTarget = this->target->Copy();
         this->AddChildren(this->instanceTarget);
     }
     if (this->isMoving) {
-        this->instanceTarget->SetPosition(MouseEvent::Position() - this->startMousePosition + this->startPosition);
+        this->instanceTarget->position = MouseEvent::Position() - this->startMousePosition + this->startPosition;
         if (MouseEvent::JustReleased(MouseType::MouseLeft)) {
             this->isMoving = false;
             PlantCardDropEvent* event = new PlantCardDropEvent();

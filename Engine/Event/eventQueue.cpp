@@ -1,5 +1,5 @@
 #include "eventQueue.h"
-
+using namespace std;
 EventQueue::EventQueue() {};
 queue<Event*> EventQueue::events = queue<Event*>();
 

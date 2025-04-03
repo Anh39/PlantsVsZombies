@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -I -Wall -Wextra -std=c++17 -IEngine
+CXXFLAGS = -g -O0 -I -Wall -Wextra -std=c++17 -IEngine
 LDFLAGS = -lmingw32 -lSDL2main -lSDL2 -lSDL2_image
 
 ENGINE_SRC = $(wildcard Engine/*.cpp) \
@@ -7,6 +7,7 @@ ENGINE_SRC = $(wildcard Engine/*.cpp) \
 	$(wildcard Engine/DataTypes/*.cpp) \
 	$(wildcard Engine/Graphic/*.cpp) \
 	$(wildcard Engine/Widgets/*.cpp) \
+	$(wildcard Engine/Nodes/*.cpp) 	\
 	$(wildcard Engine/Event/*.cpp) 	
 ENGINE_OBJ = $(ENGINE_SRC:.cpp=.o)
 

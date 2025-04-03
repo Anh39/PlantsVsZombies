@@ -1,11 +1,11 @@
 #pragma once
 
-#include "../core.h"
+#include "../nodes.h"
 #include "../graphic.h"
 
 /// @class TextureRect
 /// @brief Basic Node that render a Rectangle with image
-class TextureRect: public Node 
+class TextureRect: public RenderNode
 {
 public:
     /// @brief Texture of rect
@@ -13,7 +13,5 @@ public:
 
     TextureRect();
     ~TextureRect();
-    void Draw(Renderer *renderer, Vector2 absolutePosition);
-    // virtual void update(float delta);
-    const string GetClassName() { return "TextureRect"; }
+    void Draw(Renderer *renderer, Vector2 absolutePosition) override;
 };

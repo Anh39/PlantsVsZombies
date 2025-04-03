@@ -7,5 +7,6 @@
 class GameLoop
 {
 public:
+    /// @brief Start game, block thread
     static void Start();
 };

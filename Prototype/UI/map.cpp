@@ -8,6 +8,7 @@ using namespace std;
 Map::Map() {
     this->mapSize = Vector2(9, 5);
     this->tiles = vector<vector<MapTile*>>();
+    this->Name = "Map";
 }
 void Map::LoadDefault() {
     for(int y=0; y<this->mapSize.y; y++) {
@@ -26,23 +27,22 @@ void Map::LoadDefault() {
         }
         this->tiles.push_back(row);
     }
-    this->SetSize(this->GetSize());
+    this->SetSize(this->renderSize);
 }
 void Map::SetSize(Vector2 size) {
-    this->rect.w = size.x;
-    this->rect.h = size.y;
+    this->renderSize = size;
     Vector2 tileSize = this->GetTileSize();
     for(int y=0; y<this->mapSize.y; y++) {
         for(int x=0; x<this->mapSize.x; x++) {
             MapTile* tile = this->tiles[y][x];
-            tile->SetSize(tileSize);
+            tile->size = tileSize;
             Vector2 tilePosition = Vector2(x*tileSize.x, y*tileSize.y);
-            tile->SetPosition(tilePosition);
+            tile->position = tilePosition;
         }
     }
 }
 Vector2 Map::GetTileSize() {
-    return Vector2(this->rect.w/this->mapSize.x, this->rect.h/this->mapSize.y);
+    return Vector2(this->renderSize.x/this->mapSize.x, this->renderSize.y/this->mapSize.y);
 }
 MapTile* Map::GetTileWithPosition(Vector2 position) {
     Vector2 tileSize = this->GetTileSize();
@@ -58,7 +58,7 @@ MapTile* Map::GetTileWithPosition(Vector2 position) {
 void Map::ProcessEvent(Event* event) {
     PlantCardDropEvent* dropEvent = dynamic_cast<PlantCardDropEvent*>(event);
     if (dropEvent) {
-        Vector2 relativePosition = dropEvent->AbsolutePosition - this->GetPosition();
+        Vector2 relativePosition = dropEvent->AbsolutePosition - this->position;
         MapTile* targetTile = this->GetTileWithPosition(relativePosition);
         if (targetTile != nullptr) {
             targetTile->SetPlant(dropEvent->Plant);

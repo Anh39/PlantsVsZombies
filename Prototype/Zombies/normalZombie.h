@@ -13,5 +13,4 @@ public:
     void Update(float delta) override;
 
     virtual BaseZombie* Copy();
-    const string GetClassName() override {return "NormalZombie";}
 };

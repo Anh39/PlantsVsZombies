@@ -23,7 +23,14 @@ enum KeyboardType
     F2,
     F3,
     F4,
-    F5
+    F5,
+    F6,
+    F7,
+    F8,
+    F9,
+    F10,
+    F11,
+    F12
 };
 
 /// @class KeyboardEvent
@@ -57,6 +64,6 @@ public:
 private:
     KeyboardEvent(KeyboardType type);
     static bool initialized;
-    static map<KeyboardType, KeyboardEvent> events;
-    static map<SDL_Scancode, KeyboardType> keyMap;
+    static std::map<KeyboardType, KeyboardEvent> events;
+    static std::map<SDL_Scancode, KeyboardType> keyMap;
 };

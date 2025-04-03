@@ -9,8 +9,9 @@ int Node::instanceCount = 0;
 
 Node::Node() {
     Node::instanceCount++;
+    this->Name = "Node";
     this->id = GenerateId();
-    this->rect = Rect();
+    this->position = Vector2();
     this->children = vector<Node*>();
 };
 Node::~Node() {
@@ -26,23 +27,11 @@ void Node::Delete() {
         child->Delete();
     }
 }
-void Node::Draw(Renderer* renderer, Vector2 absolutePosition) {
-
-}
 void Node::Update(float delta) {
 
 }
-void Node::OnCollide(Node* other) {
-
-}
-void Node::OnCollided(Node* other) {
-    
-}
-void Node::ProcessEvent(Event* event) {
-
-}
 string Node::Info() {
-    return "Name " + string(this->GetClassName()) + " | Id " + string(this->id);
+    return "Name " + string(this->Name) + " | Id " + string(this->id);
 }
 string Node::Serialize() {
     return string("Empty");
@@ -62,6 +51,15 @@ void Node::AddChildren(Node* child) {
     this->children.push_back(child);
     // cout << "B" << endl;
 }
+Node* Node::GetChild(string name) {
+    for (Node* child : this->children)
+    {
+        if (child->Name == name) {
+            return child;
+        }
+    }
+    return nullptr;
+}
 
 void Node::RemoveChildren(Node* child) {
     child->parent = nullptr;
@@ -79,30 +77,12 @@ void Node::SetParent(Node* par) {
     }
     par->AddChildren(this);
 }
-Vector2 Node::GetPosition() {
-    auto x = this->rect.x;
-    auto y = this->rect.y;
-    return Vector2(x, y);
-}
-void Node::SetPosition(Vector2 pos) {
-    this->rect.x = pos.x;
-    this->rect.y = pos.y;
-}
-Vector2 Node::GetSize() {
-    auto w = this->rect.w;
-    auto h = this->rect.h;
-    return Vector2(w, h);
-}
-void Node::SetSize(Vector2 size) {
-    this->rect.w = size.x;
-    this->rect.h = size.y;
-}
 Vector2 Node::GetAbsolutePosition() {
-    Vector2 absPosition = this->GetPosition();
+    Vector2 absPosition = this->position;
     Node* parent = this->parent;
     while (parent != nullptr)
     {
-        Vector2 parentRelativePosition = parent->GetPosition();
+        Vector2 parentRelativePosition = parent->position;
         absPosition.x += parentRelativePosition.x;
         absPosition.y += parentRelativePosition.y;
         parent = parent->parent;
@@ -113,6 +93,6 @@ Vector2 Node::GetAbsolutePosition() {
 }
 void Node::SetAbsolutePosition(Vector2 pos) {
     Vector2 absPosition = this->GetAbsolutePosition();
-    this->SetPosition(pos-absPosition);
+    this->position = pos-absPosition;
 }
 

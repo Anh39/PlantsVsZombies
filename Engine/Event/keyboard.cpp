@@ -2,6 +2,7 @@
 #include <iostream>
 #include <SDL2/SDL.h>
 
+using namespace std;
 
 KeyboardEvent::~KeyboardEvent() {
 
@@ -37,7 +38,14 @@ map<SDL_Scancode, KeyboardType> KeyboardEvent::keyMap = {
     {SDL_SCANCODE_F2, KeyboardType::F2},
     {SDL_SCANCODE_F3, KeyboardType::F3},
     {SDL_SCANCODE_F4, KeyboardType::F4},
-    {SDL_SCANCODE_F5, KeyboardType::F5}
+    {SDL_SCANCODE_F5, KeyboardType::F5},
+    {SDL_SCANCODE_F6, KeyboardType::F6},
+    {SDL_SCANCODE_F7, KeyboardType::F7},
+    {SDL_SCANCODE_F8, KeyboardType::F8},
+    {SDL_SCANCODE_F9, KeyboardType::F9},
+    {SDL_SCANCODE_F10, KeyboardType::F10},
+    {SDL_SCANCODE_F11, KeyboardType::F11},
+    {SDL_SCANCODE_F12, KeyboardType::F12}
 };
 
 void KeyboardEvent::Initialize() {

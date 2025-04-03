@@ -28,7 +28,7 @@ SDL_Renderer* CreateRenderer(Window* window) {
         LogErrorAndExitRenderer("CreateRenderer", SDL_GetError());
     }
     SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
-    SDL_RenderSetLogicalSize(renderer, int(window->GetSize().x), int(window->GetSize().y));
+    SDL_RenderSetLogicalSize(renderer, NAIVE_WIDTH, NAIVE_HEIGHT);
     return renderer;
 }
 

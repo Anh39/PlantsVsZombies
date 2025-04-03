@@ -27,7 +27,7 @@ public:
     bool justReleased;
     /// @brief Position of mouse, share all cross all instance
     Vector2 position;
-    /// @brief Get position of mouse.
+    /// @brief Get scaled position of mouse.
     static Vector2 Position();
     /// @brief Get MouseEvent corresponding to a Type
     static MouseEvent GetEvent(MouseType type);

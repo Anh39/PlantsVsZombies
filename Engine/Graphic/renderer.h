@@ -3,6 +3,9 @@
 #include "window.h"
 #include "../dataTypes.h"
 
+#define NAIVE_WIDTH 1920
+#define NAIVE_HEIGHT 1080
+
 class Texture;
 
 /// @class Renderer
