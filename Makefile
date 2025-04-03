@@ -7,6 +7,7 @@ ENGINE_SRC = $(wildcard Engine/*.cpp) \
 	$(wildcard Engine/DataTypes/*.cpp) \
 	$(wildcard Engine/Graphic/*.cpp) \
 	$(wildcard Engine/Widgets/*.cpp) \
+	$(wildcard Engine/Nodes/*.cpp) 	\
 	$(wildcard Engine/Event/*.cpp) 	
 ENGINE_OBJ = $(ENGINE_SRC:.cpp=.o)
 

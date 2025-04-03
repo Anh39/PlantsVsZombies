@@ -33,7 +33,6 @@ public:
 
     MapTile(MapType type, MapGraphicType graphicType);
     ~MapTile();
-    const string GetClassName() override {return "MapTile";}
     string Info() override;
 
     void SetPlant(BasePlant* plant);

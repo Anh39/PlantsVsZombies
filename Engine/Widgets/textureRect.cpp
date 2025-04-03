@@ -2,11 +2,12 @@
 #include <iostream>
 
 TextureRect::TextureRect() {
+    this->Name = "TextureRect";
     this->texture = nullptr;
 }
 
 void TextureRect::Draw(Renderer* renderer, Vector2 absolutePosition) {
-    Rect targetRect = this->rect;
+    Rect targetRect = this->GetRect();
     targetRect.SetPosition(absolutePosition);
     renderer->RenderTexture(targetRect, this->texture);
 }
@@ -14,11 +15,3 @@ void TextureRect::Draw(Renderer* renderer, Vector2 absolutePosition) {
 TextureRect::~TextureRect() {
    delete this->texture;
 }
-
-// void TextureRect::update(float delta) {
-
-// }
-
-// string TextureRect::GetClassName() {
-//     return string(this->className);
-// }

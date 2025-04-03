@@ -1,6 +1,7 @@
 #include "basePlant.h"
 
 BasePlant::BasePlant() {
+    this->Name = "BasePlant";
     this->isActive = true;
 }
 BasePlant::~BasePlant() {
@@ -15,5 +16,5 @@ void BasePlant::Draw(Renderer* renderer, Vector2 absolutePosition) {
 }
 
 string BasePlant::Info() {
-    return "Name " + string(this->GetClassName()) + " | Id " + string(this->id) + " | " + string(this->rect);
+    return "Name " + string(this->Name) + " | Id " + string(this->id) + " | " + string(this->GetRect());
 }

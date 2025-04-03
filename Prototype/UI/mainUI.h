@@ -7,8 +7,6 @@ public:
     ~UI();
 
     ColorRect* topBar;
-
-    const string GetClassName() override {return "UI";}
     
 private:
     void Setup();

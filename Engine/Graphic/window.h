@@ -3,24 +3,22 @@
 #include <iostream>
 #include "../dataTypes.h"
 
-using namespace std;
-
 /// @class Window
 /// @brief Wrapper class
 class Window
 {
 public:
-    Window(string title = "Window", Vector2 size = {800, 600});
+    Window(std::string title = "Window", Vector2 size = {800, 600});
     ~Window();
 
     SDL_Window* SDL();
 
     /// @brief Get window title
-    const string GetTitle();
+    const std::string GetTitle();
     /// @brief Get window size
     const Vector2 GetSize();
 private:
-    string WindowTitle;
+    std::string WindowTitle;
     Vector2 Size;
 
     SDL_Window* sdlWindow;

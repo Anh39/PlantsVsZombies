@@ -3,7 +3,6 @@
 #include "../graphic.h"
 
 
-using namespace std;
 class Scene {
 public:
     static int instanceCount;
@@ -25,7 +24,7 @@ public:
     /// @brief Set as current scene for update
     void SetAsCurrentScene();
     /// @brief Get class debug info
-    static string GetDebugInfo() {
-        return "Instance count " + to_string(Scene::instanceCount);
+    static std::string GetDebugInfo() {
+        return "Instance count " + std::to_string(Scene::instanceCount);
     }
 };

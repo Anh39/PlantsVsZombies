@@ -12,7 +12,7 @@ int run() {
 
     Map* map = new Map();
     map->LoadMap("map.txt");
-    map->SetPosition(Vector2(50, 150));
+    map->position = Vector2(50, 150);
     map->SetSize(Vector2(720, 400));
     scene->root->AddChildren(map);
 
@@ -22,18 +22,18 @@ int run() {
     scene->root->AddChildren(zombies);
 
     PeaShooter* pea = new PeaShooter();
-    pea->rect.SetPosition(Vector2(0, 0));
+    pea->position = Vector2(0, 0);
 
     PlantCard* peaShooterCard = new PlantCard();
-    peaShooterCard->rect = Rect(0, 0, 60, 60);
+    peaShooterCard->SetTargetSize(Vector2(60, 60));
     peaShooterCard->SetTarget(pea);
     mainUI->topBar->AddChildren(peaShooterCard);
 
 
     NormalZombie* normalZombie = new NormalZombie();
-    normalZombie->rect = Rect(500, 200, 100, 100);
+    normalZombie->position = Vector2(500, 200);
+    normalZombie->SetSize(Vector2(100, 100));
     zombies->AddChildren(normalZombie);
-    // plants->AddChildren(pea);
 
     scene->SetAsCurrentScene();
     GameLoop::Start();

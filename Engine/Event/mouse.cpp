@@ -1,6 +1,6 @@
 #include "mouse.h"
 #include <SDL2/SDL.h>
-
+using namespace std;
 MouseEvent::MouseEvent() {
 
 }

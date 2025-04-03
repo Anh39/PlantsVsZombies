@@ -2,7 +2,7 @@
 #include <SDL2/SDL.h>
 #include "../event.h"
 #include "scene.h"
-
+using namespace std;
 void GameLoop::Start() {
     KeyboardEvent::Initialize();
     MouseEvent::Initialize();

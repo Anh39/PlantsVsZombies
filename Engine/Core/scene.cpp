@@ -6,8 +6,9 @@
 #include <queue>
 #include <stack>
 #include <vector>
-#include "../event.h"
 #include <iostream>
+#include "node.h"
+#include "../nodes.h"
 
 using namespace std;
 
@@ -91,14 +92,12 @@ void Scene::ProcessFrame(float delta) {
         
     }
 
-    
-
     queue<Node*> travelQueue;
     queue<Node*> updateQueue;
-    queue<Node*> processEventQueue;
-    queue<Node*> renderQueue;
-    vector<Node*> collideInvoker;
-    vector<Node*> collideReceiver;
+    queue<EventNode*> processEventQueue;
+    queue<RenderNode*> renderQueue;
+    vector<CollideNode*> collideInvoker;
+    vector<CollideNode*> collideReceiver;
     vector<Event*> events = EventQueue::PopAll();
     
     travelQueue.push(root);
@@ -112,11 +111,20 @@ void Scene::ProcessFrame(float delta) {
         for(int i=0; i<size; i++) {
             travelQueue.push(current->children[i]);
         }
-        if (current->collideMask) collideInvoker.push_back(current);
-        if (current->collideFilter) collideReceiver.push_back(current);
-        renderQueue.push(current);
         updateQueue.push(current);
-        processEventQueue.push(current);
+        if (current->feature & NodeFeatureMask::COLLIDE_NODE) {
+            CollideNode* collideNode = static_cast<CollideNode*>(current);
+            if (collideNode->collideMask) collideInvoker.push_back(collideNode);
+            if (collideNode->collideFilter) collideReceiver.push_back(collideNode);
+        }
+        if (current->feature & NodeFeatureMask::RENDER_NODE) {
+            RenderNode* renderNode = static_cast<RenderNode*>(current);
+            renderQueue.push(renderNode);
+        }
+        if (current->feature & NodeFeatureMask::EVENT_NODE) {
+            EventNode* eventNode = static_cast<EventNode*>(current);
+            processEventQueue.push(eventNode);
+        }
     }
     try {
         while (!updateQueue.empty())
@@ -132,13 +140,13 @@ void Scene::ProcessFrame(float delta) {
     }
     while (!processEventQueue.empty())
     {
-        Node* current = processEventQueue.front();
+        EventNode* current = processEventQueue.front();
         processEventQueue.pop();
         for (Event* event : events)
         {
             current->ProcessEvent(event);
         }
-        for (int i=0; i<events.size(); i++) {
+        for (unsigned int i=0; i<events.size(); i++) {
             if (events[i]->handled) {
                 delete events[i];
                 events.erase(events.begin() + i);
@@ -146,27 +154,27 @@ void Scene::ProcessFrame(float delta) {
             }
         }
     }
-    for (int i=0; i<events.size(); i++) {
+    for (unsigned int i=0; i<events.size(); i++) {
         delete events[i];
     }
     while (!renderQueue.empty())
     {
-        Node* current = renderQueue.front();
+        RenderNode* current = renderQueue.front();
         renderQueue.pop();
         current->Draw(renderer, current->GetAbsolutePosition());
     }
     int invokerSize = collideInvoker.size();
     int receiverSize = collideReceiver.size();
     for(int i=0; i<invokerSize; i++) {
-        Node* invoker = collideInvoker[i];
-        Rect invokerRect = invoker->rect;
+        CollideNode* invoker = collideInvoker[i];
+        Rect invokerRect = invoker->GetRect();
         Vector2 invokerAbsolutePosition = invoker->GetAbsolutePosition();
         invokerRect.x = invokerAbsolutePosition.x;
         invokerRect.y = invokerAbsolutePosition.y;
         for(int j=0; j<receiverSize; j++) {
-            Node* receiver = collideReceiver[j];
+            CollideNode* receiver = collideReceiver[j];
             if (invoker->collideMask & receiver->collideFilter ) {
-                Rect receiverRect = receiver->rect;
+                Rect receiverRect = receiver->GetRect();
                 Vector2 receiverAbsolutePosition = receiver->GetAbsolutePosition();
                 receiverRect.x = receiverAbsolutePosition.x;
                 receiverRect.y = receiverAbsolutePosition.y;
@@ -175,6 +183,7 @@ void Scene::ProcessFrame(float delta) {
                     invoker->OnCollide(receiver);
                     receiver->OnCollided(invoker);
                 }
+                // cout << string(invokerRect) << "|" << string(receiverRect) << endl;
             }
         }
     }

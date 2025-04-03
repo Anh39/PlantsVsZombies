@@ -1,6 +1,7 @@
 #include "mainUI.h"
 
 UI::UI() {
+    this->Name = "MainUI";
     this->Setup();
 }
 UI::~UI() {
@@ -9,7 +10,8 @@ UI::~UI() {
 
 void UI::Setup() {
     this->topBar = new ColorRect();
-    topBar->rect = Rect(100, 0, 600, 60);
+    topBar->position = Vector2(100, 0);
+    topBar->size = Vector2(600, 60);
     topBar->color = Color(0, 127, 127);
     this->AddChildren(topBar);
 

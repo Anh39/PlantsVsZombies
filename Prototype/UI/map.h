@@ -4,7 +4,7 @@
 #include <vector>
 using namespace std;
 
-class Map: public Node
+class Map: public EventNode
 {
 public:
     void LoadMap(string filePath);
@@ -13,10 +13,10 @@ public:
     void LoadDefault();
 
     void Update(float delta) override;
-    void SetSize(Vector2 size) override;
+    void SetSize(Vector2 size);
     void ProcessEvent(Event* event) override;
-    const string GetClassName() override {return "Map";}
 private:
+    Vector2 renderSize;
     Vector2 mapSize;
     vector<vector<MapTile*>> tiles;
     Vector2 GetTileSize();

@@ -57,6 +57,6 @@ public:
 private:
     KeyboardEvent(KeyboardType type);
     static bool initialized;
-    static map<KeyboardType, KeyboardEvent> events;
-    static map<SDL_Scancode, KeyboardType> keyMap;
+    static std::map<KeyboardType, KeyboardEvent> events;
+    static std::map<SDL_Scancode, KeyboardType> keyMap;
 };

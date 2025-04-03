@@ -22,6 +22,7 @@ map<MapGraphicType, string> MapTile::texturePathMapping = {
 };
 
 MapTile::MapTile(MapType type, MapGraphicType graphicType) {
+    this->Name = "MapTile";
     this->type = type;
     this->graphicType = graphicType;
     Texture* texture = new Texture(texturePathMapping[this->graphicType]);
@@ -31,7 +32,7 @@ MapTile::~MapTile() {
     delete this->texture;
 }
 string MapTile::Info() {
-    return "Name " + string(this->GetClassName()) + " | Id " + string(this->id) + " | " + string(this->rect);
+    return "Name " + string(this->Name) + " | Id " + string(this->id) + " | " + string(this->GetRect());
 }
 MapType MapTile::GetType() {
     return this->type;
@@ -44,5 +45,5 @@ Texture* MapTile::GetTexture() {
 }
 void MapTile::SetPlant(BasePlant* plant) {
     this->AddChildren(plant);
-    plant->SetPosition(Vector2(0, 0));
+    plant->position = Vector2(0, 0);
 }
