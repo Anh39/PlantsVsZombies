@@ -15,6 +15,7 @@ public:
     Node* root;
     /// @brief Current scene
     static Scene* current;
+    static Vector2 scale;
 
     Scene();
     ~Scene();
@@ -27,4 +28,6 @@ public:
     static std::string GetDebugInfo() {
         return "Instance count " + std::to_string(Scene::instanceCount);
     }
+private:
+    void OnWindowResized(const Vector2& size);
 };

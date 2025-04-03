@@ -5,7 +5,7 @@ PeaBullet::PeaBullet() {
 
     this->colorRect = new ColorRect();
     this->colorRect->color = Color(0, 255, 127);
-    this->AddChildren(colorRect);
+    this->AddChildren(this->colorRect);
 
     this->collider = new PeaBulletCollider();
     this->collider->collideMask = CollideLayer1;
@@ -22,15 +22,4 @@ PeaBullet::~PeaBullet() {
 }
 void PeaBullet::Update(float delta) {
     this->position += this->velocity * delta;
-}
-PeaBulletCollider::PeaBulletCollider() {
-    this->Name = "PeaBulletCollider";
-}
-PeaBulletCollider::~PeaBulletCollider() {
-
-}
-void PeaBulletCollider::OnCollide(CollideNode* other) {
-    cout << "Collided" << endl;
-    other->parent->Delete();
-    this->parent->Delete();
 }

@@ -6,6 +6,7 @@ using namespace std;
 void GameLoop::Start() {
     KeyboardEvent::Initialize();
     MouseEvent::Initialize();
+    Scene::window->SetSize(Scene::window->GetSize());
     while (true)
     {
         float delayTime = 1000.0 / FPS;
@@ -16,8 +17,11 @@ void GameLoop::Start() {
             currentScene->ProcessFrame(delayTime / 1000);
         }
         SDL_Event e;
-        if (SDL_PollEvent(&e) != 0 && (e.type == SDL_QUIT)) {
+        SDL_PollEvent(&e);
+        if (e.type == SDL_QUIT) {
             return;
+        } else if (e.type == SDL_WINDOWEVENT && e.window.event == SDL_WINDOWEVENT_RESIZED) {
+            Scene::window->SetSize(Vector2(e.window.data1, e.window.data2));
         }
         if (KeyboardEvent::JustPressed(KeyboardType::F2)) {
             vector<string> debugInfos = vector<string>();

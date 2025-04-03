@@ -14,6 +14,4 @@ void UI::Setup() {
     topBar->size = Vector2(600, 60);
     topBar->color = Color(0, 127, 127);
     this->AddChildren(topBar);
-
-
 }

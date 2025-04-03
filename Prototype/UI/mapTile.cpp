@@ -29,7 +29,6 @@ MapTile::MapTile(MapType type, MapGraphicType graphicType) {
     this->texture = texture;
 }
 MapTile::~MapTile() {
-    delete this->texture;
 }
 string MapTile::Info() {
     return "Name " + string(this->Name) + " | Id " + string(this->id) + " | " + string(this->GetRect());

@@ -13,8 +13,9 @@
 using namespace std;
 
 Scene* Scene::current = nullptr;
-Window* Scene::window = new Window("Game", Vector2(800, 600));
+Window* Scene::window = new Window("Game");
 Renderer* Scene::renderer = new Renderer(Scene::window);
+Vector2 Scene::scale = Vector2(1, 1);
 int Scene::instanceCount = 0;
 
 Scene::Scene() {
@@ -28,20 +29,18 @@ Scene::~Scene() {
     SDL_SetRenderDrawColor(renderer->SDL(), 0, 0, 0, 255);
     SDL_RenderClear(renderer->SDL());
 
-    queue<pair<Node*, int>> travelQueue;
+    queue<Node*> travelQueue;
     queue<Node*> markedForDelete;
     
-    travelQueue.push(make_pair(root, 0));
+    travelQueue.push(root);
     while (!travelQueue.empty())
     {
-        auto front = travelQueue.front();
-        Node* current = front.first;
-        int level = front.second;
+        Node* current = travelQueue.front();
         travelQueue.pop();
         if (current == nullptr) continue;
         int size = current->children.size();
         for(int i=0; i<size; i++) {
-            travelQueue.push(make_pair(current->children[i], level+1));
+            travelQueue.push(current->children[i]);
         }
         markedForDelete.push(current);
     }
@@ -53,8 +52,14 @@ Scene::~Scene() {
     }
 }
 void Scene::SetAsCurrentScene() {
-    // Texture::SetCurrentRenderer(this->renderer);
     this->current = this;
+    Scene::window->onResized = std::bind(&Scene::OnWindowResized, this, std::placeholders::_1);
+}
+void Scene::OnWindowResized(const Vector2& size) {
+    if (this->renderer != nullptr) {
+        SDL_RenderSetViewport(this->renderer->SDL(), NULL);
+        this->scale = Vector2(size.x/NAIVE_WIDTH, size.y/NAIVE_HEIGHT);
+    }
 }
 void Scene::ProcessFrame(float delta) {
     Node* root = Scene::root;

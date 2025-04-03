@@ -1,4 +1,5 @@
 #include "mouse.h"
+#include "../core.h"
 #include <SDL2/SDL.h>
 using namespace std;
 MouseEvent::MouseEvent() {
@@ -71,13 +72,17 @@ void MouseEvent::Update() {
     UpdateEvent(MouseEvent::rightMouseEvent, state & SDL_BUTTON(SDL_BUTTON_RIGHT));
     UpdateEvent(MouseEvent::middleMouseEvent, state & SDL_BUTTON(SDL_BUTTON_MIDDLE));
     Vector2 position = Vector2(x, y);
-    MouseEvent::leftMouseEvent.position = position;
-    MouseEvent::rightMouseEvent.position = position;
-    MouseEvent::middleMouseEvent.position = position;
     MouseEvent::_position = position;
+    MouseEvent::leftMouseEvent.position = MouseEvent::Position();
+    MouseEvent::rightMouseEvent.position = MouseEvent::Position();
+    MouseEvent::middleMouseEvent.position = MouseEvent::Position();
 }
 Vector2 MouseEvent::Position() {
-    return MouseEvent::_position;
+    Vector2 absolutePosition = MouseEvent::_position;
+    Vector2 scale = Scene::scale;
+    absolutePosition.x /= scale.x;
+    absolutePosition.y /= scale.y;
+    return absolutePosition;
 }
 bool MouseEvent::IsPressing(MouseType type) {
     switch (type)

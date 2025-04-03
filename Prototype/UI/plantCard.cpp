@@ -7,7 +7,6 @@ PlantCard::PlantCard() {
     this->Name = "PlantCard";
 }
 PlantCard::~PlantCard() {
-    delete this->target;
 }
 void PlantCard::SetTargetSize(const Vector2& size) {
     if (this->target != nullptr) {
