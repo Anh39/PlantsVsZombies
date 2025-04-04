@@ -14,7 +14,11 @@ ENGINE_OBJ = $(ENGINE_SRC:.cpp=.o)
 GAME_SRC = main.cpp \
 	$(wildcard Prototype/UI/*.cpp) \
 	$(wildcard Prototype/Plants/*.cpp) \
-	$(wildcard Prototype/Zombies/*.cpp)
+	$(wildcard Prototype/Zombies/*.cpp) \
+	$(wildcard Game/Plants/*.cpp) \
+	$(wildcard Game/Zombies/*.cpp) \
+	$(wildcard Game/UI/*.cpp)
+
 GAME_OBJ = $(GAME_SRC:.cpp=.o)
 
 TARGET = main
