@@ -1,5 +1,10 @@
-// #include "Example1/example.cpp"
-// #include "Prototype/prototype.cpp"
+// #include "engine.h"
+// #include "Game/game.cpp"
+
+// int main(int argc, char* argv[]) {
+//     return StartGame();
+// }
+
 #include "engine.h"
 
 class CustomBox: public ColorRect {

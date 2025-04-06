@@ -1,13 +1,14 @@
 #include "window.h"
 using namespace std;
 #include "../Core/scene.h"
+#include "SDL2/SDL_ttf.h"
 void LogErrorAndExitWindow(const char* msg, const char* error) {
     SDL_LogMessage(SDL_LOG_CATEGORY_APPLICATION, SDL_LOG_PRIORITY_ERROR, "%s: %s", msg, error);
     SDL_Quit();
 }
 
 SDL_Window* Window::InitSDL() {
-    if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
+    if (SDL_Init(SDL_INIT_EVERYTHING) < 0 || TTF_Init() < 0) {
         LogErrorAndExitWindow("SDL_init", SDL_GetError());
     }
     SDL_Window* window = SDL_CreateWindow(

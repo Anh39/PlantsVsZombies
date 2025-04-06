@@ -33,7 +33,7 @@ public:
     /// @brief Id for identify, currently no use.
     const char* id;
     /// @brief Visible of Node, not implemented.
-    bool isVisible = false;
+    bool isVisible = true;
     /// @brief Dirty flag for render optimize, not implemented.
     bool isDirty = true;
     /// @brief Mark if this node should be deleted at the end of frame.

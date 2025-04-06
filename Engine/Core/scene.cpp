@@ -122,10 +122,6 @@ void Scene::ProcessFrame(float delta) {
             if (collideNode->collideMask) collideInvoker.push_back(collideNode);
             if (collideNode->collideFilter) collideReceiver.push_back(collideNode);
         }
-        if (current->feature & NodeFeatureMask::RENDER_NODE) {
-            RenderNode* renderNode = static_cast<RenderNode*>(current);
-            renderQueue.push(renderNode);
-        }
         if (current->feature & NodeFeatureMask::EVENT_NODE) {
             EventNode* eventNode = static_cast<EventNode*>(current);
             processEventQueue.push(eventNode);
@@ -162,11 +158,30 @@ void Scene::ProcessFrame(float delta) {
     for (unsigned int i=0; i<events.size(); i++) {
         delete events[i];
     }
+    travelQueue.push(root);
+    while (!travelQueue.empty())
+    {
+        Node* current = travelQueue.front();
+        travelQueue.pop();
+        int size = current->children.size();
+        for(int i=0; i<size; i++) {
+            if (current->children[i]->isVisible) {
+                travelQueue.push(current->children[i]);
+            }
+        }
+        if (current == nullptr) continue;
+        if (current->feature & NodeFeatureMask::RENDER_NODE) {
+            RenderNode* renderNode = static_cast<RenderNode*>(current);
+            renderQueue.push(renderNode);
+        }
+    }
     while (!renderQueue.empty())
     {
         RenderNode* current = renderQueue.front();
         renderQueue.pop();
-        current->Draw(renderer, current->GetAbsolutePosition());
+        if (current->isVisible) {
+            current->Draw(renderer, current->GetAbsolutePosition());
+        }
     }
     int invokerSize = collideInvoker.size();
     int receiverSize = collideReceiver.size();
