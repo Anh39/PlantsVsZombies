@@ -1,32 +1,32 @@
 #include "button.h"
 
 TextureButton::TextureButton() {
-    this->OnTextureRect = new TextureRect();
-    this->OffTextureRect = new TextureRect();
-    this->AddChildren(this->OnTextureRect);
-    this->AddChildren(this->OffTextureRect);
-    this->OnTextureRect->isVisible = false;
-    this->OffTextureRect->isVisible = true;
+    this->onTextureRect = new TextureRect();
+    this->offTextureRect = new TextureRect();
+    this->AddChildren(this->onTextureRect);
+    this->AddChildren(this->offTextureRect);
+    this->onTextureRect->isVisible = false;
+    this->offTextureRect->isVisible = true;
 }
 TextureButton::~TextureButton() {
 }
 void TextureButton::Update(float delta) {
-    Rect rect = this->OnTextureRect->GetRect();
+    Rect rect = this->onTextureRect->GetRect();
     rect.SetPosition(this->GetAbsolutePosition());
     if (rect.Contain(MouseEvent::Position())) {
-        this->OnTextureRect->isVisible = true;
-        this->OffTextureRect->isVisible = false;
+        this->onTextureRect->isVisible = true;
+        this->offTextureRect->isVisible = false;
         if (MouseEvent::JustReleased(MouseType::MouseLeft)) {
             if (this->OnClicked) {
                 this->OnClicked();
             }
         }
     } else {
-        this->OnTextureRect->isVisible = false;
-        this->OffTextureRect->isVisible = true;
+        this->onTextureRect->isVisible = false;
+        this->offTextureRect->isVisible = true;
     }
 }
 void TextureButton::SetSize(const Vector2& size) {
-    this->OnTextureRect->size = size;
-    this->OffTextureRect->size = size;
+    this->onTextureRect->size = size;
+    this->offTextureRect->size = size;
 }

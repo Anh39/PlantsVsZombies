@@ -18,6 +18,7 @@ GAME_SRC = main.cpp \
 	$(wildcard Game/UI/Landing/*.cpp) \
 	$(wildcard Game/UI/TitleMenu/*.cpp) \
 	$(wildcard Game/UI/AdventureMode/*.cpp) \
+	$(wildcard Game/UI/OverlayMenu/*.cpp) \
 	# $(wildcard Prototype/UI/*.cpp) \
 	# $(wildcard Prototype/Plants/*.cpp) \
 	# $(wildcard Prototype/Zombies/*.cpp) \

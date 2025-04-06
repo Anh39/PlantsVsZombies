@@ -6,8 +6,8 @@ class TextureButton: public Node
 {
 public:
     std::function<void()> OnClicked;
-    TextureRect* OnTextureRect;
-    TextureRect* OffTextureRect;
+    TextureRect* onTextureRect;
+    TextureRect* offTextureRect;
 
     TextureButton();
     ~TextureButton();

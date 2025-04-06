@@ -2,11 +2,20 @@
 #include "UI/ui.h"
 #include "UI/textRect.h"
 
+void SwitchGameLevelScene(std::string level) {
+    std::cout << "Game level\n";
+    delete Scene::current;
+    OverlayMenuScene* overlayMenu = new OverlayMenuScene(level);
+    overlayMenu->SetAsCurrentScene();
+    throw std::runtime_error("Switch scene");
+}
+
 void SwitchAdventureModeScene() {
     std::cout << "Adventure mode\n";
     delete Scene::current;
     AdventureModeScene* adventureMode = new AdventureModeScene();
     adventureMode->SetAsCurrentScene();
+    adventureMode->StartGameLevelFunction = SwitchGameLevelScene;
     throw std::runtime_error("Switch scene");
 }
 
