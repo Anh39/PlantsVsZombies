@@ -17,6 +17,7 @@ public:
     ~Texture();
 
     SDL_Texture* SDL();
+    void SetTexture(SDL_Texture* texture, bool freeOld);
     /// @brief Get real image size.
     Vector2 GetImageSize();
     /// @brief Get class debug info

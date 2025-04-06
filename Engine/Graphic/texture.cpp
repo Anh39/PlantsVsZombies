@@ -16,9 +16,9 @@ SDL_Texture* Texture::LoadTexture(const char* filePath) {
 Texture::Texture(string filePath = "") {
     Texture::instanceCount ++;
     if (filePath == "") {
-        sdlTexture = nullptr;
+        this->sdlTexture = nullptr;
     } else {
-        sdlTexture = this->LoadTexture(filePath.c_str());
+        this->sdlTexture = this->LoadTexture(filePath.c_str());
     }
 }
 Texture::~Texture() {
@@ -27,6 +27,12 @@ Texture::~Texture() {
         SDL_DestroyTexture(this->sdlTexture);
         this->sdlTexture = nullptr;
     }
+}
+void Texture::SetTexture(SDL_Texture* texture, bool freeOld) {
+    if (freeOld && this->sdlTexture) {
+        SDL_DestroyTexture(this->sdlTexture);
+    }
+    this->sdlTexture = texture;
 }
 SDL_Texture* Texture::SDL() {
     return this->sdlTexture;

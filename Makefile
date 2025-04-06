@@ -1,6 +1,6 @@
 CXX = g++
 CXXFLAGS = -g -O0 -I -Wall -Wextra -std=c++17 -IEngine
-LDFLAGS = -lmingw32 -lSDL2main -lSDL2 -lSDL2_image
+LDFLAGS = -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf
 
 ENGINE_SRC = $(wildcard Engine/*.cpp) \
 	$(wildcard Engine/Core/*.cpp) \
@@ -12,12 +12,14 @@ ENGINE_SRC = $(wildcard Engine/*.cpp) \
 ENGINE_OBJ = $(ENGINE_SRC:.cpp=.o)
 
 GAME_SRC = main.cpp \
-	$(wildcard Prototype/UI/*.cpp) \
-	$(wildcard Prototype/Plants/*.cpp) \
-	$(wildcard Prototype/Zombies/*.cpp) \
 	$(wildcard Game/Plants/*.cpp) \
 	$(wildcard Game/Zombies/*.cpp) \
-	$(wildcard Game/UI/*.cpp)
+	$(wildcard Game/UI/*.cpp) \
+	$(wildcard Game/UI/Landing/*.cpp) \
+	# $(wildcard Prototype/UI/*.cpp) \
+	# $(wildcard Prototype/Plants/*.cpp) \
+	# $(wildcard Prototype/Zombies/*.cpp) \
+
 
 GAME_OBJ = $(GAME_SRC:.cpp=.o)
 

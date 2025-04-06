@@ -166,7 +166,9 @@ void Scene::ProcessFrame(float delta) {
     {
         RenderNode* current = renderQueue.front();
         renderQueue.pop();
-        current->Draw(renderer, current->GetAbsolutePosition());
+        if (current->isVisible) {
+            current->Draw(renderer, current->GetAbsolutePosition());
+        }
     }
     int invokerSize = collideInvoker.size();
     int receiverSize = collideReceiver.size();

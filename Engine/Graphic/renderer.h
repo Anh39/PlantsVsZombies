@@ -23,6 +23,7 @@ public:
     void RenderRectangle(Rect rect, Color color);
     /// @brief Used to render a texture without background
     void RenderTexture(Rect rect, Texture* texture);
+    void RenderTexture(Rect srcRect, Rect dstRect, Texture* texture);
     /// @brief Used to render a texture with background, not tested.
     void RenderTextureWithBackground(Rect rect, Texture* texture, Color color);
 private:
