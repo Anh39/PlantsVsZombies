@@ -3,7 +3,7 @@
 LoadingController::LoadingController() {
     this->loading = false;
     this->time = 0;
-    this->pseudJobTime = 10;
+    this->pseudJobTime = 0.5;
 }
 LoadingController::~LoadingController() {
 

@@ -21,7 +21,11 @@ LandingScene::LandingScene() {
     controller->startFunction = [loadBar]() {loadBar->Start();};
     controller->progressFuntion = [loadBar](float percent) {loadBar->Progress(percent);};
     controller->completeFunction = [loadBar]() {loadBar->Stop();};
-    loadBar->startGameFunction = [](){std::cout << "Start game\n";};
+    loadBar->startGameFunction = [this](){
+        if (this->switchTitleMenuFuntion) {
+            this->switchTitleMenuFuntion();
+        }
+    };
 }
 LandingScene::~LandingScene() {
 

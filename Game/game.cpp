@@ -2,7 +2,26 @@
 #include "UI/ui.h"
 #include "UI/textRect.h"
 
+void SwitchAdventureModeScene() {
+    std::cout << "Adventure mode\n";
+    delete Scene::current;
+    AdventureModeScene* adventureMode = new AdventureModeScene();
+    adventureMode->SetAsCurrentScene();
+    throw std::runtime_error("Switch scene");
+}
 
+void SwitchTitleMenuScene() {
+    delete Scene::current;
+    TitleMenuScene* title = new TitleMenuScene();
+    title->SetAsCurrentScene();
+    title->switchAdventureModeFunction = SwitchAdventureModeScene;
+    throw std::runtime_error("Switch scene");
+}
+void StartLandingScene() {
+    LandingScene* landing = new LandingScene();
+    landing->SetAsCurrentScene();
+    landing->switchTitleMenuFuntion = SwitchTitleMenuScene;
+}
 int StartGame() {
     TextRect::font = TTF_OpenFont("asset/menu/Arial.TTF", 24);
     if (!TextRect::font) {
@@ -12,9 +31,7 @@ int StartGame() {
     Scene::window->SetPosition(Vector2(50, 50));
     Scene::window->SetSize(Vector2(1280, 720));
 
-
-    Scene* landing = new LandingScene();
-    landing->SetAsCurrentScene();
+    StartLandingScene();
 
     GameLoop::Start();
     TTF_Quit();
