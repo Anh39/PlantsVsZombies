@@ -15,6 +15,10 @@ void renderTexture(Renderer* renderer, Texture* texture, Rect src, Rect dest) {
     SDL_Rect sdlSrc = src.ToSDL();
     SDL_RenderCopy(renderer->SDL(), texture->SDL(), &sdlSrc, &sdlDest);
 }
+void renderTextureEx(Renderer* renderer, Texture* texture, Rect dest, float angle) {
+    SDL_Rect sdlDest = dest.ToSDL();
+    SDL_RenderCopyEx(renderer->SDL(), texture->SDL(), NULL, &sdlDest, angle, NULL, SDL_FLIP_NONE);
+}
 void renderRectangle(Renderer* renderer, Rect dest, Color color) {
     SDL_Rect sdlDest = dest.ToSDL();
     SDL_SetRenderDrawColor(renderer->SDL(), color.r, color.g, color.b, color.a);
@@ -26,7 +30,6 @@ void renderTexture(Renderer* renderer, Texture* texture, Rect dest, Color color)
     SDL_RenderFillRect(renderer->SDL(), &sdlDest);
     SDL_RenderCopy(renderer->SDL(), texture->SDL(), NULL, &sdlDest);
 }
-
 SDL_Renderer* CreateRenderer(Window* window) {
     SDL_Renderer* renderer = SDL_CreateRenderer(window->SDL(), -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     if (renderer == nullptr) {
@@ -58,6 +61,11 @@ void Renderer::RenderTexture(Rect rect, Texture* texture) {
 void Renderer::RenderTexture(Rect srcRect, Rect dstRect, Texture* texture) {
     if (texture != nullptr) {
         renderTexture(this, texture, srcRect, dstRect);
+    }
+}
+void Renderer::RenderTextureEx(Rect rect, Texture* texture, float angle) {
+    if (texture != nullptr) {
+        renderTextureEx(this, texture, rect, angle);
     }
 }
 void Renderer::RenderRectangle(Rect rect, Color color) {

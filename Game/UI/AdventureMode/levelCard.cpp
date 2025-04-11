@@ -9,7 +9,7 @@ LevelCard::LevelCard() {
     this->itemBackground->texture = new Texture("asset/menu/Almanac_GroundDay.jpg");
 
     this->levelText = new TextRect();
-    this->levelText->color = Color(0, 0, 0);
+    this->levelText->SetColor(Color(0, 0, 0));
     this->levelText->SetText("");
 
     this->AddChildren(this->itemBackground);

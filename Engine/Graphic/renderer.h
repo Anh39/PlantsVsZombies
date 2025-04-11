@@ -24,6 +24,7 @@ public:
     /// @brief Used to render a texture without background
     void RenderTexture(Rect rect, Texture* texture);
     void RenderTexture(Rect srcRect, Rect dstRect, Texture* texture);
+    void RenderTextureEx(Rect rect, Texture* texture, float angle);
     /// @brief Used to render a texture with background, not tested.
     void RenderTextureWithBackground(Rect rect, Texture* texture, Color color);
 private:

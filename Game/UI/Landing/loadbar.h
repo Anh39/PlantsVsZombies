@@ -1,7 +1,7 @@
 #pragma once
 #include "engine.h"
 #include "../textRect.h"
-#include "loadGrass.h"
+#include "progressRect.h"
 #include <functional>
 
 class LoadBar: public Node
@@ -17,7 +17,7 @@ public:
 private:
     bool loading;
     TextureRect* dirtPart;
-    LoadGrass* grassPart;
+    ProgressRect* grassPart;
     TextureRect* grassBall;
     TextRect* loadingTextRect;
     float textDelay;

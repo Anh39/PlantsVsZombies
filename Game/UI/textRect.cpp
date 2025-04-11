@@ -30,3 +30,10 @@ void TextRect::SetText(string text)
 string TextRect::GetText() {
     return this->text;
 }
+void TextRect::SetColor(const Color& color) {
+    this->color = color;
+    this->textChanged = true;
+}
+Color TextRect::GetColor() {
+    return this->color;
+}

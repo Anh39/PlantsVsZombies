@@ -9,12 +9,14 @@ public:
 
     TextRect();
     ~TextRect();
-    Color color;
 
     std::string GetText();
     void SetText(std::string text);
+    void SetColor(const Color& color);
+    Color GetColor();
     void Draw(Renderer* renderer, Vector2 absolutePosition) override;
 private:
+    Color color;
     bool textChanged;
     std::string text;
 };
