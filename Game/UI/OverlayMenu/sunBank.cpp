@@ -44,3 +44,10 @@ void SunBank::SetSize(const Vector2& size) {
     this->counter->position = Vector2(size.x*0.2, size.y*0.7);
     this->counter->size = Vector2(size.x*0.6, size.y*0.2);
 }
+
+void SunBank::ProcessEvent(Event* event) {
+    SunCollectedEvent* sunCollectedEvent = dynamic_cast<SunCollectedEvent*>(event);
+    if (sunCollectedEvent) {
+        this->Amount += sunCollectedEvent->Amount;
+    }
+}

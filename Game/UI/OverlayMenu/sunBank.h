@@ -2,8 +2,9 @@
 
 #include "engine.h"
 #include "../textRect.h"
+#include "sunController.h"
 
-class SunBank: public Node
+class SunBank: public EventNode
 {
 public:
     SunBank();
@@ -11,6 +12,7 @@ public:
     void SetSize(const Vector2& size);
     float Amount;
     void Update(float delta) override;
+    void ProcessEvent(Event* event) override;
 private:
     TextureRect* background;
     TextRect* counter;

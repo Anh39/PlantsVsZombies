@@ -18,7 +18,7 @@ LoadBar::LoadBar() {
     this->dirtPart->position = Vector2(0, 0);
     this->dirtPart->size = Vector2(500, 100);
 
-    this->grassPart = new LoadGrass();
+    this->grassPart = new ProgressRect();
     Texture* grassTexture = new Texture("asset/menu/LoadBar_grass.png");
     this->grassPart->texture = grassTexture;
     this->grassPart->position = Vector2(0, 0);

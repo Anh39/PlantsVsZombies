@@ -4,6 +4,9 @@
 #include "sunBank.h"
 #include "seedBank.h"
 #include "shovelBank.h"
+#include "waveProgressBar.h"
+#include "sunDrop.h"
+#include "sunController.h"
 #include "../Components/optionMenu.h"
 
 class OverlayMenuScene: public Scene
@@ -18,4 +21,7 @@ private:
     SunBank* sunBank;
     SeedBank* seedBank;
     ShovelBank* shovelBank;
+    WaveProgressBar* waveProgressBar;
+    SunController* sunController;
+
 };

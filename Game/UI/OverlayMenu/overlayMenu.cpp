@@ -48,6 +48,16 @@ OverlayMenuScene::OverlayMenuScene(string level) {
     this->shovelBank->position = Vector2(25+125+800, 0);
     this->shovelBank->SetSize(Vector2(150, 150), Vector2(12, 12));
     this->root->AddChildren(this->shovelBank);
+
+    this->waveProgressBar = new WaveProgressBar();
+    this->waveProgressBar->position = Vector2(1920 - 350 - 25, 1080 - 75 - 15);
+    this->waveProgressBar->SetSize(Vector2(350, 76));
+    this->waveProgressBar->SetNumWave(4);
+    this->waveProgressBar->SetProgress(0);
+    this->root->AddChildren(this->waveProgressBar);
+
+    this->sunController = new SunController();
+    this->root->AddChildren(this->sunController);
 }
 
 OverlayMenuScene::~OverlayMenuScene() {
