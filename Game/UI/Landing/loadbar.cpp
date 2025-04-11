@@ -26,7 +26,7 @@ LoadBar::LoadBar() {
 
     this->loadingTextRect = new TextRect();
     this->loadingTextRect->SetText(this->loadingText);
-    this->loadingTextRect->color = Color(255, 0, 0);
+    this->loadingTextRect->SetColor(Color(255, 0, 0));
     this->loadingTextRect->position = Vector2(100, 25);
     this->loadingTextRect->size = Vector2(250, 40);
 
@@ -65,16 +65,14 @@ void LoadBar::Update(float delta) {
         Rect dirtRect = this->dirtPart->GetRect();
         dirtRect.SetPosition(this->dirtPart->GetAbsolutePosition());
         if (dirtRect.Contain(MouseEvent::Position())) {
-            this->loadingTextRect->color = Color(255, 255, 0);
-            this->loadingTextRect->SetText("Start game");
+            this->loadingTextRect->SetColor(Color(255, 255, 0));
             if (MouseEvent::JustPressed(MouseType::MouseLeft)) {
                 if (this->startGameFunction) {
                     this->startGameFunction();
                 }
             }
         } else {
-            this->loadingTextRect->color = Color(255, 0, 0);
-            this->loadingTextRect->SetText("Start game");
+            this->loadingTextRect->SetColor(Color(255, 0, 0));
         }
     }
 

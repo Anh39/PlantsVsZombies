@@ -12,7 +12,7 @@ AdventureModeScene::AdventureModeScene() {
     titleTextRect->SetText("Adventure mode");
     titleTextRect->position = Vector2(810, 60);
     titleTextRect->size = Vector2(300, 50);
-    titleTextRect->color = Color(0, 0, 0);
+    titleTextRect->SetColor(Color(0, 0, 0));
 
     Vector2 gridSize = Vector2(8, 4);
     LevelSelectMenu* levelSelectMenu = new LevelSelectMenu(gridSize);
