@@ -1,21 +1,16 @@
 #pragma once
 #include "engine.h"
-#include "menuButton.h"
-#include "sunBank.h"
-#include "seedBank.h"
-#include "shovelBank.h"
-#include "waveProgressBar.h"
-#include "sunDrop.h"
-#include "sunController.h"
-#include "../Components/optionMenu.h"
-#include "../../../Prototype/Plants/peaShooter.h"
-#include "../../../Prototype/Plants/cherryBomb.h"
-#include "../../../Prototype/Plants/potatoMine.h"
-#include "../../../Prototype/Plants/sunFlower.h"
+#include "Components/include.h"
+#include "../Components/include.h"
+#include "Overlays/include.h"
+#include <functional>
+
 class OverlayMenuScene: public Scene
 {
 public:
-    OverlayMenuScene(std::string level);
+    std::function<void()> BackTitleFunction;
+    std::function<void()> BackToAdventureFunction;
+    OverlayMenuScene(std::string levelName);
     ~OverlayMenuScene();
 
 private:
@@ -27,4 +22,8 @@ private:
     WaveProgressBar* waveProgressBar;
     SunController* sunController;
 
+    Map* map;
+    StartOverlay* startOverlay;
+    WinOverlay* winOverlay;
+    LoseOverlay* loseOverlay;
 };

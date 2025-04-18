@@ -1,7 +1,6 @@
 #pragma once
 #include "engine.h"
-#include "../textRect.h"
-#include "progressRect.h"
+#include "../Widgets/include.h"
 #include <functional>
 
 class LoadBar: public Node

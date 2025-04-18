@@ -1,5 +1,6 @@
 #include "titleMenu.h"
 #include "../button.h"
+#include "../Components/include.h"
 
 TitleMenuScene::TitleMenuScene() {
     TextureRect* background = new TextureRect();
@@ -76,6 +77,21 @@ TitleMenuScene::TitleMenuScene() {
         if (this->switchAdventureModeFunction) {
             this->switchAdventureModeFunction();
         }
+    };
+
+    OptionMenu* optionMenu = new OptionMenu(true);
+    this->root->AddChildren(optionMenu);
+    optionMenu->position = (Vector2(1920, 1080) - optionMenu->GetSize())/2;
+    optionMenu->isVisible = false;
+    optionButton->OnClicked = [optionMenu]() {
+        optionMenu->isVisible = true;
+    };
+    optionMenu->OnBackToGame = [optionMenu]() {
+        optionMenu->isVisible = false;
+    };
+
+    quitButton->OnClicked = []() {
+        GameLoop::Stop();
     };
 }
 

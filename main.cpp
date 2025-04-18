@@ -1,5 +1,5 @@
 #include "engine.h"
-#include "Game/game.cpp"
+#include "Game/game.h"
 
 int main(int argc, char* argv[]) {
     return StartGame();

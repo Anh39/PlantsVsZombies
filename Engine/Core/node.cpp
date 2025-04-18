@@ -73,7 +73,7 @@ void Node::RemoveChildren(Node* child) {
 }
 void Node::SetParent(Node* par) {
     if (this->parent != nullptr) {
-        parent->RemoveChildren(parent);
+        this->parent->RemoveChildren(this);
     }
     par->AddChildren(this);
 }
