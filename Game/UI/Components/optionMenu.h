@@ -1,7 +1,7 @@
 #pragma once
 
 #include "engine.h"
-#include "../OverlayMenu/menuButton.h"
+#include "menuButton.h"
 #include <functional>
 
 class OptionMenu: public Node

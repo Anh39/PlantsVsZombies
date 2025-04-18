@@ -3,13 +3,30 @@
 #include "../event.h"
 #include "scene.h"
 using namespace std;
+
+bool GameLoop::stopTime = false;
+bool GameLoop::running = false;
+
+void GameLoop::Pause() {
+    GameLoop::stopTime = true;
+}
+void GameLoop::Resume() {
+    GameLoop::stopTime = false;
+}
+bool GameLoop::IsPaused() {
+    return GameLoop::stopTime;
+}
 void GameLoop::Start() {
+    GameLoop::running = true;
     KeyboardEvent::Initialize();
     MouseEvent::Initialize();
     Scene::window->SetSize(Scene::window->GetSize());
-    while (true)
+    while (GameLoop::running)
     {
         float delayTime = 1000.0 / FPS;
+        if (GameLoop::stopTime) {
+            delayTime = 0;
+        }
         KeyboardEvent::Update();
         MouseEvent::Update();
         Scene* currentScene = Scene::current;
@@ -39,4 +56,6 @@ void GameLoop::Start() {
     }
 }
 
-
+void GameLoop::Stop() {
+    GameLoop::running = false;
+}

@@ -1,6 +1,6 @@
 #include "adventureMode.h"
 #include "levelSelect.h"
-#include "../textRect.h"
+#include "../Widgets/include.h"
 
 AdventureModeScene::AdventureModeScene() {
     TextureRect* background = new TextureRect();

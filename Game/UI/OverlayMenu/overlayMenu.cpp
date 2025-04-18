@@ -1,9 +1,11 @@
 #include "overlayMenu.h"
-
+#include "../../Levels/all.h"
 using namespace std;
 
-OverlayMenuScene::OverlayMenuScene(string level) {
-    cout << "Start game level " << level << endl;
+OverlayMenuScene::OverlayMenuScene(string levelName) {
+    cout << "Start game level " << levelName << endl;
+    Level* level = GenerateLevel(levelName);
+
     TextureRect* background = new TextureRect();
     background->texture = new Texture("asset/menu/background1.jpg");
     const float widthOffset = 1920 * 0.275;
@@ -19,6 +21,7 @@ OverlayMenuScene::OverlayMenuScene(string level) {
     this->menuButton->SetText("Menu");
     this->menuButton->SetColor(Color(0, 255, 0));
     this->menuButton->OnClicked = [this]() {
+        GameLoop::Pause();
         this->menuButton->isVisible = false;
         this->optionMenu->isVisible = true;
     };
@@ -28,6 +31,7 @@ OverlayMenuScene::OverlayMenuScene(string level) {
     this->optionMenu->position = Vector2(0, 0);
     this->optionMenu->isVisible = false;
     this->optionMenu->OnBackToGame = [this]() {
+        GameLoop::Resume();
         this->optionMenu->isVisible = false;
         this->menuButton->isVisible = true;
     };
@@ -39,7 +43,7 @@ OverlayMenuScene::OverlayMenuScene(string level) {
     this->sunBank->SetSize(Vector2(125, 150));
     this->root->AddChildren(this->sunBank);
 
-    this->seedBank = new SeedBank();
+    this->seedBank = new SeedBank(9);
     this->seedBank->position = Vector2(25+125, 0);
     this->seedBank->SetSize(Vector2(800, 150));
     this->root->AddChildren(this->seedBank);
@@ -58,8 +62,17 @@ OverlayMenuScene::OverlayMenuScene(string level) {
 
     this->sunController = new SunController();
     this->root->AddChildren(this->sunController);
+
+    this->plantContainer = new PlantContainer();
+    this->root->AddChildren(this->plantContainer);
+
+    for(BasePlant* plantTemplate: level->plants) {
+        this->seedBank->AddNewCard(plantTemplate);
+    }
+    this->seedBank->SetPlantSize(Vector2(150, 150));
 }
 
 OverlayMenuScene::~OverlayMenuScene() {
 
 }
+

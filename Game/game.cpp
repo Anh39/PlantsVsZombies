@@ -1,6 +1,6 @@
+#include "game.h"
 #include "engine.h"
 #include "UI/ui.h"
-#include "UI/textRect.h"
 
 void SwitchGameLevelScene(std::string level) {
     std::cout << "Game level\n";
