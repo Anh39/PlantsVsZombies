@@ -26,7 +26,6 @@ GAME_SRC = main.cpp \
 	$(wildcard Game/UI/Widgets/*.cpp) \
 	$(wildcard Game/Levels/*.cpp) \
 	# $(wildcard Prototype/UI/*.cpp) \
-	# $(wildcard Prototype/Plants/*.cpp) \
 	# $(wildcard Prototype/Zombies/*.cpp) \
 
 

@@ -1,6 +1,10 @@
 /*
   Simple DirectMedia Layer
+<<<<<<< HEAD
+  Copyright (C) 1997-2025 Sam Lantinga <slouken@libsdl.org>
+=======
   Copyright (C) 1997-2024 Sam Lantinga <slouken@libsdl.org>
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -19,7 +23,11 @@
   3. This notice may not be removed or altered from any source distribution.
 */
 
+<<<<<<< HEAD
+/*
+=======
 /**
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *  \file SDL_test_md5.h
  *
  *  Include file for SDL test framework.
@@ -77,7 +85,11 @@ extern "C" {
 
 /* ---------- Function Prototypes ------------- */
 
+<<<<<<< HEAD
+/*
+=======
 /**
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \brief initialize the context
  *
  * \param  mdContext        pointer to context variable
@@ -89,7 +101,11 @@ extern "C" {
  void SDLTest_Md5Init(SDLTest_Md5Context * mdContext);
 
 
+<<<<<<< HEAD
+/*
+=======
 /**
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \brief update digest from variable length data
  *
  * \param  mdContext       pointer to context variable
@@ -105,7 +121,11 @@ extern "C" {
                  unsigned int inLen);
 
 
+<<<<<<< HEAD
+/*
+=======
 /**
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \brief complete digest computation
  *
  * \param mdContext     pointer to context variable

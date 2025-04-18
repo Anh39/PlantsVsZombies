@@ -1,6 +1,10 @@
 /*
   Simple DirectMedia Layer
+<<<<<<< HEAD
+  Copyright (C) 1997-2025 Sam Lantinga <slouken@libsdl.org>
+=======
   Copyright (C) 1997-2024 Sam Lantinga <slouken@libsdl.org>
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -19,7 +23,11 @@
   3. This notice may not be removed or altered from any source distribution.
 */
 
+<<<<<<< HEAD
+/*
+=======
 /**
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *  \file SDL_test_font.h
  *
  *  Include file for SDL test framework.
@@ -41,7 +49,11 @@ extern "C" {
 #define FONT_CHARACTER_SIZE 8
 #define FONT_LINE_HEIGHT    (FONT_CHARACTER_SIZE + 2)
 
+<<<<<<< HEAD
+/*
+=======
 /**
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *  \brief Draw a string in the currently set font.
  *
  *  \param renderer The renderer to draw on.
@@ -53,7 +65,11 @@ extern "C" {
  */
 int SDLTest_DrawCharacter(SDL_Renderer *renderer, int x, int y, Uint32 c);
 
+<<<<<<< HEAD
+/*
+=======
 /**
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *  \brief Draw a UTF-8 string in the currently set font.
  *
  *  The font currently only supports characters in the Basic Latin and Latin-1 Supplement sets.
@@ -67,7 +83,11 @@ int SDLTest_DrawCharacter(SDL_Renderer *renderer, int x, int y, Uint32 c);
  */
 int SDLTest_DrawString(SDL_Renderer *renderer, int x, int y, const char *s);
 
+<<<<<<< HEAD
+/*
+=======
 /**
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *  \brief Data used for multi-line text output
  */
 typedef struct SDLTest_TextWindow
@@ -78,7 +98,11 @@ typedef struct SDLTest_TextWindow
     char **lines;
 } SDLTest_TextWindow;
 
+<<<<<<< HEAD
+/*
+=======
 /**
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *  \brief Create a multi-line text output window
  *
  *  \param x The X coordinate of the upper left corner of the window.
@@ -92,7 +116,11 @@ typedef struct SDLTest_TextWindow
  */
 SDLTest_TextWindow *SDLTest_TextWindowCreate(int x, int y, int w, int h);
 
+<<<<<<< HEAD
+/*
+=======
 /**
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *  \brief Display a multi-line text output window
  *
  *  This function should be called every frame to display the text
@@ -104,7 +132,11 @@ SDLTest_TextWindow *SDLTest_TextWindowCreate(int x, int y, int w, int h);
  */
 void SDLTest_TextWindowDisplay(SDLTest_TextWindow *textwin, SDL_Renderer *renderer);
 
+<<<<<<< HEAD
+/*
+=======
 /**
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *  \brief Add text to a multi-line text output window
  *
  *  Adds UTF-8 text to the end of the current text. The newline character starts a
@@ -119,7 +151,11 @@ void SDLTest_TextWindowDisplay(SDLTest_TextWindow *textwin, SDL_Renderer *render
  */
 void SDLTest_TextWindowAddText(SDLTest_TextWindow *textwin, SDL_PRINTF_FORMAT_STRING const char *fmt, ...) SDL_PRINTF_VARARG_FUNC(2);
 
+<<<<<<< HEAD
+/*
+=======
 /**
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *  \brief Add text to a multi-line text output window
  *
  *  Adds UTF-8 text to the end of the current text. The newline character starts a
@@ -134,7 +170,11 @@ void SDLTest_TextWindowAddText(SDLTest_TextWindow *textwin, SDL_PRINTF_FORMAT_ST
  */
 void SDLTest_TextWindowAddTextWithLength(SDLTest_TextWindow *textwin, const char *text, size_t len);
 
+<<<<<<< HEAD
+/*
+=======
 /**
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *  \brief Clear the text in a multi-line text output window
  *
  *  \param textwin The text output window
@@ -143,7 +183,11 @@ void SDLTest_TextWindowAddTextWithLength(SDLTest_TextWindow *textwin, const char
  */
 void SDLTest_TextWindowClear(SDLTest_TextWindow *textwin);
 
+<<<<<<< HEAD
+/*
+=======
 /**
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *  \brief Free the storage associated with a multi-line text output window
  *
  *  \param textwin The text output window
@@ -152,7 +196,11 @@ void SDLTest_TextWindowClear(SDLTest_TextWindow *textwin);
  */
 void SDLTest_TextWindowDestroy(SDLTest_TextWindow *textwin);
 
+<<<<<<< HEAD
+/*
+=======
 /**
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *  \brief Cleanup textures used by font drawing functions.
  */
 void SDLTest_CleanupTextDrawing(void);

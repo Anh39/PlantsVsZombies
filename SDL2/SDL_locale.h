@@ -1,6 +1,10 @@
 /*
   Simple DirectMedia Layer
+<<<<<<< HEAD
+  Copyright (C) 1997-2025 Sam Lantinga <slouken@libsdl.org>
+=======
   Copyright (C) 1997-2024 Sam Lantinga <slouken@libsdl.org>
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -20,9 +24,15 @@
 */
 
 /**
+<<<<<<< HEAD
+ * # CategoryLocale
+ *
+ * Include file for SDL locale services
+=======
  *  \file SDL_locale.h
  *
  *  Include file for SDL locale services
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  */
 
 #ifndef _SDL_locale_h

@@ -1,6 +1,10 @@
 /*
   Simple DirectMedia Layer
+<<<<<<< HEAD
+  Copyright (C) 1997-2025 Sam Lantinga <slouken@libsdl.org>
+=======
   Copyright (C) 1997-2024 Sam Lantinga <slouken@libsdl.org>
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -20,6 +24,31 @@
 */
 
 /**
+<<<<<<< HEAD
+ * # CategoryAtomic
+ *
+ * Atomic operations.
+ *
+ * IMPORTANT: If you are not an expert in concurrent lockless programming, you
+ * should not be using any functions in this file. You should be protecting
+ * your data structures with full mutexes instead.
+ *
+ * ***Seriously, here be dragons!***
+ *
+ * You can find out a little more about lockless programming and the subtle
+ * issues that can arise here:
+ * https://learn.microsoft.com/en-us/windows/win32/dxtecharts/lockless-programming
+ *
+ * There's also lots of good information here:
+ *
+ * - https://www.1024cores.net/home/lock-free-algorithms
+ * - https://preshing.com/
+ *
+ * These operations may or may not actually be implemented using processor
+ * specific atomic operations. When possible they are implemented as true
+ * processor specific atomic operations. When that is not possible the are
+ * implemented using locks that *do* use the available atomic operations.
+=======
  * \file SDL_atomic.h
  *
  * Atomic operations.
@@ -52,6 +81,7 @@
  * implemented as true processor specific atomic operations. When that
  * is not possible the are implemented using locks that *do* use the
  * available atomic operations.
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *
  * All of the atomic operations that modify memory are full memory barriers.
  */
@@ -94,7 +124,11 @@ typedef int SDL_SpinLock;
  * ***Please note that spinlocks are dangerous if you don't know what you're
  * doing. Please be careful using any sort of spinlock!***
  *
+<<<<<<< HEAD
+ * \param lock a pointer to a lock variable.
+=======
  * \param lock a pointer to a lock variable
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns SDL_TRUE if the lock succeeded, SDL_FALSE if the lock is already
  *          held.
  *
@@ -111,7 +145,11 @@ extern DECLSPEC SDL_bool SDLCALL SDL_AtomicTryLock(SDL_SpinLock *lock);
  * ***Please note that spinlocks are dangerous if you don't know what you're
  * doing. Please be careful using any sort of spinlock!***
  *
+<<<<<<< HEAD
+ * \param lock a pointer to a lock variable.
+=======
  * \param lock a pointer to a lock variable
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *
  * \since This function is available since SDL 2.0.0.
  *
@@ -128,7 +166,11 @@ extern DECLSPEC void SDLCALL SDL_AtomicLock(SDL_SpinLock *lock);
  * ***Please note that spinlocks are dangerous if you don't know what you're
  * doing. Please be careful using any sort of spinlock!***
  *
+<<<<<<< HEAD
+ * \param lock a pointer to a lock variable.
+=======
  * \param lock a pointer to a lock variable
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *
  * \since This function is available since SDL 2.0.0.
  *
@@ -257,10 +299,20 @@ typedef void (*SDL_KernelMemoryBarrierFunc)();
 
 
 /**
+<<<<<<< HEAD
+ * A type representing an atomic integer value.
+ *
+ * It is a struct so people don't accidentally use numeric operations on it.
+ */
+typedef struct SDL_atomic_t {
+    int value;
+} SDL_atomic_t;
+=======
  * \brief A type representing an atomic integer value.  It is a struct
  *        so people don't accidentally use numeric operations on it.
  */
 typedef struct { int value; } SDL_atomic_t;
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 
 /**
  * Set an atomic variable to a new value if it is currently an old value.
@@ -268,9 +320,15 @@ typedef struct { int value; } SDL_atomic_t;
  * ***Note: If you don't know what this function is for, you shouldn't use
  * it!***
  *
+<<<<<<< HEAD
+ * \param a a pointer to an SDL_atomic_t variable to be modified.
+ * \param oldval the old value.
+ * \param newval the new value.
+=======
  * \param a a pointer to an SDL_atomic_t variable to be modified
  * \param oldval the old value
  * \param newval the new value
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns SDL_TRUE if the atomic variable was set, SDL_FALSE otherwise.
  *
  * \since This function is available since SDL 2.0.0.
@@ -289,8 +347,13 @@ extern DECLSPEC SDL_bool SDLCALL SDL_AtomicCAS(SDL_atomic_t *a, int oldval, int 
  * ***Note: If you don't know what this function is for, you shouldn't use
  * it!***
  *
+<<<<<<< HEAD
+ * \param a a pointer to an SDL_atomic_t variable to be modified.
+ * \param v the desired value.
+=======
  * \param a a pointer to an SDL_atomic_t variable to be modified
  * \param v the desired value
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns the previous value of the atomic variable.
  *
  * \since This function is available since SDL 2.0.2.
@@ -305,7 +368,11 @@ extern DECLSPEC int SDLCALL SDL_AtomicSet(SDL_atomic_t *a, int v);
  * ***Note: If you don't know what this function is for, you shouldn't use
  * it!***
  *
+<<<<<<< HEAD
+ * \param a a pointer to an SDL_atomic_t variable.
+=======
  * \param a a pointer to an SDL_atomic_t variable
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns the current value of an atomic variable.
  *
  * \since This function is available since SDL 2.0.2.
@@ -322,8 +389,13 @@ extern DECLSPEC int SDLCALL SDL_AtomicGet(SDL_atomic_t *a);
  * ***Note: If you don't know what this function is for, you shouldn't use
  * it!***
  *
+<<<<<<< HEAD
+ * \param a a pointer to an SDL_atomic_t variable to be modified.
+ * \param v the desired value to add.
+=======
  * \param a a pointer to an SDL_atomic_t variable to be modified
  * \param v the desired value to add
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns the previous value of the atomic variable.
  *
  * \since This function is available since SDL 2.0.2.
@@ -356,9 +428,15 @@ extern DECLSPEC int SDLCALL SDL_AtomicAdd(SDL_atomic_t *a, int v);
  * ***Note: If you don't know what this function is for, you shouldn't use
  * it!***
  *
+<<<<<<< HEAD
+ * \param a a pointer to a pointer.
+ * \param oldval the old pointer value.
+ * \param newval the new pointer value.
+=======
  * \param a a pointer to a pointer
  * \param oldval the old pointer value
  * \param newval the new pointer value
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns SDL_TRUE if the pointer was set, SDL_FALSE otherwise.
  *
  * \since This function is available since SDL 2.0.0.
@@ -375,8 +453,13 @@ extern DECLSPEC SDL_bool SDLCALL SDL_AtomicCASPtr(void **a, void *oldval, void *
  * ***Note: If you don't know what this function is for, you shouldn't use
  * it!***
  *
+<<<<<<< HEAD
+ * \param a a pointer to a pointer.
+ * \param v the desired pointer value.
+=======
  * \param a a pointer to a pointer
  * \param v the desired pointer value
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns the previous value of the pointer.
  *
  * \since This function is available since SDL 2.0.2.
@@ -392,7 +475,11 @@ extern DECLSPEC void* SDLCALL SDL_AtomicSetPtr(void **a, void* v);
  * ***Note: If you don't know what this function is for, you shouldn't use
  * it!***
  *
+<<<<<<< HEAD
+ * \param a a pointer to a pointer.
+=======
  * \param a a pointer to a pointer
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns the current value of a pointer.
  *
  * \since This function is available since SDL 2.0.2.

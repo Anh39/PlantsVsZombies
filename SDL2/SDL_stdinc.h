@@ -1,6 +1,10 @@
 /*
   Simple DirectMedia Layer
+<<<<<<< HEAD
+  Copyright (C) 1997-2025 Sam Lantinga <slouken@libsdl.org>
+=======
   Copyright (C) 1997-2024 Sam Lantinga <slouken@libsdl.org>
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -19,10 +23,19 @@
   3. This notice may not be removed or altered from any source distribution.
 */
 
+<<<<<<< HEAD
+/* WIKI CATEGORY: StdInc */
+
+/**
+ * # CategoryStdInc
+ *
+ * This is a general header that includes C language support.
+=======
 /**
  *  \file SDL_stdinc.h
  *
  *  This is a general header that includes C language support.
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  */
 
 #ifndef SDL_stdinc_h_
@@ -129,15 +142,29 @@ void *alloca(size_t);
 #endif
 
 /**
+<<<<<<< HEAD
+ * The number of elements in an array.
+=======
  *  The number of elements in an array.
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  */
 #define SDL_arraysize(array)    (sizeof(array)/sizeof(array[0]))
 #define SDL_TABLESIZE(table)    SDL_arraysize(table)
 
 /**
+<<<<<<< HEAD
+ * Macro useful for building other macros with strings in them
+ *
+ * e.g:
+ *
+ * ```c
+ * #define LOG_ERROR(X) OutputDebugString(SDL_STRINGIFY_ARG(__FUNCTION__) ": " X "\n")
+ * ```
+=======
  *  Macro useful for building other macros with strings in them
  *
  *  e.g. #define LOG_ERROR(X) OutputDebugString(SDL_STRINGIFY_ARG(__FUNCTION__) ": " X "\n")
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  */
 #define SDL_STRINGIFY_ARG(arg)  #arg
 
@@ -185,6 +212,63 @@ typedef enum
 #endif
 
 /**
+<<<<<<< HEAD
+ * A signed 8-bit integer type.
+ */
+typedef int8_t Sint8;
+#define SDL_MAX_SINT8   ((Sint8)0x7F)           /* 127 */
+#define SDL_MIN_SINT8   ((Sint8)(~0x7F))        /* -128 */
+
+/**
+ * An unsigned 8-bit integer type.
+ */
+typedef uint8_t Uint8;
+#define SDL_MAX_UINT8   ((Uint8)0xFF)           /* 255 */
+#define SDL_MIN_UINT8   ((Uint8)0x00)           /* 0 */
+
+/**
+ * A signed 16-bit integer type.
+ */
+typedef int16_t Sint16;
+#define SDL_MAX_SINT16  ((Sint16)0x7FFF)        /* 32767 */
+#define SDL_MIN_SINT16  ((Sint16)(~0x7FFF))     /* -32768 */
+
+/**
+ * An unsigned 16-bit integer type.
+ */
+typedef uint16_t Uint16;
+#define SDL_MAX_UINT16  ((Uint16)0xFFFF)        /* 65535 */
+#define SDL_MIN_UINT16  ((Uint16)0x0000)        /* 0 */
+
+/**
+ * A signed 32-bit integer type.
+ */
+typedef int32_t Sint32;
+#define SDL_MAX_SINT32  ((Sint32)0x7FFFFFFF)    /* 2147483647 */
+#define SDL_MIN_SINT32  ((Sint32)(~0x7FFFFFFF)) /* -2147483648 */
+
+/**
+ * An unsigned 32-bit integer type.
+ */
+typedef uint32_t Uint32;
+#define SDL_MAX_UINT32  ((Uint32)0xFFFFFFFFu)   /* 4294967295 */
+#define SDL_MIN_UINT32  ((Uint32)0x00000000)    /* 0 */
+
+/**
+ * A signed 64-bit integer type.
+ */
+typedef int64_t Sint64;
+#define SDL_MAX_SINT64  ((Sint64)0x7FFFFFFFFFFFFFFFll)      /* 9223372036854775807 */
+#define SDL_MIN_SINT64  ((Sint64)(~0x7FFFFFFFFFFFFFFFll))   /* -9223372036854775808 */
+
+/**
+ * An unsigned 64-bit integer type.
+ */
+typedef uint64_t Uint64;
+#define SDL_MAX_UINT64  ((Uint64)0xFFFFFFFFFFFFFFFFull)     /* 18446744073709551615 */
+#define SDL_MIN_UINT64  ((Uint64)(0x0000000000000000ull))   /* 0 */
+
+=======
  * \brief A signed 8-bit integer type.
  */
 #define SDL_MAX_SINT8   ((Sint8)0x7F)           /* 127 */
@@ -233,6 +317,7 @@ typedef int64_t Sint64;
 #define SDL_MAX_UINT64  ((Uint64)0xFFFFFFFFFFFFFFFFull)     /* 18446744073709551615 */
 #define SDL_MIN_UINT64  ((Uint64)(0x0000000000000000ull))   /* 0 */
 typedef uint64_t Uint64;
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 
 /* @} *//* Basic data types */
 
@@ -255,8 +340,13 @@ typedef uint64_t Uint64;
 #ifndef SDL_PRIs64
 #if defined(__WIN32__) || defined(__GDK__)
 #define SDL_PRIs64 "I64d"
+<<<<<<< HEAD
+#elif defined(PRId64)
+#define SDL_PRIs64 PRId64
+=======
 #elif defined(PRIs64)
 #define SDL_PRIs64 PRIs64
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 #elif defined(__LP64__) && !defined(__APPLE__) && !defined(__EMSCRIPTEN__)
 #define SDL_PRIs64 "ld"
 #else
@@ -415,8 +505,13 @@ SDL_COMPILE_TIME_ASSERT(sint64, sizeof(Sint64) == 8);
 
 /** \cond */
 #ifndef DOXYGEN_SHOULD_IGNORE_THIS
+<<<<<<< HEAD
+#if !defined(__VITA__) && !defined(__3DS__)
+/* TODO: include/SDL_stdinc.h:422: error: size of array 'SDL_dummy_enum' is negative */
+=======
 #if !defined(__ANDROID__) && !defined(__VITA__) && !defined(__3DS__)
    /* TODO: include/SDL_stdinc.h:174: error: size of array 'SDL_dummy_enum' is negative */
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 typedef enum
 {
     DUMMY_ENUM_VALUE
@@ -491,8 +586,14 @@ extern DECLSPEC int SDLCALL SDL_GetNumAllocations(void);
 extern DECLSPEC char *SDLCALL SDL_getenv(const char *name);
 extern DECLSPEC int SDLCALL SDL_setenv(const char *name, const char *value, int overwrite);
 
+<<<<<<< HEAD
+typedef int (SDLCALL *SDL_CompareCallback)(const void *, const void *);
+extern DECLSPEC void SDLCALL SDL_qsort(void *base, size_t nmemb, size_t size, SDL_CompareCallback compare);
+extern DECLSPEC void * SDLCALL SDL_bsearch(const void *key, const void *base, size_t nmemb, size_t size, SDL_CompareCallback compare);
+=======
 extern DECLSPEC void SDLCALL SDL_qsort(void *base, size_t nmemb, size_t size, int (SDLCALL *compare) (const void *, const void *));
 extern DECLSPEC void * SDLCALL SDL_bsearch(const void *key, const void *base, size_t nmemb, size_t size, int (SDLCALL *compare) (const void *, const void *));
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 
 extern DECLSPEC int SDLCALL SDL_abs(int x);
 
@@ -521,6 +622,10 @@ extern DECLSPEC Uint32 SDLCALL SDL_crc32(Uint32 crc, const void *data, size_t le
 
 extern DECLSPEC void *SDLCALL SDL_memset(SDL_OUT_BYTECAP(len) void *dst, int c, size_t len);
 
+<<<<<<< HEAD
+/* Some safe(r) macros for zero'ing structures... */
+=======
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 #define SDL_zero(x) SDL_memset(&(x), 0, sizeof((x)))
 #define SDL_zerop(x) SDL_memset((x), 0, sizeof(*(x)))
 #define SDL_zeroa(x) SDL_memset((x), 0, sizeof((x)))
@@ -706,6 +811,11 @@ extern DECLSPEC char *SDLCALL SDL_iconv_string(const char *tocode,
                                                const char *fromcode,
                                                const char *inbuf,
                                                size_t inbytesleft);
+<<<<<<< HEAD
+
+/* Some helper macros for common cases... */
+=======
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 #define SDL_iconv_utf8_locale(S)    SDL_iconv_string("", "UTF-8", S, SDL_strlen(S)+1)
 #define SDL_iconv_utf8_ucs2(S)      (Uint16 *)SDL_iconv_string("UCS-2", "UTF-8", S, SDL_strlen(S)+1)
 #define SDL_iconv_utf8_ucs4(S)      (Uint32 *)SDL_iconv_string("UCS-4", "UTF-8", S, SDL_strlen(S)+1)
@@ -733,6 +843,12 @@ size_t wcslcpy(wchar_t *dst, const wchar_t *src, size_t size);
 size_t wcslcat(wchar_t *dst, const wchar_t *src, size_t size);
 #endif
 
+<<<<<<< HEAD
+/* strdup is not ANSI but POSIX, and its prototype might be hidden... */
+char *strdup(const char *str);
+
+=======
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 /* Starting LLVM 16, the analyser errors out if these functions do not have
    their prototype defined (clang-diagnostic-implicit-function-declaration) */
 #include <stdlib.h>
@@ -778,8 +894,14 @@ SDL_FORCE_INLINE void *SDL_memcpy4(SDL_OUT_BYTECAP(dwords*4) void *dst, SDL_IN_B
 }
 
 /**
+<<<<<<< HEAD
+ * If a * b would overflow, return -1.
+ *
+ * Otherwise store a * b via ret and return 0.
+=======
  * If a * b would overflow, return -1. Otherwise store a * b via ret
  * and return 0.
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *
  * \since This function is available since SDL 2.24.0.
  */
@@ -808,8 +930,14 @@ SDL_FORCE_INLINE int _SDL_size_mul_overflow_builtin (size_t a,
 #endif
 
 /**
+<<<<<<< HEAD
+ * If a + b would overflow, return -1.
+ *
+ * Otherwise store a + b via ret and return 0.
+=======
  * If a + b would overflow, return -1. Otherwise store a + b via ret
  * and return 0.
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *
  * \since This function is available since SDL 2.24.0.
  */

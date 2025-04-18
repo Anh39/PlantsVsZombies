@@ -1,6 +1,10 @@
 /*
   Simple DirectMedia Layer
+<<<<<<< HEAD
+  Copyright (C) 1997-2025 Sam Lantinga <slouken@libsdl.org>
+=======
   Copyright (C) 1997-2024 Sam Lantinga <slouken@libsdl.org>
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -19,7 +23,11 @@
   3. This notice may not be removed or altered from any source distribution.
 */
 
+<<<<<<< HEAD
+/*
+=======
 /**
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *  \file SDL_test_assert.h
  *
  *  Include file for SDL test framework.
@@ -42,17 +50,29 @@
 extern "C" {
 #endif
 
+<<<<<<< HEAD
+/*
+=======
 /**
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \brief Fails the assert.
  */
 #define ASSERT_FAIL     0
 
+<<<<<<< HEAD
+/*
+=======
 /**
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \brief Passes the assert.
  */
 #define ASSERT_PASS     1
 
+<<<<<<< HEAD
+/*
+=======
 /**
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \brief Assert that logs and break execution flow on failures.
  *
  * \param assertCondition Evaluated condition or variable to assert; fail (==0) or pass (!=0).
@@ -60,7 +80,11 @@ extern "C" {
  */
 void SDLTest_Assert(int assertCondition, SDL_PRINTF_FORMAT_STRING const char *assertDescription, ...) SDL_PRINTF_VARARG_FUNC(2);
 
+<<<<<<< HEAD
+/*
+=======
 /**
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \brief Assert for test cases that logs but does not break execution flow on failures. Updates assertion counters.
  *
  * \param assertCondition Evaluated condition or variable to assert; fail (==0) or pass (!=0).
@@ -70,25 +94,41 @@ void SDLTest_Assert(int assertCondition, SDL_PRINTF_FORMAT_STRING const char *as
  */
 int SDLTest_AssertCheck(int assertCondition, SDL_PRINTF_FORMAT_STRING const char *assertDescription, ...) SDL_PRINTF_VARARG_FUNC(2);
 
+<<<<<<< HEAD
+/*
+=======
 /**
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \brief Explicitly pass without checking an assertion condition. Updates assertion counter.
  *
  * \param assertDescription Message to log with the assert describing it.
  */
 void SDLTest_AssertPass(SDL_PRINTF_FORMAT_STRING const char *assertDescription, ...) SDL_PRINTF_VARARG_FUNC(1);
 
+<<<<<<< HEAD
+/*
+=======
 /**
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \brief Resets the assert summary counters to zero.
  */
 void SDLTest_ResetAssertSummary(void);
 
+<<<<<<< HEAD
+/*
+=======
 /**
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \brief Logs summary of all assertions (total, pass, fail) since last reset as INFO or ERROR.
  */
 void SDLTest_LogAssertSummary(void);
 
 
+<<<<<<< HEAD
+/*
+=======
 /**
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \brief Converts the current assert summary state to a test result.
  *
  * \returns TEST_RESULT_PASSED, TEST_RESULT_FAILED, or TEST_RESULT_NO_ASSERT

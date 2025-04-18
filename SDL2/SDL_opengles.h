@@ -1,6 +1,10 @@
 /*
   Simple DirectMedia Layer
+<<<<<<< HEAD
+  Copyright (C) 1997-2025 Sam Lantinga <slouken@libsdl.org>
+=======
   Copyright (C) 1997-2024 Sam Lantinga <slouken@libsdl.org>
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -19,11 +23,18 @@
   3. This notice may not be removed or altered from any source distribution.
 */
 
+<<<<<<< HEAD
+/*
+ * This is a simple file to encapsulate the OpenGL ES 1.X API headers.
+ */
+
+=======
 /**
  *  \file SDL_opengles.h
  *
  *  This is a simple file to encapsulate the OpenGL ES 1.X API headers.
  */
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 #include "SDL_config.h"
 
 #ifdef __IPHONEOS__

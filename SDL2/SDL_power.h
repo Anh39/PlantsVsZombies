@@ -1,6 +1,10 @@
 /*
   Simple DirectMedia Layer
+<<<<<<< HEAD
+  Copyright (C) 1997-2025 Sam Lantinga <slouken@libsdl.org>
+=======
   Copyright (C) 1997-2024 Sam Lantinga <slouken@libsdl.org>
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -23,9 +27,15 @@
 #define SDL_power_h_
 
 /**
+<<<<<<< HEAD
+ * # CategoryPower
+ *
+ * Header for the SDL power management routines.
+=======
  *  \file SDL_power.h
  *
  *  Header for the SDL power management routines.
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  */
 
 #include "SDL_stdinc.h"
@@ -37,9 +47,15 @@ extern "C" {
 #endif
 
 /**
+<<<<<<< HEAD
+ * The basic state for the system's power supply.
+ */
+typedef enum SDL_PowerState
+=======
  *  The basic state for the system's power supply.
  */
 typedef enum
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 {
     SDL_POWERSTATE_UNKNOWN,      /**< cannot determine power status */
     SDL_POWERSTATE_ON_BATTERY,   /**< Not plugged in, running on the battery */
@@ -66,10 +82,17 @@ typedef enum
  *
  * \param seconds seconds of battery life left, you can pass a NULL here if
  *                you don't care, will return -1 if we can't determine a
+<<<<<<< HEAD
+ *                value, or we're not running on a battery.
+ * \param percent percentage of battery life left, between 0 and 100, you can
+ *                pass a NULL here if you don't care, will return -1 if we
+ *                can't determine a value, or we're not running on a battery.
+=======
  *                value, or we're not running on a battery
  * \param percent percentage of battery life left, between 0 and 100, you can
  *                pass a NULL here if you don't care, will return -1 if we
  *                can't determine a value, or we're not running on a battery
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns an SDL_PowerState enum representing the current battery state.
  *
  * \since This function is available since SDL 2.0.0.

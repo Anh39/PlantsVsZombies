@@ -1,6 +1,10 @@
 /*
   Simple DirectMedia Layer
+<<<<<<< HEAD
+  Copyright (C) 1997-2025 Sam Lantinga <slouken@libsdl.org>
+=======
   Copyright (C) 1997-2024 Sam Lantinga <slouken@libsdl.org>
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -19,11 +23,21 @@
   3. This notice may not be removed or altered from any source distribution.
 */
 
+<<<<<<< HEAD
+/* WIKI CATEGORY: RWOPS */
+
+/**
+ * # CategoryRWOPS
+ *
+ * This file provides a general interface for SDL to read and write data
+ * streams. It can easily be extended to files, memory, etc.
+=======
 /**
  *  \file SDL_rwops.h
  *
  *  This file provides a general interface for SDL to read and write
  *  data streams.  It can easily be extended to files, memory, etc.
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  */
 
 #ifndef SDL_rwops_h_
@@ -57,7 +71,11 @@ typedef struct SDL_RWops
     Sint64 (SDLCALL * size) (struct SDL_RWops * context);
 
     /**
+<<<<<<< HEAD
+     *  Seek to `offset` relative to `whence`, one of stdio's whence values:
+=======
      *  Seek to \c offset relative to \c whence, one of stdio's whence values:
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
      *  RW_SEEK_SET, RW_SEEK_CUR, RW_SEEK_END
      *
      *  \return the final offset in the data stream, or -1 on error.
@@ -66,8 +84,13 @@ typedef struct SDL_RWops
                              int whence);
 
     /**
+<<<<<<< HEAD
+     *  Read up to `maxnum` objects each of size `size` from the data
+     *  stream to the area pointed at by `ptr`.
+=======
      *  Read up to \c maxnum objects each of size \c size from the data
      *  stream to the area pointed at by \c ptr.
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
      *
      *  \return the number of objects read, or 0 at error or end of file.
      */
@@ -75,8 +98,13 @@ typedef struct SDL_RWops
                              size_t size, size_t maxnum);
 
     /**
+<<<<<<< HEAD
+     *  Write exactly `num` objects each of size `size` from the area
+     *  pointed at by `ptr` to data stream.
+=======
      *  Write exactly \c num objects each of size \c size from the area
      *  pointed at by \c ptr to data stream.
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
      *
      *  \return the number of objects written, or 0 at error or end of file.
      */
@@ -186,7 +214,11 @@ typedef struct SDL_RWops
  *
  * Closing the SDL_RWops will close the file handle SDL is holding internally.
  *
+<<<<<<< HEAD
+ * \param file a UTF-8 string representing the filename to open.
+=======
  * \param file a UTF-8 string representing the filename to open
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \param mode an ASCII string representing the mode to be used for opening
  *             the file.
  * \returns a pointer to the SDL_RWops structure that is created, or NULL on
@@ -224,10 +256,17 @@ extern DECLSPEC SDL_RWops *SDLCALL SDL_RWFromFP(FILE * fp, SDL_bool autoclose);
  * `FILE*`, depending on what system headers are available to SDL. It is
  * always intended to be the `FILE*` type from the C runtime's stdio.h.
  *
+<<<<<<< HEAD
+ * \param fp the `FILE*` that feeds the SDL_RWops stream.
+ * \param autoclose SDL_TRUE to close the `FILE*` when closing the SDL_RWops,
+ *                  SDL_FALSE to leave the `FILE*` open when the RWops is
+ *                  closed.
+=======
  * \param fp the `FILE*` that feeds the SDL_RWops stream
  * \param autoclose SDL_TRUE to close the `FILE*` when closing the SDL_RWops,
  *                  SDL_FALSE to leave the `FILE*` open when the RWops is
  *                  closed
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns a pointer to the SDL_RWops structure that is created, or NULL on
  *          failure; call SDL_GetError() for more information.
  *
@@ -260,8 +299,13 @@ extern DECLSPEC SDL_RWops *SDLCALL SDL_RWFromFP(void * fp,
  * If you need to make sure the RWops never writes to the memory buffer, you
  * should use SDL_RWFromConstMem() with a read-only buffer of memory instead.
  *
+<<<<<<< HEAD
+ * \param mem a pointer to a buffer to feed an SDL_RWops stream.
+ * \param size the buffer size, in bytes.
+=======
  * \param mem a pointer to a buffer to feed an SDL_RWops stream
  * \param size the buffer size, in bytes
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns a pointer to a new SDL_RWops structure, or NULL if it fails; call
  *          SDL_GetError() for more information.
  *
@@ -295,8 +339,13 @@ extern DECLSPEC SDL_RWops *SDLCALL SDL_RWFromMem(void *mem, int size);
  * If you need to write to a memory buffer, you should use SDL_RWFromMem()
  * with a writable buffer of memory instead.
  *
+<<<<<<< HEAD
+ * \param mem a pointer to a read-only buffer to feed an SDL_RWops stream.
+ * \param size the buffer size, in bytes.
+=======
  * \param mem a pointer to a read-only buffer to feed an SDL_RWops stream
  * \param size the buffer size, in bytes
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns a pointer to a new SDL_RWops structure, or NULL if it fails; call
  *          SDL_GetError() for more information.
  *
@@ -358,7 +407,11 @@ extern DECLSPEC SDL_RWops *SDLCALL SDL_AllocRW(void);
  * creation of the SDL_RWops is not freed by SDL_FreeRW(); the programmer must
  * be responsible for managing that memory in their **close** method.
  *
+<<<<<<< HEAD
+ * \param area the SDL_RWops structure to be freed.
+=======
  * \param area the SDL_RWops structure to be freed
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *
  * \since This function is available since SDL 2.0.0.
  *
@@ -366,6 +419,10 @@ extern DECLSPEC SDL_RWops *SDLCALL SDL_AllocRW(void);
  */
 extern DECLSPEC void SDLCALL SDL_FreeRW(SDL_RWops * area);
 
+<<<<<<< HEAD
+/* Possible `whence` values for SDL_RWops seeking... */
+=======
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 #define RW_SEEK_SET 0       /**< Seek from the beginning of data */
 #define RW_SEEK_CUR 1       /**< Seek relative to current read point */
 #define RW_SEEK_END 2       /**< Seek relative to the end of data */
@@ -375,7 +432,11 @@ extern DECLSPEC void SDLCALL SDL_FreeRW(SDL_RWops * area);
  *
  * Prior to SDL 2.0.10, this function was a macro.
  *
+<<<<<<< HEAD
+ * \param context the SDL_RWops to get the size of the data stream from.
+=======
  * \param context the SDL_RWops to get the size of the data stream from
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns the size of the data stream in the SDL_RWops on success, -1 if
  *          unknown or a negative error code on failure; call SDL_GetError()
  *          for more information.
@@ -402,10 +463,17 @@ extern DECLSPEC Sint64 SDLCALL SDL_RWsize(SDL_RWops *context);
  *
  * Prior to SDL 2.0.10, this function was a macro.
  *
+<<<<<<< HEAD
+ * \param context a pointer to an SDL_RWops structure.
+ * \param offset an offset in bytes, relative to **whence** location; can be
+ *               negative.
+ * \param whence any of `RW_SEEK_SET`, `RW_SEEK_CUR`, `RW_SEEK_END`.
+=======
  * \param context a pointer to an SDL_RWops structure
  * \param offset an offset in bytes, relative to **whence** location; can be
  *               negative
  * \param whence any of `RW_SEEK_SET`, `RW_SEEK_CUR`, `RW_SEEK_END`
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns the final offset in the data stream after the seek or -1 on error.
  *
  * \since This function is available since SDL 2.0.10.
@@ -432,7 +500,11 @@ extern DECLSPEC Sint64 SDLCALL SDL_RWseek(SDL_RWops *context,
  * Prior to SDL 2.0.10, this function was a macro.
  *
  * \param context a SDL_RWops data stream object from which to get the current
+<<<<<<< HEAD
+ *                offset.
+=======
  *                offset
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns the current offset in the stream, or -1 if the information can not
  *          be determined.
  *
@@ -462,10 +534,17 @@ extern DECLSPEC Sint64 SDLCALL SDL_RWtell(SDL_RWops *context);
  *
  * Prior to SDL 2.0.10, this function was a macro.
  *
+<<<<<<< HEAD
+ * \param context a pointer to an SDL_RWops structure.
+ * \param ptr a pointer to a buffer to read data into.
+ * \param size the size of each object to read, in bytes.
+ * \param maxnum the maximum number of objects to be read.
+=======
  * \param context a pointer to an SDL_RWops structure
  * \param ptr a pointer to a buffer to read data into
  * \param size the size of each object to read, in bytes
  * \param maxnum the maximum number of objects to be read
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns the number of objects read, or 0 at error or end of file; call
  *          SDL_GetError() for more information.
  *
@@ -496,10 +575,17 @@ extern DECLSPEC size_t SDLCALL SDL_RWread(SDL_RWops *context,
  *
  * Prior to SDL 2.0.10, this function was a macro.
  *
+<<<<<<< HEAD
+ * \param context a pointer to an SDL_RWops structure.
+ * \param ptr a pointer to a buffer containing data to write.
+ * \param size the size of an object to write, in bytes.
+ * \param num the number of objects to write.
+=======
  * \param context a pointer to an SDL_RWops structure
  * \param ptr a pointer to a buffer containing data to write
  * \param size the size of an object to write, in bytes
  * \param num the number of objects to write
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns the number of objects written, which will be less than **num** on
  *          error; call SDL_GetError() for more information.
  *
@@ -530,7 +616,11 @@ extern DECLSPEC size_t SDLCALL SDL_RWwrite(SDL_RWops *context,
  *
  * Prior to SDL 2.0.10, this function was a macro.
  *
+<<<<<<< HEAD
+ * \param context SDL_RWops structure to close.
+=======
  * \param context SDL_RWops structure to close
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns 0 on success or a negative error code on failure; call
  *          SDL_GetError() for more information.
  *
@@ -555,9 +645,15 @@ extern DECLSPEC int SDLCALL SDL_RWclose(SDL_RWops *context);
  *
  * The data should be freed with SDL_free().
  *
+<<<<<<< HEAD
+ * \param src the SDL_RWops to read all available data from.
+ * \param datasize if not NULL, will store the number of bytes read.
+ * \param freesrc if non-zero, calls SDL_RWclose() on `src` before returning.
+=======
  * \param src the SDL_RWops to read all available data from
  * \param datasize if not NULL, will store the number of bytes read
  * \param freesrc if non-zero, calls SDL_RWclose() on `src` before returning
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns the data, or NULL if there was an error.
  *
  * \since This function is available since SDL 2.0.6.
@@ -578,8 +674,13 @@ extern DECLSPEC void *SDLCALL SDL_LoadFile_RW(SDL_RWops *src,
  * Prior to SDL 2.0.10, this function was a macro wrapping around
  * SDL_LoadFile_RW.
  *
+<<<<<<< HEAD
+ * \param file the path to read all available data from.
+ * \param datasize if not NULL, will store the number of bytes read.
+=======
  * \param file the path to read all available data from
  * \param datasize if not NULL, will store the number of bytes read
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns the data, or NULL if there was an error.
  *
  * \since This function is available since SDL 2.0.10.
@@ -596,7 +697,11 @@ extern DECLSPEC void *SDLCALL SDL_LoadFile(const char *file, size_t *datasize);
 /**
  * Use this function to read a byte from an SDL_RWops.
  *
+<<<<<<< HEAD
+ * \param src the SDL_RWops to read from.
+=======
  * \param src the SDL_RWops to read from
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns the read byte on success or 0 on failure; call SDL_GetError() for
  *          more information.
  *
@@ -613,7 +718,11 @@ extern DECLSPEC Uint8 SDLCALL SDL_ReadU8(SDL_RWops * src);
  * SDL byteswaps the data only if necessary, so the data returned will be in
  * the native byte order.
  *
+<<<<<<< HEAD
+ * \param src the stream from which to read data.
+=======
  * \param src the stream from which to read data
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns 16 bits of data in the native byte order of the platform.
  *
  * \since This function is available since SDL 2.0.0.
@@ -629,7 +738,11 @@ extern DECLSPEC Uint16 SDLCALL SDL_ReadLE16(SDL_RWops * src);
  * SDL byteswaps the data only if necessary, so the data returned will be in
  * the native byte order.
  *
+<<<<<<< HEAD
+ * \param src the stream from which to read data.
+=======
  * \param src the stream from which to read data
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns 16 bits of data in the native byte order of the platform.
  *
  * \since This function is available since SDL 2.0.0.
@@ -645,7 +758,11 @@ extern DECLSPEC Uint16 SDLCALL SDL_ReadBE16(SDL_RWops * src);
  * SDL byteswaps the data only if necessary, so the data returned will be in
  * the native byte order.
  *
+<<<<<<< HEAD
+ * \param src the stream from which to read data.
+=======
  * \param src the stream from which to read data
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns 32 bits of data in the native byte order of the platform.
  *
  * \since This function is available since SDL 2.0.0.
@@ -661,7 +778,11 @@ extern DECLSPEC Uint32 SDLCALL SDL_ReadLE32(SDL_RWops * src);
  * SDL byteswaps the data only if necessary, so the data returned will be in
  * the native byte order.
  *
+<<<<<<< HEAD
+ * \param src the stream from which to read data.
+=======
  * \param src the stream from which to read data
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns 32 bits of data in the native byte order of the platform.
  *
  * \since This function is available since SDL 2.0.0.
@@ -677,7 +798,11 @@ extern DECLSPEC Uint32 SDLCALL SDL_ReadBE32(SDL_RWops * src);
  * SDL byteswaps the data only if necessary, so the data returned will be in
  * the native byte order.
  *
+<<<<<<< HEAD
+ * \param src the stream from which to read data.
+=======
  * \param src the stream from which to read data
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns 64 bits of data in the native byte order of the platform.
  *
  * \since This function is available since SDL 2.0.0.
@@ -693,7 +818,11 @@ extern DECLSPEC Uint64 SDLCALL SDL_ReadLE64(SDL_RWops * src);
  * SDL byteswaps the data only if necessary, so the data returned will be in
  * the native byte order.
  *
+<<<<<<< HEAD
+ * \param src the stream from which to read data.
+=======
  * \param src the stream from which to read data
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns 64 bits of data in the native byte order of the platform.
  *
  * \since This function is available since SDL 2.0.0.
@@ -713,8 +842,13 @@ extern DECLSPEC Uint64 SDLCALL SDL_ReadBE64(SDL_RWops * src);
 /**
  * Use this function to write a byte to an SDL_RWops.
  *
+<<<<<<< HEAD
+ * \param dst the SDL_RWops to write to.
+ * \param value the byte value to write.
+=======
  * \param dst the SDL_RWops to write to
  * \param value the byte value to write
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns 1 on success or 0 on failure; call SDL_GetError() for more
  *          information.
  *
@@ -732,8 +866,13 @@ extern DECLSPEC size_t SDLCALL SDL_WriteU8(SDL_RWops * dst, Uint8 value);
  * specifies native format, and the data written will be in little-endian
  * format.
  *
+<<<<<<< HEAD
+ * \param dst the stream to which data will be written.
+ * \param value the data to be written, in native format.
+=======
  * \param dst the stream to which data will be written
  * \param value the data to be written, in native format
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns 1 on successful write, 0 on error.
  *
  * \since This function is available since SDL 2.0.0.
@@ -749,8 +888,13 @@ extern DECLSPEC size_t SDLCALL SDL_WriteLE16(SDL_RWops * dst, Uint16 value);
  * SDL byteswaps the data only if necessary, so the application always
  * specifies native format, and the data written will be in big-endian format.
  *
+<<<<<<< HEAD
+ * \param dst the stream to which data will be written.
+ * \param value the data to be written, in native format.
+=======
  * \param dst the stream to which data will be written
  * \param value the data to be written, in native format
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns 1 on successful write, 0 on error.
  *
  * \since This function is available since SDL 2.0.0.
@@ -767,8 +911,13 @@ extern DECLSPEC size_t SDLCALL SDL_WriteBE16(SDL_RWops * dst, Uint16 value);
  * specifies native format, and the data written will be in little-endian
  * format.
  *
+<<<<<<< HEAD
+ * \param dst the stream to which data will be written.
+ * \param value the data to be written, in native format.
+=======
  * \param dst the stream to which data will be written
  * \param value the data to be written, in native format
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns 1 on successful write, 0 on error.
  *
  * \since This function is available since SDL 2.0.0.
@@ -784,8 +933,13 @@ extern DECLSPEC size_t SDLCALL SDL_WriteLE32(SDL_RWops * dst, Uint32 value);
  * SDL byteswaps the data only if necessary, so the application always
  * specifies native format, and the data written will be in big-endian format.
  *
+<<<<<<< HEAD
+ * \param dst the stream to which data will be written.
+ * \param value the data to be written, in native format.
+=======
  * \param dst the stream to which data will be written
  * \param value the data to be written, in native format
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns 1 on successful write, 0 on error.
  *
  * \since This function is available since SDL 2.0.0.
@@ -802,8 +956,13 @@ extern DECLSPEC size_t SDLCALL SDL_WriteBE32(SDL_RWops * dst, Uint32 value);
  * specifies native format, and the data written will be in little-endian
  * format.
  *
+<<<<<<< HEAD
+ * \param dst the stream to which data will be written.
+ * \param value the data to be written, in native format.
+=======
  * \param dst the stream to which data will be written
  * \param value the data to be written, in native format
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns 1 on successful write, 0 on error.
  *
  * \since This function is available since SDL 2.0.0.
@@ -819,8 +978,13 @@ extern DECLSPEC size_t SDLCALL SDL_WriteLE64(SDL_RWops * dst, Uint64 value);
  * SDL byteswaps the data only if necessary, so the application always
  * specifies native format, and the data written will be in big-endian format.
  *
+<<<<<<< HEAD
+ * \param dst the stream to which data will be written.
+ * \param value the data to be written, in native format.
+=======
  * \param dst the stream to which data will be written
  * \param value the data to be written, in native format
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns 1 on successful write, 0 on error.
  *
  * \since This function is available since SDL 2.0.0.

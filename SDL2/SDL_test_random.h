@@ -1,6 +1,10 @@
 /*
   Simple DirectMedia Layer
+<<<<<<< HEAD
+  Copyright (C) 1997-2025 Sam Lantinga <slouken@libsdl.org>
+=======
   Copyright (C) 1997-2024 Sam Lantinga <slouken@libsdl.org>
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -19,7 +23,11 @@
   3. This notice may not be removed or altered from any source distribution.
 */
 
+<<<<<<< HEAD
+/*
+=======
 /**
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *  \file SDL_test_random.h
  *
  *  Include file for SDL test framework.
@@ -67,7 +75,11 @@ extern "C" {
 
 /* --- Function prototypes */
 
+<<<<<<< HEAD
+/*
+=======
 /**
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *  \brief Initialize random number generator with two integers.
  *
  *  Note: The random sequence of numbers returned by ...Random() is the
@@ -81,7 +93,11 @@ extern "C" {
  void SDLTest_RandomInit(SDLTest_RandomContext * rndContext, unsigned int xi,
                   unsigned int ci);
 
+<<<<<<< HEAD
+/*
+=======
 /**
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *  \brief Initialize random number generator based on current system time.
  *
  *  \param rndContext     pointer to context structure
@@ -90,7 +106,11 @@ extern "C" {
  void SDLTest_RandomInitTime(SDLTest_RandomContext *rndContext);
 
 
+<<<<<<< HEAD
+/*
+=======
 /**
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *  \brief Initialize random number generator based on current system time.
  *
  *  Note: ...RandomInit() or ...RandomInitTime() must have been called

@@ -1,6 +1,10 @@
 /*
   Simple DirectMedia Layer
+<<<<<<< HEAD
+  Copyright (C) 1997-2025 Sam Lantinga <slouken@libsdl.org>
+=======
   Copyright (C) 1997-2024 Sam Lantinga <slouken@libsdl.org>
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -20,9 +24,15 @@
 */
 
 /**
+<<<<<<< HEAD
+ * # CategoryEndian
+ *
+ * Functions for reading and writing endian-specific values
+=======
  *  \file SDL_endian.h
  *
  *  Functions for reading and writing endian-specific values
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  */
 
 #ifndef SDL_endian_h_
@@ -59,6 +69,18 @@ _m_prefetch(void *__P)
 #ifdef __linux__
 #include <endian.h>
 #define SDL_BYTEORDER  __BYTE_ORDER
+<<<<<<< HEAD
+#elif defined(__sun) && defined(__SVR4)  /* Solaris */
+#include <sys/byteorder.h>
+#if defined(_LITTLE_ENDIAN)
+#define SDL_BYTEORDER   SDL_LIL_ENDIAN
+#elif defined(_BIG_ENDIAN)
+#define SDL_BYTEORDER   SDL_BIG_ENDIAN
+#else
+#error Unsupported endianness
+#endif
+=======
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 #elif defined(__OpenBSD__) || defined(__DragonFly__)
 #include <endian.h>
 #define SDL_BYTEORDER  BYTE_ORDER
@@ -79,7 +101,11 @@ _m_prefetch(void *__P)
     defined(__m68k__) || defined(mc68000) || defined(_M_M68K) || \
     (defined(__MIPS__) && defined(__MIPSEB__)) || \
     defined(__ppc__) || defined(__POWERPC__) || defined(__powerpc__) || defined(__PPC__) || \
+<<<<<<< HEAD
+    defined(__sparc__) || defined(__sparc)
+=======
     defined(__sparc__)
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 #define SDL_BYTEORDER   SDL_BIG_ENDIAN
 #else
 #define SDL_BYTEORDER   SDL_LIL_ENDIAN
@@ -180,6 +206,19 @@ extern __inline Uint16 SDL_Swap16(Uint16);
   parm   [ax]   \
   modify [ax];
 #else
+<<<<<<< HEAD
+
+/**
+ * Use this function to swap the byte order of a 16-bit value.
+ *
+ * \param x the value to be swapped.
+ * \returns the swapped value.
+ *
+ * \sa SDL_SwapBE16
+ * \sa SDL_SwapLE16
+ */
+=======
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 SDL_FORCE_INLINE Uint16
 SDL_Swap16(Uint16 x)
 {
@@ -231,6 +270,19 @@ extern __inline Uint32 SDL_Swap32(Uint32);
   parm   [eax] \
   modify [eax];
 #else
+<<<<<<< HEAD
+
+/**
+ * Use this function to swap the byte order of a 32-bit value.
+ *
+ * \param x the value to be swapped.
+ * \returns the swapped value.
+ *
+ * \sa SDL_SwapBE32
+ * \sa SDL_SwapLE32
+ */
+=======
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 SDL_FORCE_INLINE Uint32
 SDL_Swap32(Uint32 x)
 {
@@ -276,6 +328,19 @@ extern __inline Uint64 SDL_Swap64(Uint64);
   parm [eax edx]  \
   modify [eax edx];
 #else
+<<<<<<< HEAD
+
+/**
+ * Use this function to swap the byte order of a 64-bit value.
+ *
+ * \param x the value to be swapped.
+ * \returns the swapped value.
+ *
+ * \sa SDL_SwapBE64
+ * \sa SDL_SwapLE64
+ */
+=======
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 SDL_FORCE_INLINE Uint64
 SDL_Swap64(Uint64 x)
 {
@@ -293,6 +358,18 @@ SDL_Swap64(Uint64 x)
 #endif
 
 
+<<<<<<< HEAD
+/**
+ * Use this function to swap the byte order of a floating point value.
+ *
+ * \param x the value to be swapped.
+ * \returns the swapped value.
+ *
+ * \sa SDL_SwapFloatBE
+ * \sa SDL_SwapFloatLE
+ */
+=======
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 SDL_FORCE_INLINE float
 SDL_SwapFloat(float x)
 {

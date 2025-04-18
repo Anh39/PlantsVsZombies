@@ -1,6 +1,10 @@
 /*
   Simple DirectMedia Layer
+<<<<<<< HEAD
+  Copyright (C) 1997-2025 Sam Lantinga <slouken@libsdl.org>
+=======
   Copyright (C) 1997-2024 Sam Lantinga <slouken@libsdl.org>
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -20,9 +24,15 @@
 */
 
 /**
+<<<<<<< HEAD
+ * # CategoryScancode
+ *
+ * Defines keyboard scancodes.
+=======
  *  \file SDL_scancode.h
  *
  *  Defines keyboard scancodes.
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  */
 
 #ifndef SDL_scancode_h_
@@ -31,6 +41,18 @@
 #include "SDL_stdinc.h"
 
 /**
+<<<<<<< HEAD
+ * The SDL keyboard scancode representation.
+ *
+ * Values of this type are used to represent keyboard keys, among other places
+ * in the SDL_Keysym::scancode key.keysym.scancode field of the SDL_Event
+ * structure.
+ *
+ * The values in this enumeration are based on the USB usage page standard:
+ * https://www.usb.org/sites/default/files/documents/hut1_12v2.pdf
+ */
+typedef enum SDL_Scancode
+=======
  *  \brief The SDL keyboard scancode representation.
  *
  *  Values of this type are used to represent keyboard keys, among other places
@@ -41,6 +63,7 @@
  *  https://www.usb.org/sites/default/files/documents/hut1_12v2.pdf
  */
 typedef enum
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 {
     SDL_SCANCODE_UNKNOWN = 0,
 
