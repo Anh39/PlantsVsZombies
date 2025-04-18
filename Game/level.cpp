@@ -4,11 +4,25 @@ using namespace std;
 
 Level::Level() {
     this->plants = vector<BasePlant*>();
-    this->zombies = vector<BaseZombie*>();
+    this->zombieWaves = vector<ZombieWave>();
 }
 
 Level::~Level() {
 
+}
+
+BaseZombie::BaseZombie() {
+    this->speed = 0;
+}
+
+BaseZombie::~BaseZombie() {
+
+}
+void BaseZombie::SetSize(const Vector2& size) {
+
+}
+Vector2 BaseZombie::GetSize() {
+    return Vector2(0, 0);
 }
 
 BasePlant::BasePlant() {

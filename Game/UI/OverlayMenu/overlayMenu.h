@@ -22,7 +22,7 @@ private:
     WaveProgressBar* waveProgressBar;
     SunController* sunController;
 
-    PlantContainer* plantContainer;
+    Map* map;
     StartOverlay* startOverlay;
     WinOverlay* winOverlay;
     LoseOverlay* loseOverlay;

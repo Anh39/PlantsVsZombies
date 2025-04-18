@@ -7,9 +7,15 @@
 class BaseZombie: public Node
 {
 public:
+    float speed;
+
     BaseZombie();
     ~BaseZombie();
+    
+    virtual void SetSize(const Vector2& size);
+    virtual Vector2 GetSize();
 };
+
 class BasePlant: public Node 
 {
 public:
@@ -28,6 +34,34 @@ public:
     virtual Texture* GetIcon();
 
 };
+class ZombieWithLane
+{
+public:
+    BaseZombie* zombie;
+    int lane;
+    ZombieWithLane(int lane, BaseZombie* zombie) {
+        this->zombie = zombie;
+        this->lane = lane;
+    }
+};
+class ZombiesWithTime
+{
+public:
+    std::vector<ZombieWithLane> zombies;
+    float spawnTime;
+    ZombiesWithTime(float spawnTime, std::vector<ZombieWithLane> zombies) {
+        this->spawnTime = spawnTime;
+        this->zombies = zombies;
+    }
+};
+class ZombieWave 
+{
+public:
+    ZombieWave() {};
+    ~ZombieWave() {};
+
+    std::vector<ZombiesWithTime> zombies;
+};
 class Level
 {
 public:
@@ -35,5 +69,5 @@ public:
     ~Level();
 
     std::vector<BasePlant*> plants;
-    std::vector<BaseZombie*> zombies;
+    std::vector<ZombieWave> zombieWaves;
 };
