@@ -8,7 +8,10 @@
 #include "sunDrop.h"
 #include "sunController.h"
 #include "../Components/optionMenu.h"
-
+#include "../../../Prototype/Plants/peaShooter.h"
+#include "../../../Prototype/Plants/cherryBomb.h"
+#include "../../../Prototype/Plants/potatoMine.h"
+#include "../../../Prototype/Plants/sunFlower.h"
 class OverlayMenuScene: public Scene
 {
 public:

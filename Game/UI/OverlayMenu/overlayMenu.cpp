@@ -58,6 +58,22 @@ OverlayMenuScene::OverlayMenuScene(string level) {
 
     this->sunController = new SunController();
     this->root->AddChildren(this->sunController);
+    PeaShooter* shooter = new PeaShooter();
+    shooter->position = Vector2(500, 300);
+    shooter->isActive = true;
+    this->root->AddChildren(shooter);
+    CherryBomb* cherry =  new CherryBomb();
+    cherry->position = Vector2(600,300);
+    cherry->isActive = true;
+    this->root->AddChildren(cherry);
+    Sunflower* sunflower = new Sunflower();
+    sunflower->position = Vector2(700, 300);
+    sunflower->isActive = true;
+    this->root->AddChildren(sunflower);
+    PotatoMine* potato = new PotatoMine();
+    potato->position = Vector2(800, 300);
+    potato->isActive = true;
+    this->root->AddChildren(potato);
 }
 
 OverlayMenuScene::~OverlayMenuScene() {
