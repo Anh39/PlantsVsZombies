@@ -1,6 +1,10 @@
 /*
   Simple DirectMedia Layer
+<<<<<<< HEAD
   Copyright (C) 1997-2025 Sam Lantinga <slouken@libsdl.org>
+=======
+  Copyright (C) 1997-2024 Sam Lantinga <slouken@libsdl.org>
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -25,6 +29,10 @@
  *  Main include header for the SDL library
  */
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 #ifndef SDL_h_
 #define SDL_h_
 
@@ -69,8 +77,11 @@
 extern "C" {
 #endif
 
+<<<<<<< HEAD
 /* WIKI CATEGORY: Init */
 
+=======
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 /* As of version 0.5, SDL is loaded dynamically into the application */
 
 /**
@@ -131,7 +142,11 @@ extern "C" {
  * call SDL_Quit() to force shutdown). If a subsystem is already loaded then
  * this call will increase the ref-count and return.
  *
+<<<<<<< HEAD
  * \param flags subsystem initialization flags.
+=======
+ * \param flags subsystem initialization flags
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns 0 on success or a negative error code on failure; call
  *          SDL_GetError() for more information.
  *

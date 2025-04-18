@@ -1,6 +1,10 @@
 /*
   Simple DirectMedia Layer
+<<<<<<< HEAD
   Copyright (C) 1997-2025 Sam Lantinga <slouken@libsdl.org>
+=======
+  Copyright (C) 1997-2024 Sam Lantinga <slouken@libsdl.org>
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -20,9 +24,15 @@
 */
 
 /**
+<<<<<<< HEAD
  * # CategorySystem
  *
  * Include file for platform specific SDL API functions
+=======
+ *  \file SDL_system.h
+ *
+ *  Include file for platform specific SDL API functions
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  */
 
 #ifndef SDL_system_h_
@@ -49,7 +59,11 @@ typedef void (SDLCALL * SDL_WindowsMessageHook)(void *userdata, void *hWnd, unsi
  * Set a callback for every Windows message, run before TranslateMessage().
  *
  * \param callback The SDL_WindowsMessageHook function to call.
+<<<<<<< HEAD
  * \param userdata a pointer to pass to every iteration of `callback`.
+=======
+ * \param userdata a pointer to pass to every iteration of `callback`
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *
  * \since This function is available since SDL 2.0.4.
  */
@@ -66,7 +80,11 @@ extern DECLSPEC void SDLCALL SDL_SetWindowsMessageHook(SDL_WindowsMessageHook ca
  * controls on which monitor a full screen application will appear.
  *
  * \param displayIndex the display index for which to get the D3D9 adapter
+<<<<<<< HEAD
  *                     index.
+=======
+ *                     index
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns the D3D9 adapter index on success or a negative error code on
  *          failure; call SDL_GetError() for more information.
  *
@@ -82,7 +100,11 @@ typedef struct IDirect3DDevice9 IDirect3DDevice9;
  * Once you are done using the device, you should release it to avoid a
  * resource leak.
  *
+<<<<<<< HEAD
  * \param renderer the renderer from which to get the associated D3D device.
+=======
+ * \param renderer the renderer from which to get the associated D3D device
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns the D3D9 device associated with given renderer or NULL if it is
  *          not a D3D9 renderer; call SDL_GetError() for more information.
  *
@@ -98,7 +120,11 @@ typedef struct ID3D11Device ID3D11Device;
  * Once you are done using the device, you should release it to avoid a
  * resource leak.
  *
+<<<<<<< HEAD
  * \param renderer the renderer from which to get the associated D3D11 device.
+=======
+ * \param renderer the renderer from which to get the associated D3D11 device
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns the D3D11 device associated with given renderer or NULL if it is
  *          not a D3D11 renderer; call SDL_GetError() for more information.
  *
@@ -118,7 +144,11 @@ typedef struct ID3D12Device ID3D12Device;
  * Once you are done using the device, you should release it to avoid a
  * resource leak.
  *
+<<<<<<< HEAD
  * \param renderer the renderer from which to get the associated D3D12 device.
+=======
+ * \param renderer the renderer from which to get the associated D3D12 device
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns the D3D12 device associated with given renderer or NULL if it is
  *          not a D3D12 renderer; call SDL_GetError() for more information.
  *
@@ -140,9 +170,15 @@ extern DECLSPEC ID3D12Device* SDLCALL SDL_RenderGetD3D12Device(SDL_Renderer* ren
  * Before SDL 2.0.4 this function did not return a value. Since SDL 2.0.4 it
  * returns an SDL_bool.
  *
+<<<<<<< HEAD
  * \param displayIndex the display index for which to get both indices.
  * \param adapterIndex a pointer to be filled in with the adapter index.
  * \param outputIndex a pointer to be filled in with the output index.
+=======
+ * \param displayIndex the display index for which to get both indices
+ * \param adapterIndex a pointer to be filled in with the adapter index
+ * \param outputIndex a pointer to be filled in with the output index
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns SDL_TRUE on success or SDL_FALSE on failure; call SDL_GetError()
  *          for more information.
  *
@@ -176,7 +212,11 @@ extern DECLSPEC int SDLCALL SDL_LinuxSetThreadPriority(Sint64 threadID, int prio
  * \param threadID The Unix thread ID to change priority of.
  * \param sdlPriority The new SDL_ThreadPriority value.
  * \param schedPolicy The new scheduling policy (SCHED_FIFO, SCHED_RR,
+<<<<<<< HEAD
  *                    SCHED_OTHER, etc...).
+=======
+ *                    SCHED_OTHER, etc...)
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns 0 on success, or -1 on error.
  *
  * \since This function is available since SDL 2.0.18.
@@ -188,7 +228,11 @@ extern DECLSPEC int SDLCALL SDL_LinuxSetThreadPriorityAndPolicy(Sint64 threadID,
 /* Platform specific functions for iOS */
 #ifdef __IPHONEOS__
 
+<<<<<<< HEAD
 typedef void (SDLCALL *SDL_iOSAnimationCallback)(void*);
+=======
+#define SDL_iOSSetAnimationCallback(window, interval, callback, callbackParam) SDL_iPhoneSetAnimationCallback(window, interval, callback, callbackParam)
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 
 /**
  * Use this function to set the animation callback on Apple iOS.
@@ -210,9 +254,15 @@ typedef void (SDLCALL *SDL_iOSAnimationCallback)(void*);
  * This functions is also accessible using the macro
  * SDL_iOSSetAnimationCallback() since SDL 2.0.4.
  *
+<<<<<<< HEAD
  * \param window the window for which the animation callback should be set.
  * \param interval the number of frames after which **callback** will be
  *                 called.
+=======
+ * \param window the window for which the animation callback should be set
+ * \param interval the number of frames after which **callback** will be
+ *                 called
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \param callback the function to call for every frame.
  * \param callbackParam a pointer that is passed to `callback`.
  * \returns 0 on success or a negative error code on failure; call
@@ -222,10 +272,16 @@ typedef void (SDLCALL *SDL_iOSAnimationCallback)(void*);
  *
  * \sa SDL_iPhoneSetEventPump
  */
+<<<<<<< HEAD
 extern DECLSPEC int SDLCALL SDL_iPhoneSetAnimationCallback(SDL_Window * window, int interval, SDL_iOSAnimationCallback callback, void *callbackParam);
 
 #define SDL_iOSSetAnimationCallback(window, interval, callback, callbackParam) SDL_iPhoneSetAnimationCallback(window, interval, callback, callbackParam)
 
+=======
+extern DECLSPEC int SDLCALL SDL_iPhoneSetAnimationCallback(SDL_Window * window, int interval, void (SDLCALL *callback)(void*), void *callbackParam);
+
+#define SDL_iOSSetEventPump(enabled) SDL_iPhoneSetEventPump(enabled)
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 
 /**
  * Use this function to enable or disable the SDL event pump on Apple iOS.
@@ -235,7 +291,11 @@ extern DECLSPEC int SDLCALL SDL_iPhoneSetAnimationCallback(SDL_Window * window, 
  * This functions is also accessible using the macro SDL_iOSSetEventPump()
  * since SDL 2.0.4.
  *
+<<<<<<< HEAD
  * \param enabled SDL_TRUE to enable the event pump, SDL_FALSE to disable it.
+=======
+ * \param enabled SDL_TRUE to enable the event pump, SDL_FALSE to disable it
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *
  * \since This function is available since SDL 2.0.0.
  *
@@ -243,9 +303,12 @@ extern DECLSPEC int SDLCALL SDL_iPhoneSetAnimationCallback(SDL_Window * window, 
  */
 extern DECLSPEC void SDLCALL SDL_iPhoneSetEventPump(SDL_bool enabled);
 
+<<<<<<< HEAD
 #define SDL_iOSSetEventPump(enabled) SDL_iPhoneSetEventPump(enabled)
 
 /* end of iOS-specific functions. */
+=======
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 #endif /* __IPHONEOS__ */
 
 
@@ -360,9 +423,15 @@ extern DECLSPEC SDL_bool SDLCALL SDL_IsDeXMode(void);
 extern DECLSPEC void SDLCALL SDL_AndroidBackButton(void);
 
 /**
+<<<<<<< HEAD
  * See the official Android developer guide for more information:
  * http://developer.android.com/guide/topics/data/data-storage.html
  */
+=======
+   See the official Android developer guide for more information:
+   http://developer.android.com/guide/topics/data/data-storage.html
+*/
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 #define SDL_ANDROID_EXTERNAL_STORAGE_READ   0x01
 #define SDL_ANDROID_EXTERNAL_STORAGE_WRITE  0x02
 
@@ -445,11 +514,19 @@ extern DECLSPEC SDL_bool SDLCALL SDL_AndroidRequestPermission(const char *permis
  *
  * https://developer.android.com/reference/android/view/Gravity
  *
+<<<<<<< HEAD
  * \param message text message to be shown.
  * \param duration 0=short, 1=long.
  * \param gravity where the notification should appear on the screen.
  * \param xoffset set this parameter only when gravity >=0.
  * \param yoffset set this parameter only when gravity >=0.
+=======
+ * \param message text message to be shown
+ * \param duration 0=short, 1=long
+ * \param gravity where the notification should appear on the screen.
+ * \param xoffset set this parameter only when gravity >=0
+ * \param yoffset set this parameter only when gravity >=0
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns 0 if success, -1 if any error occurs.
  *
  * \since This function is available since SDL 2.0.16.
@@ -461,8 +538,13 @@ extern DECLSPEC int SDLCALL SDL_AndroidShowToast(const char* message, int durati
  *
  * Override "boolean onUnhandledMessage(Message msg)" to handle the message.
  *
+<<<<<<< HEAD
  * \param command user command that must be greater or equal to 0x8000.
  * \param param user parameter.
+=======
+ * \param command user command that must be greater or equal to 0x8000
+ * \param param user parameter
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *
  * \since This function is available since SDL 2.0.22.
  */
@@ -474,9 +556,15 @@ extern DECLSPEC int SDLCALL SDL_AndroidSendMessage(Uint32 command, int param);
 #ifdef __WINRT__
 
 /**
+<<<<<<< HEAD
  * WinRT / Windows Phone path types
  */
 typedef enum SDL_WinRT_Path
+=======
+ *  \brief WinRT / Windows Phone path types
+ */
+typedef enum
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 {
     /** \brief The installed app's root directory.
         Files here are likely to be read-only. */
@@ -498,9 +586,15 @@ typedef enum SDL_WinRT_Path
 
 
 /**
+<<<<<<< HEAD
  * WinRT Device Family
  */
 typedef enum SDL_WinRT_DeviceFamily
+=======
+ *  \brief WinRT Device Family
+ */
+typedef enum
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 {
     /** \brief Unknown family  */
     SDL_WINRT_DEVICEFAMILY_UNKNOWN,
@@ -528,7 +622,11 @@ typedef enum SDL_WinRT_DeviceFamily
  *
  * https://msdn.microsoft.com/en-us/library/windows/apps/hh464917.aspx
  *
+<<<<<<< HEAD
  * \param pathType the type of path to retrieve, one of SDL_WinRT_Path.
+=======
+ * \param pathType the type of path to retrieve, one of SDL_WinRT_Path
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns a UCS-2 string (16-bit, wide-char) containing the path, or NULL if
  *          the path is not available for any reason; call SDL_GetError() for
  *          more information.
@@ -551,7 +649,11 @@ extern DECLSPEC const wchar_t * SDLCALL SDL_WinRTGetFSPathUNICODE(SDL_WinRT_Path
  *
  * https://msdn.microsoft.com/en-us/library/windows/apps/hh464917.aspx
  *
+<<<<<<< HEAD
  * \param pathType the type of path to retrieve, one of SDL_WinRT_Path.
+=======
+ * \param pathType the type of path to retrieve, one of SDL_WinRT_Path
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns a UTF-8 string (8-bit, multi-byte) containing the path, or NULL if
  *          the path is not available for any reason; call SDL_GetError() for
  *          more information.

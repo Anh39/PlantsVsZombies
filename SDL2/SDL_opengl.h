@@ -1,6 +1,10 @@
 /*
   Simple DirectMedia Layer
+<<<<<<< HEAD
   Copyright (C) 1997-2025 Sam Lantinga <slouken@libsdl.org>
+=======
+  Copyright (C) 1997-2024 Sam Lantinga <slouken@libsdl.org>
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -19,11 +23,25 @@
   3. This notice may not be removed or altered from any source distribution.
 */
 
+<<<<<<< HEAD
 /*
  * This is a simple file to encapsulate the OpenGL API headers.
  *
  * Define NO_SDL_GLEXT if you have your own version of glext.h and want
  * to disable the version included in SDL_opengl.h.
+=======
+/**
+ *  \file SDL_opengl.h
+ *
+ *  This is a simple file to encapsulate the OpenGL API headers.
+ */
+
+/**
+ *  \def NO_SDL_GLEXT
+ *
+ *  Define this if you have your own version of glext.h and want to disable the
+ *  version included in SDL_opengl.h.
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  */
 
 #ifndef SDL_opengl_h_

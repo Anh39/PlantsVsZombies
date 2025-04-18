@@ -1,6 +1,10 @@
 /*
   Simple DirectMedia Layer
+<<<<<<< HEAD
   Copyright (C) 1997-2025 Sam Lantinga <slouken@libsdl.org>
+=======
+  Copyright (C) 1997-2024 Sam Lantinga <slouken@libsdl.org>
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -19,6 +23,7 @@
   3. This notice may not be removed or altered from any source distribution.
 */
 
+<<<<<<< HEAD
 /* WIKI CATEGORY: HIDAPI */
 
 /**
@@ -48,6 +53,46 @@
  * with SDL_HIDAPI_DISABLED defined to 1. You might want to do this for
  * example on iOS or tvOS to avoid a dependency on the CoreBluetooth
  * framework.
+=======
+/**
+ *  \file SDL_hidapi.h
+ *
+ *  Header file for SDL HIDAPI functions.
+ *
+ *  This is an adaptation of the original HIDAPI interface by Alan Ott,
+ *  and includes source code licensed under the following BSD license:
+ *
+    Copyright (c) 2010, Alan Ott, Signal 11 Software
+    All rights reserved.
+
+    Redistribution and use in source and binary forms, with or without
+    modification, are permitted provided that the following conditions are met:
+
+    * Redistributions of source code must retain the above copyright notice,
+      this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in the
+      documentation and/or other materials provided with the distribution.
+    * Neither the name of Signal 11 Software nor the names of its
+      contributors may be used to endorse or promote products derived from
+      this software without specific prior written permission.
+
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+    AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+    IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+    ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+    LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+    CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+    SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+    INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+    CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+    ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+    POSSIBILITY OF SUCH DAMAGE.
+ *
+ * If you would like a version of SDL without this code, you can build SDL
+ * with SDL_HIDAPI_DISABLED defined to 1. You might want to do this for example
+ * on iOS or tvOS to avoid a dependency on the CoreBluetooth framework.
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  */
 
 #ifndef SDL_hidapi_h_
@@ -62,15 +107,24 @@ extern "C" {
 #endif
 
 /**
+<<<<<<< HEAD
  * A handle representing an open HID device
+=======
+ *  \brief  A handle representing an open HID device
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  */
 struct SDL_hid_device_;
 typedef struct SDL_hid_device_ SDL_hid_device; /**< opaque hidapi structure */
 
 /** hidapi info structure */
+<<<<<<< HEAD
 
 /**
  * Information about a connected HID device
+=======
+/**
+ *  \brief  Information about a connected HID device
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  */
 typedef struct SDL_hid_device_info
 {
@@ -226,13 +280,21 @@ extern DECLSPEC SDL_hid_device * SDLCALL SDL_hid_open(unsigned short vendor_id, 
  * The path name be determined by calling SDL_hid_enumerate(), or a
  * platform-specific path name can be used (eg: /dev/hidraw0 on Linux).
  *
+<<<<<<< HEAD
  * \param path The path name of the device to open.
+=======
+ * \param path The path name of the device to open
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns a pointer to a SDL_hid_device object on success or NULL on
  *          failure.
  *
  * \since This function is available since SDL 2.0.18.
  */
+<<<<<<< HEAD
 extern DECLSPEC SDL_hid_device * SDLCALL SDL_hid_open_path(const char *path, int bExclusive);
+=======
+extern DECLSPEC SDL_hid_device * SDLCALL SDL_hid_open_path(const char *path, int bExclusive /* = false */);
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 
 /**
  * Write an Output report to a HID device.
@@ -426,7 +488,11 @@ extern DECLSPEC int SDLCALL SDL_hid_get_indexed_string(SDL_hid_device *dev, int 
 /**
  * Start or stop a BLE scan on iOS and tvOS to pair Steam Controllers
  *
+<<<<<<< HEAD
  * \param active SDL_TRUE to start the scan, SDL_FALSE to stop the scan.
+=======
+ * \param active SDL_TRUE to start the scan, SDL_FALSE to stop the scan
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *
  * \since This function is available since SDL 2.0.18.
  */

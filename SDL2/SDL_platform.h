@@ -1,6 +1,10 @@
 /*
   Simple DirectMedia Layer
+<<<<<<< HEAD
   Copyright (C) 1997-2025 Sam Lantinga <slouken@libsdl.org>
+=======
+  Copyright (C) 1997-2024 Sam Lantinga <slouken@libsdl.org>
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -20,9 +24,15 @@
 */
 
 /**
+<<<<<<< HEAD
  * # CategoryPlatform
  *
  * Try to get a standard set of platform defines.
+=======
+ *  \file SDL_platform.h
+ *
+ *  Try to get a standard set of platform defines.
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  */
 
 #ifndef SDL_platform_h_

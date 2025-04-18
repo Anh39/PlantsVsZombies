@@ -1,6 +1,10 @@
 /*
   Simple DirectMedia Layer
+<<<<<<< HEAD
   Copyright (C) 1997-2025 Sam Lantinga <slouken@libsdl.org>
+=======
+  Copyright (C) 1997-2024 Sam Lantinga <slouken@libsdl.org>
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -19,10 +23,18 @@
   3. This notice may not be removed or altered from any source distribution.
 */
 
+<<<<<<< HEAD
 /*
  * This is a simple file to encapsulate the EGL API headers.
  */
 
+=======
+/**
+ *  \file SDL_egl.h
+ *
+ *  This is a simple file to encapsulate the EGL API headers.
+ */
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 #if !defined(_MSC_VER) && !defined(__ANDROID__) && !defined(SDL_USE_BUILTIN_OPENGL_DEFINITIONS)
 
 #if defined(__vita__) || defined(__psp2__)

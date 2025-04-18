@@ -1,6 +1,10 @@
 /*
   Simple DirectMedia Layer
+<<<<<<< HEAD
   Copyright (C) 1997-2025 Sam Lantinga <slouken@libsdl.org>
+=======
+  Copyright (C) 1997-2024 Sam Lantinga <slouken@libsdl.org>
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -19,7 +23,11 @@
   3. This notice may not be removed or altered from any source distribution.
 */
 
+<<<<<<< HEAD
 /*
+=======
+/**
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *  \file SDL_test_log.h
  *
  *  Include file for SDL test framework.
@@ -42,14 +50,22 @@
 extern "C" {
 #endif
 
+<<<<<<< HEAD
 /*
+=======
+/**
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \brief Prints given message with a timestamp in the TEST category and INFO priority.
  *
  * \param fmt Message to be logged
  */
 void SDLTest_Log(SDL_PRINTF_FORMAT_STRING const char *fmt, ...) SDL_PRINTF_VARARG_FUNC(1);
 
+<<<<<<< HEAD
 /*
+=======
+/**
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \brief Prints given message with a timestamp in the TEST category and the ERROR priority.
  *
  * \param fmt Message to be logged

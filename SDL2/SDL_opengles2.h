@@ -1,6 +1,10 @@
 /*
   Simple DirectMedia Layer
+<<<<<<< HEAD
   Copyright (C) 1997-2025 Sam Lantinga <slouken@libsdl.org>
+=======
+  Copyright (C) 1997-2024 Sam Lantinga <slouken@libsdl.org>
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -19,10 +23,18 @@
   3. This notice may not be removed or altered from any source distribution.
 */
 
+<<<<<<< HEAD
 /*
  * This is a simple file to encapsulate the OpenGL ES 2.0 API headers.
  */
 
+=======
+/**
+ *  \file SDL_opengles2.h
+ *
+ *  This is a simple file to encapsulate the OpenGL ES 2.0 API headers.
+ */
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 #include "SDL_config.h"
 
 #if !defined(_MSC_VER) && !defined(SDL_USE_BUILTIN_OPENGL_DEFINITIONS)

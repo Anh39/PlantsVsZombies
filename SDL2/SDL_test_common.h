@@ -1,6 +1,10 @@
 /*
   Simple DirectMedia Layer
+<<<<<<< HEAD
   Copyright (C) 1997-2025 Sam Lantinga <slouken@libsdl.org>
+=======
+  Copyright (C) 1997-2024 Sam Lantinga <slouken@libsdl.org>
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -19,7 +23,11 @@
   3. This notice may not be removed or altered from any source distribution.
 */
 
+<<<<<<< HEAD
 /*
+=======
+/**
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *  \file SDL_test_common.h
  *
  *  Include file for SDL test framework.
@@ -129,7 +137,11 @@ extern "C" {
 
 /* Function prototypes */
 
+<<<<<<< HEAD
 /*
+=======
+/**
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \brief Parse command line parameters and create common state.
  *
  * \param argv Array of command line parameters
@@ -139,7 +151,11 @@ extern "C" {
  */
 SDLTest_CommonState *SDLTest_CommonCreateState(char **argv, Uint32 flags);
 
+<<<<<<< HEAD
 /*
+=======
+/**
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \brief Process one common argument.
  *
  * \param state The common state describing the test window to create.
@@ -150,7 +166,11 @@ SDLTest_CommonState *SDLTest_CommonCreateState(char **argv, Uint32 flags);
 int SDLTest_CommonArg(SDLTest_CommonState * state, int index);
 
 
+<<<<<<< HEAD
 /*
+=======
+/**
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \brief Logs command line usage info.
  *
  * This logs the appropriate command line options for the subsystems in use
@@ -164,7 +184,11 @@ int SDLTest_CommonArg(SDLTest_CommonState * state, int index);
  */
 void SDLTest_CommonLogUsage(SDLTest_CommonState * state, const char *argv0, const char **options);
 
+<<<<<<< HEAD
 /*
+=======
+/**
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \brief Returns common usage information
  *
  * You should (probably) be using SDLTest_CommonLogUsage() instead, but this
@@ -177,7 +201,11 @@ void SDLTest_CommonLogUsage(SDLTest_CommonState * state, const char *argv0, cons
  */
 const char *SDLTest_CommonUsage(SDLTest_CommonState * state);
 
+<<<<<<< HEAD
 /*
+=======
+/**
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \brief Open test window.
  *
  * \param state The common state describing the test window to create.
@@ -186,7 +214,11 @@ const char *SDLTest_CommonUsage(SDLTest_CommonState * state);
  */
 SDL_bool SDLTest_CommonInit(SDLTest_CommonState * state);
 
+<<<<<<< HEAD
 /*
+=======
+/**
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \brief Easy argument handling when test app doesn't need any custom args.
  *
  * \param state The common state describing the test window to create.
@@ -197,7 +229,11 @@ SDL_bool SDLTest_CommonInit(SDLTest_CommonState * state);
  */
 SDL_bool SDLTest_CommonDefaultArgs(SDLTest_CommonState * state, const int argc, char **argv);
 
+<<<<<<< HEAD
 /*
+=======
+/**
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \brief Common event handler for test windows.
  *
  * \param state The common state used to create test window.
@@ -207,7 +243,11 @@ SDL_bool SDLTest_CommonDefaultArgs(SDLTest_CommonState * state, const int argc, 
  */
 void SDLTest_CommonEvent(SDLTest_CommonState * state, SDL_Event * event, int *done);
 
+<<<<<<< HEAD
 /*
+=======
+/**
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \brief Close test window.
  *
  * \param state The common state used to create test window.
@@ -215,7 +255,11 @@ void SDLTest_CommonEvent(SDLTest_CommonState * state, SDL_Event * event, int *do
  */
 void SDLTest_CommonQuit(SDLTest_CommonState * state);
 
+<<<<<<< HEAD
 /*
+=======
+/**
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \brief Draws various window information (position, size, etc.) to the renderer.
  *
  * \param renderer The renderer to draw to.

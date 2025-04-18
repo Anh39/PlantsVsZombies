@@ -1,6 +1,10 @@
 /*
   Simple DirectMedia Layer
+<<<<<<< HEAD
   Copyright (C) 1997-2025 Sam Lantinga <slouken@libsdl.org>
+=======
+  Copyright (C) 1997-2024 Sam Lantinga <slouken@libsdl.org>
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -48,6 +52,7 @@ extern "C" {
  * and flags.
  *
  * \param title The title of the window, in UTF-8 encoding.
+<<<<<<< HEAD
  * \param x The x position of the window, SDL_WINDOWPOS_CENTERED, or
  *          SDL_WINDOWPOS_UNDEFINED.
  * \param y The y position of the window, SDL_WINDOWPOS_CENTERED, or
@@ -60,6 +65,20 @@ extern "C" {
  *              SDL_WINDOW_RESIZABLE, SDL_WINDOW_MAXIMIZED,
  *              SDL_WINDOW_MINIMIZED, SDL_WINDOW_BORDERLESS is always set, and
  *              SDL_WINDOW_FULLSCREEN is always unset.
+=======
+ * \param x The x position of the window, ::SDL_WINDOWPOS_CENTERED, or
+ *          ::SDL_WINDOWPOS_UNDEFINED.
+ * \param y The y position of the window, ::SDL_WINDOWPOS_CENTERED, or
+ *          ::SDL_WINDOWPOS_UNDEFINED.
+ * \param w The width of the window.
+ * \param h The height of the window.
+ * \param flags The flags for the window, a mask of SDL_WINDOW_BORDERLESS with
+ *              any of the following: ::SDL_WINDOW_OPENGL,
+ *              ::SDL_WINDOW_INPUT_GRABBED, ::SDL_WINDOW_HIDDEN,
+ *              ::SDL_WINDOW_RESIZABLE, ::SDL_WINDOW_MAXIMIZED,
+ *              ::SDL_WINDOW_MINIMIZED, ::SDL_WINDOW_BORDERLESS is always set,
+ *              and ::SDL_WINDOW_FULLSCREEN is always unset.
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \return the window created, or NULL if window creation failed.
  *
  * \since This function is available since SDL 2.0.0.

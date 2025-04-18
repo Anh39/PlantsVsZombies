@@ -1,6 +1,10 @@
 /*
   Simple DirectMedia Layer
+<<<<<<< HEAD
   Copyright (C) 1997-2025 Sam Lantinga <slouken@libsdl.org>
+=======
+  Copyright (C) 1997-2024 Sam Lantinga <slouken@libsdl.org>
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -20,9 +24,15 @@
 */
 
 /**
+<<<<<<< HEAD
  * # CategoryTouch
  *
  * Include file for SDL touch event handling.
+=======
+ *  \file SDL_touch.h
+ *
+ *  Include file for SDL touch event handling.
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  */
 
 #ifndef SDL_touch_h_
@@ -85,7 +95,11 @@ extern DECLSPEC int SDLCALL SDL_GetNumTouchDevices(void);
 /**
  * Get the touch ID with the given index.
  *
+<<<<<<< HEAD
  * \param index the touch device index.
+=======
+ * \param index the touch device index
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns the touch ID with the given index on success or 0 if the index is
  *          invalid; call SDL_GetError() for more information.
  *
@@ -113,7 +127,11 @@ extern DECLSPEC SDL_TouchDeviceType SDLCALL SDL_GetTouchDeviceType(SDL_TouchID t
 /**
  * Get the number of active fingers for a given touch device.
  *
+<<<<<<< HEAD
  * \param touchID the ID of a touch device.
+=======
+ * \param touchID the ID of a touch device
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns the number of active fingers for a given touch device on success
  *          or 0 on failure; call SDL_GetError() for more information.
  *
@@ -128,8 +146,13 @@ extern DECLSPEC int SDLCALL SDL_GetNumTouchFingers(SDL_TouchID touchID);
  *
  * The returned resource is owned by SDL and should not be deallocated.
  *
+<<<<<<< HEAD
  * \param touchID the ID of the requested touch device.
  * \param index the index of the requested finger.
+=======
+ * \param touchID the ID of the requested touch device
+ * \param index the index of the requested finger
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns a pointer to the SDL_Finger object or NULL if no object at the
  *          given ID and index could be found.
  *

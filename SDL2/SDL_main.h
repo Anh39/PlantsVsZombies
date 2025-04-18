@@ -1,6 +1,10 @@
 /*
   Simple DirectMedia Layer
+<<<<<<< HEAD
   Copyright (C) 1997-2025 Sam Lantinga <slouken@libsdl.org>
+=======
+  Copyright (C) 1997-2024 Sam Lantinga <slouken@libsdl.org>
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -25,9 +29,15 @@
 #include "SDL_stdinc.h"
 
 /**
+<<<<<<< HEAD
  * # CategoryMain
  *
  * Redefine main() on some platforms so that it is called by SDL.
+=======
+ *  \file SDL_main.h
+ *
+ *  Redefine main() on some platforms so that it is called by SDL.
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  */
 
 #ifndef SDL_MAIN_HANDLED
@@ -129,14 +139,22 @@
  *
  *  The application's main() function must be called with C linkage,
  *  and should be declared like this:
+<<<<<<< HEAD
  *  ```c
+=======
+ *  \code
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *  #ifdef __cplusplus
  *  extern "C"
  *  #endif
  *  int main(int argc, char *argv[])
  *  {
  *  }
+<<<<<<< HEAD
  *  ```
+=======
+ *  \endcode
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  */
 
 #if defined(SDL_MAIN_NEEDED) || defined(SDL_MAIN_AVAILABLE)
@@ -149,7 +167,11 @@ extern "C" {
 #endif
 
 /**
+<<<<<<< HEAD
  * The prototype for the application's main() function
+=======
+ *  The prototype for the application's main() function
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  */
 typedef int (*SDL_main_func)(int argc, char *argv[]);
 extern SDLMAIN_DECLSPEC int SDL_main(int argc, char *argv[]);
@@ -222,8 +244,13 @@ extern DECLSPEC void SDLCALL SDL_UnregisterApp(void);
 /**
  * Initialize and launch an SDL/WinRT application.
  *
+<<<<<<< HEAD
  * \param mainFunction the SDL app's C-style main(), an SDL_main_func.
  * \param reserved reserved for future use; should be NULL.
+=======
+ * \param mainFunction the SDL app's C-style main(), an SDL_main_func
+ * \param reserved reserved for future use; should be NULL
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns 0 on success or -1 on failure; call SDL_GetError() to retrieve
  *          more information on the failure.
  *
@@ -238,10 +265,17 @@ extern DECLSPEC int SDLCALL SDL_WinRTRunApp(SDL_main_func mainFunction, void * r
 /**
  * Initializes and launches an SDL application.
  *
+<<<<<<< HEAD
  * \param argc The argc parameter from the application's main() function.
  * \param argv The argv parameter from the application's main() function.
  * \param mainFunction The SDL app's C-style main(), an SDL_main_func.
  * \return the return value from mainFunction.
+=======
+ * \param argc The argc parameter from the application's main() function
+ * \param argv The argv parameter from the application's main() function
+ * \param mainFunction The SDL app's C-style main(), an SDL_main_func
+ * \return the return value from mainFunction
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *
  * \since This function is available since SDL 2.0.10.
  */
@@ -254,8 +288,13 @@ extern DECLSPEC int SDLCALL SDL_UIKitRunApp(int argc, char *argv[], SDL_main_fun
 /**
  * Initialize and launch an SDL GDK application.
  *
+<<<<<<< HEAD
  * \param mainFunction the SDL app's C-style main(), an SDL_main_func.
  * \param reserved reserved for future use; should be NULL.
+=======
+ * \param mainFunction the SDL app's C-style main(), an SDL_main_func
+ * \param reserved reserved for future use; should be NULL
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns 0 on success or -1 on failure; call SDL_GetError() to retrieve
  *          more information on the failure.
  *

@@ -1,6 +1,10 @@
 /*
   Simple DirectMedia Layer
+<<<<<<< HEAD
   Copyright (C) 1997-2025 Sam Lantinga <slouken@libsdl.org>
+=======
+  Copyright (C) 1997-2024 Sam Lantinga <slouken@libsdl.org>
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -20,7 +24,11 @@
 */
 
 /**
+<<<<<<< HEAD
  * # CategoryClipboard
+=======
+ * \file SDL_clipboard.h
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *
  * Include file for SDL clipboard handling
  */
@@ -41,7 +49,11 @@ extern "C" {
 /**
  * Put UTF-8 text into the clipboard.
  *
+<<<<<<< HEAD
  * \param text the text to store in the clipboard.
+=======
+ * \param text the text to store in the clipboard
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns 0 on success or a negative error code on failure; call
  *          SDL_GetError() for more information.
  *
@@ -85,7 +97,11 @@ extern DECLSPEC SDL_bool SDLCALL SDL_HasClipboardText(void);
 /**
  * Put UTF-8 text into the primary selection.
  *
+<<<<<<< HEAD
  * \param text the text to store in the primary selection.
+=======
+ * \param text the text to store in the primary selection
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns 0 on success or a negative error code on failure; call
  *          SDL_GetError() for more information.
  *

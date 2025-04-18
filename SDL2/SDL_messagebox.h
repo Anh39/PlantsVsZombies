@@ -1,6 +1,10 @@
 /*
   Simple DirectMedia Layer
+<<<<<<< HEAD
   Copyright (C) 1997-2025 Sam Lantinga <slouken@libsdl.org>
+=======
+  Copyright (C) 1997-2024 Sam Lantinga <slouken@libsdl.org>
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -32,11 +36,17 @@ extern "C" {
 #endif
 
 /**
+<<<<<<< HEAD
  * SDL_MessageBox flags.
  *
  * If supported will display warning icon, etc.
  */
 typedef enum SDL_MessageBoxFlags
+=======
+ * SDL_MessageBox flags. If supported will display warning icon, etc.
+ */
+typedef enum
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 {
     SDL_MESSAGEBOX_ERROR                 = 0x00000010,   /**< error dialog */
     SDL_MESSAGEBOX_WARNING               = 0x00000020,   /**< warning dialog */
@@ -48,7 +58,11 @@ typedef enum SDL_MessageBoxFlags
 /**
  * Flags for SDL_MessageBoxButtonData.
  */
+<<<<<<< HEAD
 typedef enum SDL_MessageBoxButtonFlags
+=======
+typedef enum
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 {
     SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT = 0x00000001,  /**< Marks the default button when return is hit */
     SDL_MESSAGEBOX_BUTTON_ESCAPEKEY_DEFAULT = 0x00000002   /**< Marks the default button when escape is hit */
@@ -57,9 +71,15 @@ typedef enum SDL_MessageBoxButtonFlags
 /**
  * Individual button data.
  */
+<<<<<<< HEAD
 typedef struct SDL_MessageBoxButtonData
 {
     Uint32 flags;       /**< SDL_MessageBoxButtonFlags */
+=======
+typedef struct
+{
+    Uint32 flags;       /**< ::SDL_MessageBoxButtonFlags */
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
     int buttonid;       /**< User defined button id (value returned via SDL_ShowMessageBox) */
     const char * text;  /**< The UTF-8 button text */
 } SDL_MessageBoxButtonData;
@@ -67,12 +87,20 @@ typedef struct SDL_MessageBoxButtonData
 /**
  * RGB value used in a message box color scheme
  */
+<<<<<<< HEAD
 typedef struct SDL_MessageBoxColor
+=======
+typedef struct
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 {
     Uint8 r, g, b;
 } SDL_MessageBoxColor;
 
+<<<<<<< HEAD
 typedef enum SDL_MessageBoxColorType
+=======
+typedef enum
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 {
     SDL_MESSAGEBOX_COLOR_BACKGROUND,
     SDL_MESSAGEBOX_COLOR_TEXT,
@@ -85,7 +113,11 @@ typedef enum SDL_MessageBoxColorType
 /**
  * A set of colors to use for message box dialogs
  */
+<<<<<<< HEAD
 typedef struct SDL_MessageBoxColorScheme
+=======
+typedef struct
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 {
     SDL_MessageBoxColor colors[SDL_MESSAGEBOX_COLOR_MAX];
 } SDL_MessageBoxColorScheme;
@@ -93,9 +125,15 @@ typedef struct SDL_MessageBoxColorScheme
 /**
  * MessageBox structure containing title, text, window, etc.
  */
+<<<<<<< HEAD
 typedef struct SDL_MessageBoxData
 {
     Uint32 flags;                       /**< SDL_MessageBoxFlags */
+=======
+typedef struct
+{
+    Uint32 flags;                       /**< ::SDL_MessageBoxFlags */
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
     SDL_Window *window;                 /**< Parent window, can be NULL */
     const char *title;                  /**< UTF-8 title */
     const char *message;                /**< UTF-8 message text */
@@ -103,7 +141,11 @@ typedef struct SDL_MessageBoxData
     int numbuttons;
     const SDL_MessageBoxButtonData *buttons;
 
+<<<<<<< HEAD
     const SDL_MessageBoxColorScheme *colorScheme;   /**< SDL_MessageBoxColorScheme, can be NULL to use system settings */
+=======
+    const SDL_MessageBoxColorScheme *colorScheme;   /**< ::SDL_MessageBoxColorScheme, can be NULL to use system settings */
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 } SDL_MessageBoxData;
 
 /**
@@ -130,9 +172,14 @@ typedef struct SDL_MessageBoxData
  * to stderr if you can.
  *
  * \param messageboxdata the SDL_MessageBoxData structure with title, text and
+<<<<<<< HEAD
  *                       other options.
  * \param buttonid the pointer to which user id of hit button should be
  *                 copied.
+=======
+ *                       other options
+ * \param buttonid the pointer to which user id of hit button should be copied
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns 0 on success or a negative error code on failure; call
  *          SDL_GetError() for more information.
  *
@@ -171,10 +218,17 @@ extern DECLSPEC int SDLCALL SDL_ShowMessageBox(const SDL_MessageBoxData *message
  * concern, check the return value from this function and fall back to writing
  * to stderr if you can.
  *
+<<<<<<< HEAD
  * \param flags an SDL_MessageBoxFlags value.
  * \param title UTF-8 title text.
  * \param message UTF-8 message text.
  * \param window the parent window, or NULL for no parent.
+=======
+ * \param flags an SDL_MessageBoxFlags value
+ * \param title UTF-8 title text
+ * \param message UTF-8 message text
+ * \param window the parent window, or NULL for no parent
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns 0 on success or a negative error code on failure; call
  *          SDL_GetError() for more information.
  *

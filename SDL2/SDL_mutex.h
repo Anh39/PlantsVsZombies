@@ -1,6 +1,10 @@
 /*
   Simple DirectMedia Layer
+<<<<<<< HEAD
   Copyright (C) 1997-2025 Sam Lantinga <slouken@libsdl.org>
+=======
+  Copyright (C) 1997-2024 Sam Lantinga <slouken@libsdl.org>
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -23,9 +27,15 @@
 #define SDL_mutex_h_
 
 /**
+<<<<<<< HEAD
  * # CategoryMutex
  *
  * Functions to provide thread synchronization primitives.
+=======
+ *  \file SDL_mutex.h
+ *
+ *  Functions to provide thread synchronization primitives.
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  */
 
 #include "SDL_stdinc.h"
@@ -112,13 +122,22 @@ extern "C" {
 #endif
 
 /**
+<<<<<<< HEAD
  * Synchronization functions which can time out return this value if they time
  * out.
+=======
+ *  Synchronization functions which can time out return this value
+ *  if they time out.
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  */
 #define SDL_MUTEX_TIMEDOUT  1
 
 /**
+<<<<<<< HEAD
  * This is the timeout value which corresponds to never time out.
+=======
+ *  This is the timeout value which corresponds to never time out.
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  */
 #define SDL_MUTEX_MAXWAIT   (~(Uint32)0)
 
@@ -165,7 +184,11 @@ extern DECLSPEC SDL_mutex *SDLCALL SDL_CreateMutex(void);
  * unlock it the same number of times before it is actually made available for
  * other threads in the system (this is known as a "recursive mutex").
  *
+<<<<<<< HEAD
  * \param mutex the mutex to lock.
+=======
+ * \param mutex the mutex to lock
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \return 0, or -1 on error.
  *
  * \since This function is available since SDL 2.0.0.
@@ -182,7 +205,11 @@ extern DECLSPEC int SDLCALL SDL_LockMutex(SDL_mutex * mutex) SDL_ACQUIRE(mutex);
  * This technique is useful if you need exclusive access to a resource but
  * don't want to wait for it, and will return to it to try again later.
  *
+<<<<<<< HEAD
  * \param mutex the mutex to try to lock.
+=======
+ * \param mutex the mutex to try to lock
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns 0, `SDL_MUTEX_TIMEDOUT`, or -1 on error; call SDL_GetError() for
  *          more information.
  *
@@ -224,7 +251,11 @@ extern DECLSPEC int SDLCALL SDL_UnlockMutex(SDL_mutex * mutex) SDL_RELEASE(mutex
  * to destroy a locked mutex, and may result in undefined behavior depending
  * on the platform.
  *
+<<<<<<< HEAD
  * \param mutex the mutex to destroy.
+=======
+ * \param mutex the mutex to destroy
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *
  * \since This function is available since SDL 2.0.0.
  *
@@ -256,7 +287,11 @@ typedef struct SDL_semaphore SDL_sem;
  * is 0. Each post operation will atomically increment the semaphore value and
  * wake waiting threads and allow them to retry the wait operation.
  *
+<<<<<<< HEAD
  * \param initial_value the starting value of the semaphore.
+=======
+ * \param initial_value the starting value of the semaphore
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns a new semaphore or NULL on failure; call SDL_GetError() for more
  *          information.
  *
@@ -277,7 +312,11 @@ extern DECLSPEC SDL_sem *SDLCALL SDL_CreateSemaphore(Uint32 initial_value);
  * It is not safe to destroy a semaphore if there are threads currently
  * waiting on it.
  *
+<<<<<<< HEAD
  * \param sem the semaphore to destroy.
+=======
+ * \param sem the semaphore to destroy
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *
  * \since This function is available since SDL 2.0.0.
  *
@@ -301,7 +340,11 @@ extern DECLSPEC void SDLCALL SDL_DestroySemaphore(SDL_sem * sem);
  * This function is the equivalent of calling SDL_SemWaitTimeout() with a time
  * length of `SDL_MUTEX_MAXWAIT`.
  *
+<<<<<<< HEAD
  * \param sem the semaphore wait on.
+=======
+ * \param sem the semaphore wait on
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns 0 on success or a negative error code on failure; call
  *          SDL_GetError() for more information.
  *
@@ -325,7 +368,11 @@ extern DECLSPEC int SDLCALL SDL_SemWait(SDL_sem * sem);
  * the semaphore doesn't have a positive value, the function immediately
  * returns SDL_MUTEX_TIMEDOUT.
  *
+<<<<<<< HEAD
  * \param sem the semaphore to wait on.
+=======
+ * \param sem the semaphore to wait on
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns 0 if the wait succeeds, `SDL_MUTEX_TIMEDOUT` if the wait would
  *          block, or a negative error code on failure; call SDL_GetError()
  *          for more information.
@@ -349,8 +396,13 @@ extern DECLSPEC int SDLCALL SDL_SemTryWait(SDL_sem * sem);
  * signal or error, or the specified time has elapsed. If the call is
  * successful it will atomically decrement the semaphore value.
  *
+<<<<<<< HEAD
  * \param sem the semaphore to wait on.
  * \param timeout the length of the timeout, in milliseconds.
+=======
+ * \param sem the semaphore to wait on
+ * \param timeout the length of the timeout, in milliseconds
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns 0 if the wait succeeds, `SDL_MUTEX_TIMEDOUT` if the wait does not
  *          succeed in the allotted time, or a negative error code on failure;
  *          call SDL_GetError() for more information.
@@ -369,7 +421,11 @@ extern DECLSPEC int SDLCALL SDL_SemWaitTimeout(SDL_sem *sem, Uint32 timeout);
 /**
  * Atomically increment a semaphore's value and wake waiting threads.
  *
+<<<<<<< HEAD
  * \param sem the semaphore to increment.
+=======
+ * \param sem the semaphore to increment
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns 0 on success or a negative error code on failure; call
  *          SDL_GetError() for more information.
  *
@@ -387,7 +443,11 @@ extern DECLSPEC int SDLCALL SDL_SemPost(SDL_sem * sem);
 /**
  * Get the current value of a semaphore.
  *
+<<<<<<< HEAD
  * \param sem the semaphore to query.
+=======
+ * \param sem the semaphore to query
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns the current value of the semaphore.
  *
  * \since This function is available since SDL 2.0.0.
@@ -427,7 +487,11 @@ extern DECLSPEC SDL_cond *SDLCALL SDL_CreateCond(void);
 /**
  * Destroy a condition variable.
  *
+<<<<<<< HEAD
  * \param cond the condition variable to destroy.
+=======
+ * \param cond the condition variable to destroy
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *
  * \since This function is available since SDL 2.0.0.
  *
@@ -442,7 +506,11 @@ extern DECLSPEC void SDLCALL SDL_DestroyCond(SDL_cond * cond);
 /**
  * Restart one of the threads that are waiting on the condition variable.
  *
+<<<<<<< HEAD
  * \param cond the condition variable to signal.
+=======
+ * \param cond the condition variable to signal
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns 0 on success or a negative error code on failure; call
  *          SDL_GetError() for more information.
  *
@@ -459,7 +527,11 @@ extern DECLSPEC int SDLCALL SDL_CondSignal(SDL_cond * cond);
 /**
  * Restart all threads that are waiting on the condition variable.
  *
+<<<<<<< HEAD
  * \param cond the condition variable to signal.
+=======
+ * \param cond the condition variable to signal
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns 0 on success or a negative error code on failure; call
  *          SDL_GetError() for more information.
  *
@@ -486,8 +558,13 @@ extern DECLSPEC int SDLCALL SDL_CondBroadcast(SDL_cond * cond);
  * This function is the equivalent of calling SDL_CondWaitTimeout() with a
  * time length of `SDL_MUTEX_MAXWAIT`.
  *
+<<<<<<< HEAD
  * \param cond the condition variable to wait on.
  * \param mutex the mutex used to coordinate thread access.
+=======
+ * \param cond the condition variable to wait on
+ * \param mutex the mutex used to coordinate thread access
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns 0 when it is signaled or a negative error code on failure; call
  *          SDL_GetError() for more information.
  *
@@ -512,10 +589,17 @@ extern DECLSPEC int SDLCALL SDL_CondWait(SDL_cond * cond, SDL_mutex * mutex);
  *
  * The mutex must be locked before calling this function.
  *
+<<<<<<< HEAD
  * \param cond the condition variable to wait on.
  * \param mutex the mutex used to coordinate thread access.
  * \param ms the maximum time to wait, in milliseconds, or `SDL_MUTEX_MAXWAIT`
  *           to wait indefinitely.
+=======
+ * \param cond the condition variable to wait on
+ * \param mutex the mutex used to coordinate thread access
+ * \param ms the maximum time to wait, in milliseconds, or `SDL_MUTEX_MAXWAIT`
+ *           to wait indefinitely
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns 0 if the condition variable is signaled, `SDL_MUTEX_TIMEDOUT` if
  *          the condition is not signaled in the allotted time, or a negative
  *          error code on failure; call SDL_GetError() for more information.

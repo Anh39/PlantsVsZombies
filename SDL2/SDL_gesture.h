@@ -1,6 +1,10 @@
 /*
   Simple DirectMedia Layer
+<<<<<<< HEAD
   Copyright (C) 1997-2025 Sam Lantinga <slouken@libsdl.org>
+=======
+  Copyright (C) 1997-2024 Sam Lantinga <slouken@libsdl.org>
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -20,9 +24,15 @@
 */
 
 /**
+<<<<<<< HEAD
  * # CategoryGesture
  *
  * Include file for SDL gesture event handling.
+=======
+ *  \file SDL_gesture.h
+ *
+ *  Include file for SDL gesture event handling.
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  */
 
 #ifndef SDL_gesture_h_
@@ -51,7 +61,11 @@ typedef Sint64 SDL_GestureID;
  * If the parameter `touchId` is -1 (i.e., all devices), this function will
  * always return 1, regardless of whether there actually are any devices.
  *
+<<<<<<< HEAD
  * \param touchId the touch device id, or -1 for all touch devices.
+=======
+ * \param touchId the touch device id, or -1 for all touch devices
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns 1 on success or 0 if the specified device could not be found.
  *
  * \since This function is available since SDL 2.0.0.
@@ -64,7 +78,11 @@ extern DECLSPEC int SDLCALL SDL_RecordGesture(SDL_TouchID touchId);
 /**
  * Save all currently loaded Dollar Gesture templates.
  *
+<<<<<<< HEAD
  * \param dst a SDL_RWops to save to.
+=======
+ * \param dst a SDL_RWops to save to
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns the number of saved templates on success or 0 on failure; call
  *          SDL_GetError() for more information.
  *
@@ -78,8 +96,13 @@ extern DECLSPEC int SDLCALL SDL_SaveAllDollarTemplates(SDL_RWops *dst);
 /**
  * Save a currently loaded Dollar Gesture template.
  *
+<<<<<<< HEAD
  * \param gestureId a gesture id.
  * \param dst a SDL_RWops to save to.
+=======
+ * \param gestureId a gesture id
+ * \param dst a SDL_RWops to save to
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns 1 on success or 0 on failure; call SDL_GetError() for more
  *          information.
  *
@@ -94,8 +117,13 @@ extern DECLSPEC int SDLCALL SDL_SaveDollarTemplate(SDL_GestureID gestureId,SDL_R
 /**
  * Load Dollar Gesture templates from a file.
  *
+<<<<<<< HEAD
  * \param touchId a touch id.
  * \param src a SDL_RWops to load from.
+=======
+ * \param touchId a touch id
+ * \param src a SDL_RWops to load from
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns the number of loaded templates on success or a negative error code
  *          (or 0) on failure; call SDL_GetError() for more information.
  *

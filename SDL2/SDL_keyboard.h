@@ -1,6 +1,10 @@
 /*
   Simple DirectMedia Layer
+<<<<<<< HEAD
   Copyright (C) 1997-2025 Sam Lantinga <slouken@libsdl.org>
+=======
+  Copyright (C) 1997-2024 Sam Lantinga <slouken@libsdl.org>
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -20,9 +24,15 @@
 */
 
 /**
+<<<<<<< HEAD
  * # CategoryKeyboard
  *
  * Include file for SDL keyboard event handling
+=======
+ *  \file SDL_keyboard.h
+ *
+ *  Include file for SDL keyboard event handling
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  */
 
 #ifndef SDL_keyboard_h_
@@ -40,6 +50,7 @@ extern "C" {
 #endif
 
 /**
+<<<<<<< HEAD
  * The SDL keysym structure, used in key events.
  *
  * If you are looking for translated character input, see the SDL_TEXTINPUT
@@ -49,6 +60,16 @@ typedef struct SDL_Keysym
 {
     SDL_Scancode scancode;      /**< SDL physical key code - see SDL_Scancode for details */
     SDL_Keycode sym;            /**< SDL virtual key code - see SDL_Keycode for details */
+=======
+ *  \brief The SDL keysym structure, used in key events.
+ *
+ *  \note  If you are looking for translated character input, see the ::SDL_TEXTINPUT event.
+ */
+typedef struct SDL_Keysym
+{
+    SDL_Scancode scancode;      /**< SDL physical key code - see ::SDL_Scancode for details */
+    SDL_Keycode sym;            /**< SDL virtual key code - see ::SDL_Keycode for details */
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
     Uint16 mod;                 /**< current key modifiers */
     Uint32 unused;
 } SDL_Keysym;
@@ -85,7 +106,11 @@ extern DECLSPEC SDL_Window * SDLCALL SDL_GetKeyboardFocus(void);
  * Note: This function doesn't take into account whether shift has been
  * pressed or not.
  *
+<<<<<<< HEAD
  * \param numkeys if non-NULL, receives the length of the returned array.
+=======
+ * \param numkeys if non-NULL, receives the length of the returned array
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns a pointer to an array of key states.
  *
  * \since This function is available since SDL 2.0.0.
@@ -130,7 +155,11 @@ extern DECLSPEC SDL_Keymod SDLCALL SDL_GetModState(void);
  * This does not change the keyboard state, only the key modifier flags that
  * SDL reports.
  *
+<<<<<<< HEAD
  * \param modstate the desired SDL_Keymod for the keyboard.
+=======
+ * \param modstate the desired SDL_Keymod for the keyboard
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *
  * \since This function is available since SDL 2.0.0.
  *
@@ -144,7 +173,11 @@ extern DECLSPEC void SDLCALL SDL_SetModState(SDL_Keymod modstate);
  *
  * See SDL_Keycode for details.
  *
+<<<<<<< HEAD
  * \param scancode the desired SDL_Scancode to query.
+=======
+ * \param scancode the desired SDL_Scancode to query
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns the SDL_Keycode that corresponds to the given SDL_Scancode.
  *
  * \since This function is available since SDL 2.0.0.
@@ -160,7 +193,11 @@ extern DECLSPEC SDL_Keycode SDLCALL SDL_GetKeyFromScancode(SDL_Scancode scancode
  *
  * See SDL_Scancode for details.
  *
+<<<<<<< HEAD
  * \param key the desired SDL_Keycode to query.
+=======
+ * \param key the desired SDL_Keycode to query
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns the SDL_Scancode that corresponds to the given SDL_Keycode.
  *
  * \since This function is available since SDL 2.0.0.
@@ -184,7 +221,11 @@ extern DECLSPEC SDL_Scancode SDLCALL SDL_GetScancodeFromKey(SDL_Keycode key);
  * unsuitable for creating a stable cross-platform two-way mapping between
  * strings and scancodes.
  *
+<<<<<<< HEAD
  * \param scancode the desired SDL_Scancode to query.
+=======
+ * \param scancode the desired SDL_Scancode to query
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns a pointer to the name for the scancode. If the scancode doesn't
  *          have a name this function returns an empty string ("").
  *
@@ -198,7 +239,11 @@ extern DECLSPEC const char *SDLCALL SDL_GetScancodeName(SDL_Scancode scancode);
 /**
  * Get a scancode from a human-readable name.
  *
+<<<<<<< HEAD
  * \param name the human-readable scancode name.
+=======
+ * \param name the human-readable scancode name
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns the SDL_Scancode, or `SDL_SCANCODE_UNKNOWN` if the name wasn't
  *          recognized; call SDL_GetError() for more information.
  *
@@ -215,7 +260,11 @@ extern DECLSPEC SDL_Scancode SDLCALL SDL_GetScancodeFromName(const char *name);
  *
  * See SDL_Scancode and SDL_Keycode for details.
  *
+<<<<<<< HEAD
  * \param key the desired SDL_Keycode to query.
+=======
+ * \param key the desired SDL_Keycode to query
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns a pointer to a UTF-8 string that stays valid at least until the
  *          next call to this function. If you need it around any longer, you
  *          must copy it. If the key doesn't have a name, this function
@@ -232,7 +281,11 @@ extern DECLSPEC const char *SDLCALL SDL_GetKeyName(SDL_Keycode key);
 /**
  * Get a key code from a human-readable name.
  *
+<<<<<<< HEAD
  * \param name the human-readable key name.
+=======
+ * \param name the human-readable key name
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns key code, or `SDLK_UNKNOWN` if the name wasn't recognized; call
  *          SDL_GetError() for more information.
  *
@@ -254,10 +307,13 @@ extern DECLSPEC SDL_Keycode SDLCALL SDL_GetKeyFromName(const char *name);
  *
  * On some platforms using this function activates the screen keyboard.
  *
+<<<<<<< HEAD
  * On desktop platforms, SDL_StartTextInput() is implicitly called on SDL
  * window creation which will cause events SDL_TextInputEvent and
  * SDL_TextEditingEvent to begin emitting.
  *
+=======
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \since This function is available since SDL 2.0.0.
  *
  * \sa SDL_SetTextInputRect
@@ -303,11 +359,18 @@ extern DECLSPEC void SDLCALL SDL_ClearComposition(void);
 extern DECLSPEC SDL_bool SDLCALL SDL_IsTextInputShown(void);
 
 /**
+<<<<<<< HEAD
  * Set the rectangle used to type Unicode text inputs.
  *
  * Native input methods will place a window with word suggestions near it,
  * without covering the text being inputted.
  *
+=======
+ * Set the rectangle used to type Unicode text inputs. Native input methods
+ * will place a window with word suggestions near it, without covering the
+ * text being inputted.
+ * 
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * To start text input in a given location, this function is intended to be
  * called before SDL_StartTextInput, although some platforms support moving
  * the rectangle even while text input (and a composition) is active.
@@ -317,7 +380,11 @@ extern DECLSPEC SDL_bool SDLCALL SDL_IsTextInputShown(void);
  * any feedback.
  *
  * \param rect the SDL_Rect structure representing the rectangle to receive
+<<<<<<< HEAD
  *             text (ignored if NULL).
+=======
+ *             text (ignored if NULL)
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *
  * \since This function is available since SDL 2.0.0.
  *
@@ -341,7 +408,11 @@ extern DECLSPEC SDL_bool SDLCALL SDL_HasScreenKeyboardSupport(void);
 /**
  * Check whether the screen keyboard is shown for given window.
  *
+<<<<<<< HEAD
  * \param window the window for which screen keyboard should be queried.
+=======
+ * \param window the window for which screen keyboard should be queried
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns SDL_TRUE if screen keyboard is shown or SDL_FALSE if not.
  *
  * \since This function is available since SDL 2.0.0.

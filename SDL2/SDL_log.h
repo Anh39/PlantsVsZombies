@@ -1,6 +1,10 @@
 /*
   Simple DirectMedia Layer
+<<<<<<< HEAD
   Copyright (C) 1997-2025 Sam Lantinga <slouken@libsdl.org>
+=======
+  Copyright (C) 1997-2024 Sam Lantinga <slouken@libsdl.org>
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -20,6 +24,7 @@
 */
 
 /**
+<<<<<<< HEAD
  * # CategoryLog
  *
  * Simple log messages with categories and priorities.
@@ -33,6 +38,20 @@
  * - Windows: debug output stream
  * - Android: log output
  * - Others: standard error output (stderr)
+=======
+ *  \file SDL_log.h
+ *
+ *  Simple log messages with categories and priorities.
+ *
+ *  By default logs are quiet, but if you're debugging SDL you might want:
+ *
+ *      SDL_LogSetAllPriority(SDL_LOG_PRIORITY_WARN);
+ *
+ *  Here's where the messages go on different platforms:
+ *      Windows: debug output stream
+ *      Android: log output
+ *      Others: standard error output (stderr)
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  */
 
 #ifndef SDL_log_h_
@@ -48,13 +67,20 @@ extern "C" {
 
 
 /**
+<<<<<<< HEAD
  * The maximum size of a log message prior to SDL 2.0.24
  *
  * As of 2.0.24 there is no limit to the length of SDL log messages.
+=======
+ *  \brief The maximum size of a log message prior to SDL 2.0.24
+ *
+ *  As of 2.0.24 there is no limit to the length of SDL log messages.
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  */
 #define SDL_MAX_LOG_MESSAGE 4096
 
 /**
+<<<<<<< HEAD
  * The predefined log categories
  *
  * By default the application category is enabled at the INFO level, the
@@ -62,6 +88,16 @@ extern "C" {
  * VERBOSE level and all other categories are enabled at the ERROR level.
  */
 typedef enum SDL_LogCategory
+=======
+ *  \brief The predefined log categories
+ *
+ *  By default the application category is enabled at the INFO level,
+ *  the assert category is enabled at the WARN level, test is enabled
+ *  at the VERBOSE level and all other categories are enabled at the
+ *  ERROR level.
+ */
+typedef enum
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 {
     SDL_LOG_CATEGORY_APPLICATION,
     SDL_LOG_CATEGORY_ERROR,
@@ -97,9 +133,15 @@ typedef enum SDL_LogCategory
 } SDL_LogCategory;
 
 /**
+<<<<<<< HEAD
  * The predefined log priorities
  */
 typedef enum SDL_LogPriority
+=======
+ *  \brief The predefined log priorities
+ */
+typedef enum
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 {
     SDL_LOG_PRIORITY_VERBOSE = 1,
     SDL_LOG_PRIORITY_DEBUG,
@@ -114,7 +156,11 @@ typedef enum SDL_LogPriority
 /**
  * Set the priority of all log categories.
  *
+<<<<<<< HEAD
  * \param priority the SDL_LogPriority to assign.
+=======
+ * \param priority the SDL_LogPriority to assign
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *
  * \since This function is available since SDL 2.0.0.
  *
@@ -125,8 +171,13 @@ extern DECLSPEC void SDLCALL SDL_LogSetAllPriority(SDL_LogPriority priority);
 /**
  * Set the priority of a particular log category.
  *
+<<<<<<< HEAD
  * \param category the category to assign a priority to.
  * \param priority the SDL_LogPriority to assign.
+=======
+ * \param category the category to assign a priority to
+ * \param priority the SDL_LogPriority to assign
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *
  * \since This function is available since SDL 2.0.0.
  *
@@ -139,8 +190,13 @@ extern DECLSPEC void SDLCALL SDL_LogSetPriority(int category,
 /**
  * Get the priority of a particular log category.
  *
+<<<<<<< HEAD
  * \param category the category to query.
  * \returns the SDL_LogPriority for the requested category.
+=======
+ * \param category the category to query
+ * \returns the SDL_LogPriority for the requested category
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *
  * \since This function is available since SDL 2.0.0.
  *
@@ -166,7 +222,11 @@ extern DECLSPEC void SDLCALL SDL_LogResetPriorities(void);
  * = * \param fmt a printf() style message format string
  *
  * \param ... additional parameters matching % tokens in the `fmt` string, if
+<<<<<<< HEAD
  *            any.
+=======
+ *            any
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *
  * \since This function is available since SDL 2.0.0.
  *
@@ -184,10 +244,17 @@ extern DECLSPEC void SDLCALL SDL_Log(SDL_PRINTF_FORMAT_STRING const char *fmt, .
 /**
  * Log a message with SDL_LOG_PRIORITY_VERBOSE.
  *
+<<<<<<< HEAD
  * \param category the category of the message.
  * \param fmt a printf() style message format string.
  * \param ... additional parameters matching % tokens in the **fmt** string,
  *            if any.
+=======
+ * \param category the category of the message
+ * \param fmt a printf() style message format string
+ * \param ... additional parameters matching % tokens in the **fmt** string,
+ *            if any
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *
  * \since This function is available since SDL 2.0.0.
  *
@@ -205,10 +272,17 @@ extern DECLSPEC void SDLCALL SDL_LogVerbose(int category, SDL_PRINTF_FORMAT_STRI
 /**
  * Log a message with SDL_LOG_PRIORITY_DEBUG.
  *
+<<<<<<< HEAD
  * \param category the category of the message.
  * \param fmt a printf() style message format string.
  * \param ... additional parameters matching % tokens in the **fmt** string,
  *            if any.
+=======
+ * \param category the category of the message
+ * \param fmt a printf() style message format string
+ * \param ... additional parameters matching % tokens in the **fmt** string,
+ *            if any
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *
  * \since This function is available since SDL 2.0.0.
  *
@@ -226,10 +300,17 @@ extern DECLSPEC void SDLCALL SDL_LogDebug(int category, SDL_PRINTF_FORMAT_STRING
 /**
  * Log a message with SDL_LOG_PRIORITY_INFO.
  *
+<<<<<<< HEAD
  * \param category the category of the message.
  * \param fmt a printf() style message format string.
  * \param ... additional parameters matching % tokens in the **fmt** string,
  *            if any.
+=======
+ * \param category the category of the message
+ * \param fmt a printf() style message format string
+ * \param ... additional parameters matching % tokens in the **fmt** string,
+ *            if any
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *
  * \since This function is available since SDL 2.0.0.
  *
@@ -247,10 +328,17 @@ extern DECLSPEC void SDLCALL SDL_LogInfo(int category, SDL_PRINTF_FORMAT_STRING 
 /**
  * Log a message with SDL_LOG_PRIORITY_WARN.
  *
+<<<<<<< HEAD
  * \param category the category of the message.
  * \param fmt a printf() style message format string.
  * \param ... additional parameters matching % tokens in the **fmt** string,
  *            if any.
+=======
+ * \param category the category of the message
+ * \param fmt a printf() style message format string
+ * \param ... additional parameters matching % tokens in the **fmt** string,
+ *            if any
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *
  * \since This function is available since SDL 2.0.0.
  *
@@ -268,10 +356,17 @@ extern DECLSPEC void SDLCALL SDL_LogWarn(int category, SDL_PRINTF_FORMAT_STRING 
 /**
  * Log a message with SDL_LOG_PRIORITY_ERROR.
  *
+<<<<<<< HEAD
  * \param category the category of the message.
  * \param fmt a printf() style message format string.
  * \param ... additional parameters matching % tokens in the **fmt** string,
  *            if any.
+=======
+ * \param category the category of the message
+ * \param fmt a printf() style message format string
+ * \param ... additional parameters matching % tokens in the **fmt** string,
+ *            if any
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *
  * \since This function is available since SDL 2.0.0.
  *
@@ -289,10 +384,17 @@ extern DECLSPEC void SDLCALL SDL_LogError(int category, SDL_PRINTF_FORMAT_STRING
 /**
  * Log a message with SDL_LOG_PRIORITY_CRITICAL.
  *
+<<<<<<< HEAD
  * \param category the category of the message.
  * \param fmt a printf() style message format string.
  * \param ... additional parameters matching % tokens in the **fmt** string,
  *            if any.
+=======
+ * \param category the category of the message
+ * \param fmt a printf() style message format string
+ * \param ... additional parameters matching % tokens in the **fmt** string,
+ *            if any
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *
  * \since This function is available since SDL 2.0.0.
  *
@@ -310,11 +412,19 @@ extern DECLSPEC void SDLCALL SDL_LogCritical(int category, SDL_PRINTF_FORMAT_STR
 /**
  * Log a message with the specified category and priority.
  *
+<<<<<<< HEAD
  * \param category the category of the message.
  * \param priority the priority of the message.
  * \param fmt a printf() style message format string.
  * \param ... additional parameters matching % tokens in the **fmt** string,
  *            if any.
+=======
+ * \param category the category of the message
+ * \param priority the priority of the message
+ * \param fmt a printf() style message format string
+ * \param ... additional parameters matching % tokens in the **fmt** string,
+ *            if any
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *
  * \since This function is available since SDL 2.0.0.
  *
@@ -334,10 +444,17 @@ extern DECLSPEC void SDLCALL SDL_LogMessage(int category,
 /**
  * Log a message with the specified category and priority.
  *
+<<<<<<< HEAD
  * \param category the category of the message.
  * \param priority the priority of the message.
  * \param fmt a printf() style message format string.
  * \param ap a variable argument list.
+=======
+ * \param category the category of the message
+ * \param priority the priority of the message
+ * \param fmt a printf() style message format string
+ * \param ap a variable argument list
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *
  * \since This function is available since SDL 2.0.0.
  *
@@ -359,11 +476,18 @@ extern DECLSPEC void SDLCALL SDL_LogMessageV(int category,
  *
  * This function is called by SDL when there is new text to be logged.
  *
+<<<<<<< HEAD
  * \param userdata what was passed as `userdata` to
  *                 SDL_LogSetOutputFunction().
  * \param category the category of the message.
  * \param priority the priority of the message.
  * \param message the message being output.
+=======
+ * \param userdata what was passed as `userdata` to SDL_LogSetOutputFunction()
+ * \param category the category of the message
+ * \param priority the priority of the message
+ * \param message the message being output
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  */
 typedef void (SDLCALL *SDL_LogOutputFunction)(void *userdata, int category, SDL_LogPriority priority, const char *message);
 
@@ -371,9 +495,15 @@ typedef void (SDLCALL *SDL_LogOutputFunction)(void *userdata, int category, SDL_
  * Get the current log output function.
  *
  * \param callback an SDL_LogOutputFunction filled in with the current log
+<<<<<<< HEAD
  *                 callback.
  * \param userdata a pointer filled in with the pointer that is passed to
  *                 `callback`.
+=======
+ *                 callback
+ * \param userdata a pointer filled in with the pointer that is passed to
+ *                 `callback`
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *
  * \since This function is available since SDL 2.0.0.
  *
@@ -384,8 +514,13 @@ extern DECLSPEC void SDLCALL SDL_LogGetOutputFunction(SDL_LogOutputFunction *cal
 /**
  * Replace the default log output function with one of your own.
  *
+<<<<<<< HEAD
  * \param callback an SDL_LogOutputFunction to call instead of the default.
  * \param userdata a pointer that is passed to `callback`.
+=======
+ * \param callback an SDL_LogOutputFunction to call instead of the default
+ * \param userdata a pointer that is passed to `callback`
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *
  * \since This function is available since SDL 2.0.0.
  *

@@ -1,6 +1,10 @@
 /*
   Simple DirectMedia Layer
+<<<<<<< HEAD
   Copyright (C) 1997-2025 Sam Lantinga <slouken@libsdl.org>
+=======
+  Copyright (C) 1997-2024 Sam Lantinga <slouken@libsdl.org>
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -20,9 +24,15 @@
 */
 
 /**
+<<<<<<< HEAD
  * # CategoryRect
  *
  * Header file for SDL_rect definition and management functions.
+=======
+ *  \file SDL_rect.h
+ *
+ *  Header file for SDL_rect definition and management functions.
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  */
 
 #ifndef SDL_rect_h_
@@ -135,8 +145,13 @@ SDL_FORCE_INLINE SDL_bool SDL_RectEquals(const SDL_Rect *a, const SDL_Rect *b)
  *
  * If either pointer is NULL the function will return SDL_FALSE.
  *
+<<<<<<< HEAD
  * \param A an SDL_Rect structure representing the first rectangle.
  * \param B an SDL_Rect structure representing the second rectangle.
+=======
+ * \param A an SDL_Rect structure representing the first rectangle
+ * \param B an SDL_Rect structure representing the second rectangle
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns SDL_TRUE if there is an intersection, SDL_FALSE otherwise.
  *
  * \since This function is available since SDL 2.0.0.
@@ -151,10 +166,17 @@ extern DECLSPEC SDL_bool SDLCALL SDL_HasIntersection(const SDL_Rect * A,
  *
  * If `result` is NULL then this function will return SDL_FALSE.
  *
+<<<<<<< HEAD
  * \param A an SDL_Rect structure representing the first rectangle.
  * \param B an SDL_Rect structure representing the second rectangle.
  * \param result an SDL_Rect structure filled in with the intersection of
  *               rectangles `A` and `B`.
+=======
+ * \param A an SDL_Rect structure representing the first rectangle
+ * \param B an SDL_Rect structure representing the second rectangle
+ * \param result an SDL_Rect structure filled in with the intersection of
+ *               rectangles `A` and `B`
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns SDL_TRUE if there is an intersection, SDL_FALSE otherwise.
  *
  * \since This function is available since SDL 2.0.0.
@@ -168,10 +190,17 @@ extern DECLSPEC SDL_bool SDLCALL SDL_IntersectRect(const SDL_Rect * A,
 /**
  * Calculate the union of two rectangles.
  *
+<<<<<<< HEAD
  * \param A an SDL_Rect structure representing the first rectangle.
  * \param B an SDL_Rect structure representing the second rectangle.
  * \param result an SDL_Rect structure filled in with the union of rectangles
  *               `A` and `B`.
+=======
+ * \param A an SDL_Rect structure representing the first rectangle
+ * \param B an SDL_Rect structure representing the second rectangle
+ * \param result an SDL_Rect structure filled in with the union of rectangles
+ *               `A` and `B`
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *
  * \since This function is available since SDL 2.0.0.
  */
@@ -186,11 +215,19 @@ extern DECLSPEC void SDLCALL SDL_UnionRect(const SDL_Rect * A,
  * considered.
  *
  * \param points an array of SDL_Point structures representing points to be
+<<<<<<< HEAD
  *               enclosed.
  * \param count the number of structures in the `points` array.
  * \param clip an SDL_Rect used for clipping or NULL to enclose all points.
  * \param result an SDL_Rect structure filled in with the minimal enclosing
  *               rectangle.
+=======
+ *               enclosed
+ * \param count the number of structures in the `points` array
+ * \param clip an SDL_Rect used for clipping or NULL to enclose all points
+ * \param result an SDL_Rect structure filled in with the minimal enclosing
+ *               rectangle
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns SDL_TRUE if any points were enclosed or SDL_FALSE if all the
  *          points were outside of the clipping rectangle.
  *
@@ -210,11 +247,19 @@ extern DECLSPEC SDL_bool SDLCALL SDL_EnclosePoints(const SDL_Point * points,
  * both ends will be clipped to the boundary of the rectangle and the new
  * coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.
  *
+<<<<<<< HEAD
  * \param rect an SDL_Rect structure representing the rectangle to intersect.
  * \param X1 a pointer to the starting X-coordinate of the line.
  * \param Y1 a pointer to the starting Y-coordinate of the line.
  * \param X2 a pointer to the ending X-coordinate of the line.
  * \param Y2 a pointer to the ending Y-coordinate of the line.
+=======
+ * \param rect an SDL_Rect structure representing the rectangle to intersect
+ * \param X1 a pointer to the starting X-coordinate of the line
+ * \param Y1 a pointer to the starting Y-coordinate of the line
+ * \param X2 a pointer to the ending X-coordinate of the line
+ * \param Y2 a pointer to the ending Y-coordinate of the line
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns SDL_TRUE if there is an intersection, SDL_FALSE otherwise.
  *
  * \since This function is available since SDL 2.0.0.
@@ -274,8 +319,13 @@ SDL_FORCE_INLINE SDL_bool SDL_FRectEquals(const SDL_FRect *a, const SDL_FRect *b
  *
  * If either pointer is NULL the function will return SDL_FALSE.
  *
+<<<<<<< HEAD
  * \param A an SDL_FRect structure representing the first rectangle.
  * \param B an SDL_FRect structure representing the second rectangle.
+=======
+ * \param A an SDL_FRect structure representing the first rectangle
+ * \param B an SDL_FRect structure representing the second rectangle
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns SDL_TRUE if there is an intersection, SDL_FALSE otherwise.
  *
  * \since This function is available since SDL 2.0.22.
@@ -290,10 +340,17 @@ extern DECLSPEC SDL_bool SDLCALL SDL_HasIntersectionF(const SDL_FRect * A,
  *
  * If `result` is NULL then this function will return SDL_FALSE.
  *
+<<<<<<< HEAD
  * \param A an SDL_FRect structure representing the first rectangle.
  * \param B an SDL_FRect structure representing the second rectangle.
  * \param result an SDL_FRect structure filled in with the intersection of
  *               rectangles `A` and `B`.
+=======
+ * \param A an SDL_FRect structure representing the first rectangle
+ * \param B an SDL_FRect structure representing the second rectangle
+ * \param result an SDL_FRect structure filled in with the intersection of
+ *               rectangles `A` and `B`
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns SDL_TRUE if there is an intersection, SDL_FALSE otherwise.
  *
  * \since This function is available since SDL 2.0.22.
@@ -307,10 +364,17 @@ extern DECLSPEC SDL_bool SDLCALL SDL_IntersectFRect(const SDL_FRect * A,
 /**
  * Calculate the union of two rectangles with float precision.
  *
+<<<<<<< HEAD
  * \param A an SDL_FRect structure representing the first rectangle.
  * \param B an SDL_FRect structure representing the second rectangle.
  * \param result an SDL_FRect structure filled in with the union of rectangles
  *               `A` and `B`.
+=======
+ * \param A an SDL_FRect structure representing the first rectangle
+ * \param B an SDL_FRect structure representing the second rectangle
+ * \param result an SDL_FRect structure filled in with the union of rectangles
+ *               `A` and `B`
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *
  * \since This function is available since SDL 2.0.22.
  */
@@ -326,11 +390,19 @@ extern DECLSPEC void SDLCALL SDL_UnionFRect(const SDL_FRect * A,
  * considered.
  *
  * \param points an array of SDL_FPoint structures representing points to be
+<<<<<<< HEAD
  *               enclosed.
  * \param count the number of structures in the `points` array.
  * \param clip an SDL_FRect used for clipping or NULL to enclose all points.
  * \param result an SDL_FRect structure filled in with the minimal enclosing
  *               rectangle.
+=======
+ *               enclosed
+ * \param count the number of structures in the `points` array
+ * \param clip an SDL_FRect used for clipping or NULL to enclose all points
+ * \param result an SDL_FRect structure filled in with the minimal enclosing
+ *               rectangle
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns SDL_TRUE if any points were enclosed or SDL_FALSE if all the
  *          points were outside of the clipping rectangle.
  *
@@ -351,11 +423,19 @@ extern DECLSPEC SDL_bool SDLCALL SDL_EncloseFPoints(const SDL_FPoint * points,
  * both ends will be clipped to the boundary of the rectangle and the new
  * coordinates saved in `X1`, `Y1`, `X2`, and/or `Y2` as necessary.
  *
+<<<<<<< HEAD
  * \param rect an SDL_FRect structure representing the rectangle to intersect.
  * \param X1 a pointer to the starting X-coordinate of the line.
  * \param Y1 a pointer to the starting Y-coordinate of the line.
  * \param X2 a pointer to the ending X-coordinate of the line.
  * \param Y2 a pointer to the ending Y-coordinate of the line.
+=======
+ * \param rect an SDL_FRect structure representing the rectangle to intersect
+ * \param X1 a pointer to the starting X-coordinate of the line
+ * \param Y1 a pointer to the starting Y-coordinate of the line
+ * \param X2 a pointer to the ending X-coordinate of the line
+ * \param Y2 a pointer to the ending Y-coordinate of the line
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \returns SDL_TRUE if there is an intersection, SDL_FALSE otherwise.
  *
  * \since This function is available since SDL 2.0.22.

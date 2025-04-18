@@ -1,6 +1,10 @@
 /*
   Simple DirectMedia Layer
+<<<<<<< HEAD
   Copyright (C) 1997-2025 Sam Lantinga <slouken@libsdl.org>
+=======
+  Copyright (C) 1997-2024 Sam Lantinga <slouken@libsdl.org>
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
 
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -19,7 +23,11 @@
   3. This notice may not be removed or altered from any source distribution.
 */
 
+<<<<<<< HEAD
 /*
+=======
+/**
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  *  \file SDL_test_crc32.h
  *
  *  Include file for SDL test framework.
@@ -60,7 +68,11 @@ extern "C" {
  #define CRC32_POLY 0xEDB88320   /* Perl String::CRC32 compatible */
 #endif
 
+<<<<<<< HEAD
 /*
+=======
+/**
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * Data structure for CRC32 (checksum) computation
  */
   typedef struct {
@@ -69,7 +81,11 @@ extern "C" {
 
 /* ---------- Function Prototypes ------------- */
 
+<<<<<<< HEAD
 /*
+=======
+/**
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \brief Initialize the CRC context
  *
  * Note: The function initializes the crc table required for all crc calculations.
@@ -82,7 +98,11 @@ extern "C" {
  int SDLTest_Crc32Init(SDLTest_Crc32Context * crcContext);
 
 
+<<<<<<< HEAD
 /*
+=======
+/**
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \brief calculate a crc32 from a data block
  *
  * \param crcContext         pointer to context variable
@@ -101,7 +121,11 @@ int SDLTest_Crc32CalcEnd(SDLTest_Crc32Context * crcContext, CrcUint32 *crc32);
 int SDLTest_Crc32CalcBuffer(SDLTest_Crc32Context * crcContext, CrcUint8 *inBuf, CrcUint32 inLen, CrcUint32 *crc32);
 
 
+<<<<<<< HEAD
 /*
+=======
+/**
+>>>>>>> 5e9bf6f7f7c32dc8630af8186b69b98806c89a83
  * \brief clean up CRC context
  *
  * \param crcContext        pointer to context variable
