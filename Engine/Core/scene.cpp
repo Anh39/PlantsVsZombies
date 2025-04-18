@@ -99,6 +99,7 @@ void Scene::ProcessFrame(float delta) {
     }
 
     queue<Node*> travelQueue;
+    stack<Node*> travelStack;
     queue<Node*> updateQueue;
     queue<EventNode*> processEventQueue;
     queue<RenderNode*> renderQueue;
@@ -159,15 +160,15 @@ void Scene::ProcessFrame(float delta) {
     for (unsigned int i=0; i<events.size(); i++) {
         delete events[i];
     }
-    travelQueue.push(root);
-    while (!travelQueue.empty())
+    travelStack.push(root);
+    while (!travelStack.empty())
     {
-        Node* current = travelQueue.front();
-        travelQueue.pop();
+        Node* current = travelStack.top();
+        travelStack.pop();
         int size = current->children.size();
-        for(int i=0; i<size; i++) {
+        for(int i=size-1; i>=0; i--) {
             if (current->children[i]->isVisible) {
-                travelQueue.push(current->children[i]);
+                travelStack.push(current->children[i]);
             }
         }
         if (current == nullptr) continue;

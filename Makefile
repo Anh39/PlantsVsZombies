@@ -21,6 +21,7 @@ GAME_SRC = main.cpp \
 	$(wildcard Game/UI/AdventureMode/*.cpp) \
 	$(wildcard Game/UI/OverlayMenu/*.cpp) \
 	$(wildcard Game/UI/OverlayMenu/Components/*.cpp) \
+	$(wildcard Game/UI/OverlayMenu/Overlays/*.cpp) \
 	$(wildcard Game/UI/Components/*.cpp) \
 	$(wildcard Game/UI/Widgets/*.cpp) \
 	$(wildcard Game/Levels/*.cpp) \

@@ -31,6 +31,7 @@ OverlayMenuScene::OverlayMenuScene(string levelName) {
     this->optionMenu->position = Vector2(0, 0);
     this->optionMenu->isVisible = false;
     this->optionMenu->OnBackToTitle = [this]() {
+        GameLoop::Resume();
         if (this->BackTitleFunction) {
             this->BackTitleFunction();
         }
@@ -81,6 +82,22 @@ OverlayMenuScene::OverlayMenuScene(string levelName) {
         this->seedBank->AddNewCard(plantTemplate);
     }
     this->seedBank->SetPlantSize(Vector2(150, 150));
+
+
+    this->startOverlay = new StartOverlay();
+    this->startOverlay->Start();
+    this->root->AddChildren(this->startOverlay);
+
+    this->winOverlay = new WinOverlay();
+    this->root->AddChildren(this->winOverlay);
+    this->winOverlay->OnEnd = [this]() {
+        if (this->BackToAdventureFunction) {
+            this->BackToAdventureFunction();
+        }
+    };
+
+    this->loseOverlay = new LoseOverlay();
+    this->root->AddChildren(this->loseOverlay);
 }
 
 OverlayMenuScene::~OverlayMenuScene() {

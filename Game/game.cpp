@@ -3,6 +3,7 @@
 #include "UI/ui.h"
 
 void SwitchTitleMenuScene();
+void SwitchAdventureModeScene();
 
 void SwitchGameLevelScene(std::string level) {
     std::cout << "Game level\n";
@@ -10,6 +11,7 @@ void SwitchGameLevelScene(std::string level) {
     OverlayMenuScene* overlayMenu = new OverlayMenuScene(level);
     overlayMenu->SetAsCurrentScene();
     overlayMenu->BackTitleFunction = SwitchTitleMenuScene;
+    overlayMenu->BackToAdventureFunction = SwitchAdventureModeScene;
     throw std::runtime_error("Switch scene");
 }
 
