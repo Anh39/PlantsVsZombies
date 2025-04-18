@@ -2,11 +2,12 @@
 #include "engine.h"
 #include "Components/include.h"
 #include "../Components/include.h"
-
+#include <functional>
 
 class OverlayMenuScene: public Scene
 {
 public:
+    std::function<void()> BackTitleFunction;
     OverlayMenuScene(std::string levelName);
     ~OverlayMenuScene();
 

@@ -2,11 +2,14 @@
 #include "engine.h"
 #include "UI/ui.h"
 
+void SwitchTitleMenuScene();
+
 void SwitchGameLevelScene(std::string level) {
     std::cout << "Game level\n";
     delete Scene::current;
     OverlayMenuScene* overlayMenu = new OverlayMenuScene(level);
     overlayMenu->SetAsCurrentScene();
+    overlayMenu->BackTitleFunction = SwitchTitleMenuScene;
     throw std::runtime_error("Switch scene");
 }
 
@@ -16,6 +19,7 @@ void SwitchAdventureModeScene() {
     AdventureModeScene* adventureMode = new AdventureModeScene();
     adventureMode->SetAsCurrentScene();
     adventureMode->StartGameLevelFunction = SwitchGameLevelScene;
+    adventureMode->BackToTitleFunction = SwitchTitleMenuScene;
     throw std::runtime_error("Switch scene");
 }
 

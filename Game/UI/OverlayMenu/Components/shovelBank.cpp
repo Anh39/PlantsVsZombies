@@ -35,14 +35,13 @@ void ShovelBank::Update(float delta) {
     if (MouseEvent::JustPressed(MouseType::MouseLeft) && rect.Contain(MouseEvent::Position())) {
         this->isMoving = true;
     }
-    if (MouseEvent::JustReleased(MouseType::MouseLeft)) {
-        this->isMoving = false;
-        if (this->OnShove) {
-            this->OnShove(MouseEvent::Position());
-        }
-        this->shovel->position = this->padding;
-    }
     if (this->isMoving) {
         this->shovel->position = MouseEvent::Position() - absPosition - this->shovel->size/2;
+        if (MouseEvent::JustReleased(MouseType::MouseLeft)) {
+            this->isMoving = false;
+            ShovelEvent* event = new ShovelEvent(MouseEvent::Position());
+            EventQueue::PushEvent(event);
+            this->shovel->position = this->padding;
+        }
     }
 }

@@ -3,10 +3,22 @@
 #include "engine.h"
 #include <functional>
 
+class ShovelEvent: public Event 
+{
+public:
+    Vector2 absolutePostion;
+
+    ShovelEvent(Vector2 absolutePostion) {
+        this->absolutePostion = absolutePostion;
+    }
+    ~ShovelEvent() {
+
+    };
+};
+
 class ShovelBank: public Node
 {
 public:
-    std::function<void(Vector2)> OnShove;
     ShovelBank();
     ~ShovelBank();
 

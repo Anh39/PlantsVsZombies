@@ -33,10 +33,13 @@ void PlantCard::Update(float delta) {
     }
     if (this->isMoving) {
         this->createdTarget->position = mousePosition - this->GetAbsolutePosition() - this->createdTarget->GetSize() / 2;
+        Vector2 absolutePosition = mousePosition - this->createdTarget->GetSize() / 2;
+        PlantCardHoverEvent* hoverEvent = new PlantCardHoverEvent(this->iconRect->texture, absolutePosition);
+        EventQueue::PushEvent(hoverEvent);
+
         if (MouseEvent::JustReleased(MouseType::MouseLeft)) {
-            Vector2 absolutePosition = mousePosition - this->createdTarget->GetSize() / 2;
-            PlantCardPlacedEvent* event = new PlantCardPlacedEvent(this->createdTarget, absolutePosition);
-            EventQueue::PushEvent(event);
+            PlantCardPlacedEvent* placeEvent = new PlantCardPlacedEvent(this->createdTarget, absolutePosition);
+            EventQueue::PushEvent(placeEvent);
 
             this->isMoving = false;
             this->createdTarget = nullptr;

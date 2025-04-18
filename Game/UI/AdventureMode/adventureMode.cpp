@@ -1,6 +1,7 @@
 #include "adventureMode.h"
 #include "levelSelect.h"
 #include "../Widgets/include.h"
+#include "../Components/menuButton.h"
 
 AdventureModeScene::AdventureModeScene() {
     TextureRect* background = new TextureRect();
@@ -31,9 +32,20 @@ AdventureModeScene::AdventureModeScene() {
         }
     }
 
+    MenuButton* backButton = new MenuButton();
+    backButton->SetText("Back");
+    backButton->OnClicked = [this] () {
+        if (this->BackToTitleFunction) {
+            this->BackToTitleFunction();
+        }
+    };
+    backButton->SetSize(Vector2(150, 75));
+    backButton->position = Vector2(40, 40);
+
     this->root->AddChildren(background);
     this->root->AddChildren(titleTextRect);
     this->root->AddChildren(levelSelectMenu);
+    this->root->AddChildren(backButton);
 }
 
 AdventureModeScene::~AdventureModeScene() {

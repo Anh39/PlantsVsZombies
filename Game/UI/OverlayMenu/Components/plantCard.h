@@ -20,7 +20,18 @@ public:
     };
 
 };
-
+class PlantCardHoverEvent: public Event
+{
+public:
+    Texture* icon;
+    Vector2 absolutePosition;
+    PlantCardHoverEvent(Texture* icon, Vector2 absolutePosition) {
+        this->icon = icon;
+        this->absolutePosition = absolutePosition;
+    }
+    ~PlantCardHoverEvent() {
+    }
+};
 class PlantCard: public Node
 {
 public:

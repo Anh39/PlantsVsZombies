@@ -27,9 +27,14 @@ OverlayMenuScene::OverlayMenuScene(string levelName) {
     };
     this->root->AddChildren(this->menuButton);
 
-    this->optionMenu = new OptionMenu();
+    this->optionMenu = new OptionMenu(false);
     this->optionMenu->position = Vector2(0, 0);
     this->optionMenu->isVisible = false;
+    this->optionMenu->OnBackToTitle = [this]() {
+        if (this->BackTitleFunction) {
+            this->BackTitleFunction();
+        }
+    };
     this->optionMenu->OnBackToGame = [this]() {
         GameLoop::Resume();
         this->optionMenu->isVisible = false;
@@ -63,7 +68,10 @@ OverlayMenuScene::OverlayMenuScene(string levelName) {
     this->sunController = new SunController();
     this->root->AddChildren(this->sunController);
 
-    this->plantContainer = new PlantContainer();
+    Vector2 mapSize = Vector2(1770, 900);
+    Vector2 mapGridSize = Vector2(9, 5);
+    this->plantContainer = new PlantContainer(mapSize, mapGridSize);
+    this->plantContainer->position = Vector2(70, 130);
     this->root->AddChildren(this->plantContainer);
 
     for(BasePlant* plantTemplate: level->plants) {

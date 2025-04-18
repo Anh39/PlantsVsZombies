@@ -58,4 +58,5 @@ void GameLoop::Start() {
 
 void GameLoop::Stop() {
     GameLoop::running = false;
+    std::cout << "Exit game" << std::endl;
 }
