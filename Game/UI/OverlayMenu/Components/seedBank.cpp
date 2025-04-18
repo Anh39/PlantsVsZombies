@@ -42,3 +42,14 @@ void SeedBank::AddNewCard(BasePlant* templatePlant) {
 
     cards.push_back(newCard);
 }
+
+void SeedBank::UpdateCardSunCostOverlay(float sunAmount) {
+    for(PlantCard* card: this->cards) {
+        card->UpdateSunCostOverlay(sunAmount);
+    }
+}
+void SeedBank::Update(float delta) {
+    if(this->updateCardSunCostFunction) {
+        this->updateCardSunCostFunction();
+    }
+}

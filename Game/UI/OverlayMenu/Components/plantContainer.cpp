@@ -46,6 +46,9 @@ void PlantContainer::ProcessEvent(Event* event) {
         bool success = this->PlacePlant(plant, position);
         if (success) {
             plantCardPlacedEvent->handled = true;
+            if (plantCardPlacedEvent->onSuccess) {
+                plantCardPlacedEvent->onSuccess();
+            }
             this->ClearHologram();
         }
     }

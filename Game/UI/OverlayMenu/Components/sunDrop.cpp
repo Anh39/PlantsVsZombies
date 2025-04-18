@@ -8,6 +8,10 @@ SunDrop::SunDrop() {
     this->outerDegree = 0;
     this->velocity = Vector2(0, 0);
     this->isCollected = false;
+
+    this->maxY = 1000;
+    this->disappearCooldown = 5;
+    this->disappearTime = this->disappearCooldown;
 }
 
 SunDrop::~SunDrop() {
@@ -17,6 +21,15 @@ SunDrop::~SunDrop() {
 }
 void SunDrop::Update(float delta) {
     this->position += this->velocity * delta;
+    if (this->position.y > this->maxY) {
+        this->position.y = this->maxY;
+    }
+    if (this->position.y >= this->maxY) {
+        this->disappearTime -= delta;
+        if (this->disappearTime < 0) {
+            this->Delete();
+        }
+    }
 
     this->middleDegree += delta * 60;
     this->outerDegree -= delta * 45;
@@ -25,7 +38,7 @@ void SunDrop::Update(float delta) {
     if (this->outerDegree < 0) this->outerDegree += 360;
 
     if (this->isCollected) {
-        if ((this->GetAbsolutePosition() - this->destination).GetSqrLength() < 1) {
+        if ((this->GetAbsolutePosition() - this->collectDestination).GetSqrLength() < 1) {
             this->Delete();
         }
     }
@@ -33,14 +46,14 @@ void SunDrop::Update(float delta) {
     Rect rect = this->GetRect();
     rect.SetPosition(this->GetAbsolutePosition());
     if (MouseEvent::JustPressed(MouseType::MouseLeft) && rect.Contain(MouseEvent::Position())) {
-        if (this->OnClicked) {
+        if (!this->isCollected && this->OnClicked) {
             this->OnClicked(this);
         }
     }
 }
 void SunDrop::Collect(Vector2 destination, float time) {
     this->isCollected = true;
-    this->destination = destination;
+    this->collectDestination = destination;
     this->moveTime = time;
     this->velocity = (destination - this->GetAbsolutePosition())/time;
 }

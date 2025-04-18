@@ -12,7 +12,11 @@ Level::~Level() {
 }
 
 BasePlant::BasePlant() {
-
+    this->sunCost = 0;
+    this->cardCooldown = 10;
+    this->heathPoint = 1;
+    this->cooldown = 1;
+    this->time = 0;
 }
 BasePlant::~BasePlant() {
 

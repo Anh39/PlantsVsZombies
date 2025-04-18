@@ -6,11 +6,21 @@
 class SunCollectedEvent: public Event
 {
 public:
-    SunCollectedEvent() {};
+    SunCollectedEvent(float amount) {
+        this->amount = amount;
+    };
     ~SunCollectedEvent() {};
-    float Amount;
+    float amount;
 };
-
+class SunSpentEvent: public Event
+{
+public:
+    SunSpentEvent(float amount) {
+        this->amount = amount;
+    };
+    ~SunSpentEvent() {};
+    float amount;
+};
 
 class SunController: public Node
 {

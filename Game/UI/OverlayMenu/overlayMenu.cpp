@@ -51,6 +51,9 @@ OverlayMenuScene::OverlayMenuScene(string levelName) {
     this->seedBank = new SeedBank(9);
     this->seedBank->position = Vector2(25+125, 0);
     this->seedBank->SetSize(Vector2(800, 150));
+    this->seedBank->updateCardSunCostFunction = [this]() {
+        this->seedBank->UpdateCardSunCostOverlay(this->sunBank->Amount);
+    };
     this->root->AddChildren(this->seedBank);
 
     this->shovelBank = new ShovelBank();

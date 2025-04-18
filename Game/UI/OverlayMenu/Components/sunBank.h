@@ -13,7 +13,10 @@ public:
     float Amount;
     void Update(float delta) override;
     void ProcessEvent(Event* event) override;
+
+    // static float GetAmount();
 private:
+    // static SunBank* current;
     TextureRect* background;
     TextRect* counter;
 };

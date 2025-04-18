@@ -7,6 +7,7 @@ class SunDrop: public RenderNode
 {
 public:
     std::function<void(SunDrop*)> OnClicked;
+    float maxY;
     SunDrop();
     ~SunDrop();
 
@@ -16,9 +17,12 @@ public:
 
     void Collect(Vector2 destination, float time);
 private:
+    float disappearCooldown;
+    float disappearTime;
+
     float middleDegree;
     float outerDegree;
-    Vector2 destination;
+    Vector2 collectDestination;
     float moveTime;
     bool isCollected;
 

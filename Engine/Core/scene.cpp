@@ -66,7 +66,7 @@ void Scene::ProcessFrame(float delta) {
     Renderer* renderer = this->renderer;
     SDL_SetRenderDrawColor(renderer->SDL(), 0, 0, 0, 255);
     SDL_RenderClear(renderer->SDL());
-    SDL_SetRenderDrawBlendMode(renderer->SDL(), SDL_BLENDMODE_ADD);
+    SDL_SetRenderDrawBlendMode(renderer->SDL(), SDL_BLENDMODE_BLEND);
 
     bool isLogging = false;
     if (KeyboardEvent::JustPressed(KeyboardType::F1)) isLogging = true;

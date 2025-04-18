@@ -13,6 +13,12 @@ public:
 class BasePlant: public Node 
 {
 public:
+    float sunCost;
+    float cardCooldown;
+    float heathPoint;
+    float cooldown;
+    float time;
+
     BasePlant();
     ~BasePlant();
     
@@ -20,6 +26,7 @@ public:
     virtual void SetSize(const Vector2& size);
     virtual Vector2 GetSize();
     virtual Texture* GetIcon();
+
 };
 class Level
 {

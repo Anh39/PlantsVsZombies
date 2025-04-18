@@ -2,13 +2,15 @@
 
 #include "engine.h"
 #include "../../../level.h"
+#include "../../Components/include.h"
+#include <functional>
 
 class PlantCardPlacedEvent: public Event 
 {
 public:
     BasePlant* plant;
     Vector2 absolutePosition;
-
+    std::function<void()> onSuccess;
     PlantCardPlacedEvent(BasePlant* plant, Vector2 absolutePosition) {
         this->plant = plant;
         this->absolutePosition = absolutePosition;
@@ -49,8 +51,10 @@ public:
     void SetPlantSize(const Vector2& size);
     Vector2 GetPlantSize();
 
+    void UpdateSunCostOverlay(float sunAmount);
     Rect GetRect();
 private:
+    float time;
     bool isMoving;
 
     BasePlant* targetPlant;
@@ -60,4 +64,9 @@ private:
     Vector2 plantSize;
     TextureRect* background;    
     TextureRect* iconRect;
+    ColorRect* suncostOverlay;
+    ColorRect* cooldownOverlay;
+    TextRect* sunCostTextRect;
+
+    void RefreshSunCost();
 };

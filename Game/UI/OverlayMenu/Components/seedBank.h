@@ -4,10 +4,12 @@
 #include <vector>
 #include "plantCard.h"
 #include "../../../level.h"
+#include <functional>
 
 class SeedBank: public Node
 {
 public:
+    std::function<void()> updateCardSunCostFunction;
     SeedBank(int maxSlots);
     ~SeedBank();
     void SetSize(const Vector2& size);
@@ -16,6 +18,8 @@ public:
     Vector2 GetPlantSize();
 
     void AddNewCard(BasePlant* templatePlant);
+    void UpdateCardSunCostOverlay(float sunAmount);
+    void Update(float delta) override;
 private:
 
     int maxSlots;

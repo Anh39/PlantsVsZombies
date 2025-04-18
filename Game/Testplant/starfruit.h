@@ -8,6 +8,7 @@ class TestPlant: public BasePlant
 {
 public:
     TestPlant() {
+        this->sunCost = 200;
         this->size = Vector2(0, 0);
         this->textureRect = new TextureRect();
         this->textureRect->texture = GetIcon();

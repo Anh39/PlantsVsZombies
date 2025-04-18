@@ -1,5 +1,13 @@
 #include "sunBank.h"
 
+// SunBank* SunBank::current = nullptr;
+// float SunBank::GetAmount() {
+//     if (SunBank::current != nullptr) {
+//         return SunBank::current->Amount;
+//     }
+//     return 0;
+// }
+
 SunBank::SunBank() {
     this->Amount = 0;
 
@@ -11,6 +19,7 @@ SunBank::SunBank() {
 
     this->AddChildren(this->background);
     this->AddChildren(this->counter);
+    // SunBank::current = this;
 }
 
 SunBank::~SunBank() {
@@ -48,6 +57,10 @@ void SunBank::SetSize(const Vector2& size) {
 void SunBank::ProcessEvent(Event* event) {
     SunCollectedEvent* sunCollectedEvent = dynamic_cast<SunCollectedEvent*>(event);
     if (sunCollectedEvent) {
-        this->Amount += sunCollectedEvent->Amount;
+        this->Amount += sunCollectedEvent->amount;
+    }
+    SunSpentEvent* sunSpentEvent = dynamic_cast<SunSpentEvent*>(event);
+    if (sunSpentEvent) {
+        this->Amount -= sunSpentEvent->amount;
     }
 }
