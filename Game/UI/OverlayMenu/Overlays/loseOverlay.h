@@ -1,10 +1,13 @@
 #pragma once
 
 #include "engine.h"
+#include "../Components/include.h"
 
 class LoseOverlay: public EventNode
 {
 public:
+    std::function<void()> ToTitleFunction;
+
     LoseOverlay();
     ~LoseOverlay();
 
@@ -13,4 +16,5 @@ public:
     void ProcessEvent(Event* event) override;
 private:
     TextureRect* background;
+    MenuButton* titleButton;
 };

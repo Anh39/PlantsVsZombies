@@ -23,7 +23,9 @@ void WinOverlay::Update(float delta) {
         this->trophy->Start();
     }
 }
-
+void WinOverlay::Start() {
+    this->trophy->Start();
+}
 void WinOverlay::ProcessEvent(Event* event) {
     WinEvent* winEvent = dynamic_cast<WinEvent*>(event);
     if (winEvent) {

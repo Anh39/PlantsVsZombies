@@ -99,6 +99,12 @@ OverlayMenuScene::OverlayMenuScene(string levelName) {
 
     this->loseOverlay = new LoseOverlay();
     this->root->AddChildren(this->loseOverlay);
+
+    this->loseOverlay->ToTitleFunction = [this]() {
+        if(this->BackTitleFunction) {
+            this->BackTitleFunction();
+        }
+    };
 }
 
 OverlayMenuScene::~OverlayMenuScene() {
