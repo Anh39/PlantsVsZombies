@@ -6,6 +6,12 @@ using namespace std;
 
 Map::Map(Vector2 size, Vector2 mapSize, vector<ZombieWave> zombieWaves) {
     this->waves = zombieWaves;
+    this->totalZombie = 0;
+    for(auto& wave: zombieWaves) {
+        for(auto& group: wave.zombies) {
+            this->totalZombie += group.zombies.size();
+        }
+    }
     this->Name = "Map";
     this->size = size;
     this->mapSize = mapSize;
@@ -58,6 +64,14 @@ void Map::ProcessEvent(Event* event) {
         Vector2 position = shovelEvent->absolutePostion - this->GetAbsolutePosition();
         this->ShovelPlant(position);
     }
+    ZombieDieEvent* zombieDieEvent = dynamic_cast<ZombieDieEvent*>(event);
+    if (zombieDieEvent) {
+        this->totalZombie -= 1;
+        if (this->totalZombie == 0) {
+            WinEvent* event = new WinEvent();
+            EventQueue::PushEvent(event);
+        }
+    }
 }
 
 Vector2 Map::GetTileSize() {
@@ -73,6 +87,8 @@ void Map::Update(float delta) {
             for(ZombieWithLane& zombie: zombies) {
                 BaseZombie* zom = zombie.zombie;
                 zom->position = Vector2(1800, zombie.lane * this->tileSize.y);
+                ZombieSpawnEvent* event = new ZombieSpawnEvent();
+                EventQueue::PushEvent(event);
                 this->AddChildren(zom);
             }
         }

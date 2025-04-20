@@ -3,6 +3,24 @@
 #include "engine.h"
 
 #include <vector>
+class WinEvent: public Event
+{
+public:
+    WinEvent() {};
+    ~WinEvent() {};
+};
+class LoseEvent: public Event
+{
+public:
+    LoseEvent() {};
+    ~LoseEvent() {};
+};
+class ZombieDieEvent: public Event
+{
+public:
+    ZombieDieEvent() {};
+    ~ZombieDieEvent() {};
+};
 
 class BaseZombie: public Node
 {
@@ -12,6 +30,7 @@ public:
     BaseZombie();
     ~BaseZombie();
     
+    void Update(float delta) override;
     virtual void SetSize(const Vector2& size);
     virtual Vector2 GetSize();
 };

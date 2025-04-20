@@ -2,7 +2,7 @@
 
 #include "engine.h"
 
-class LoseOverlay: public Node
+class LoseOverlay: public EventNode
 {
 public:
     LoseOverlay();
@@ -10,6 +10,7 @@ public:
 
     void Start();
     void Update(float delta) override;
+    void ProcessEvent(Event* event) override;
 private:
     TextureRect* background;
 };

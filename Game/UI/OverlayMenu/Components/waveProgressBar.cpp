@@ -1,9 +1,10 @@
 #include "waveProgressBar.h"
 #include <math.h>
+#include "map.h"
 using namespace std;
 
 
-WaveProgressBar::WaveProgressBar() {
+WaveProgressBar::WaveProgressBar(vector<ZombieWave> zombieWaves) {
     this->frontTextureRect = new TextureRect();
     this->frontTextureRect->texture = new Texture("asset/menu/FlagMeterFront.png");
     this->backTextureRect = new ProgressRect();
@@ -21,6 +22,17 @@ WaveProgressBar::WaveProgressBar() {
 
     this->progress = 0;
     this->numWave = 0;
+    this->delayTime = 2;
+    this->SetNumWave(zombieWaves.size());
+    this->zombieCount = vector<vector<int>>();
+    for(ZombieWave& wave: zombieWaves) {
+        vector<int> waveZombieCount = vector<int>();
+        for(auto& zombies: wave.zombies) {
+            waveZombieCount.push_back(zombies.zombies.size());
+        }
+        this->zombieCount.push_back(waveZombieCount);
+    }
+    this->currentProcess = this->zombieCount;
 }
 
 WaveProgressBar::~WaveProgressBar() {
@@ -71,7 +83,13 @@ void WaveProgressBar::SetNumWave(int numWave) {
     }
     this->SetSize(this->size);
 }
-
+void WaveProgressBar::SetTargetProgress(float progress) {
+    if (progress < 0) progress = 0;
+    if (progress > 1) progress = 1;
+    progress = 1 - progress;
+    this->step = (progress - this->progress) / this->delayTime;
+    this->targetProgress = progress;
+}
 void WaveProgressBar::SetProgress(float progress) {
     if (progress < 0) progress = 0;
     if (progress > 1) progress = 1;
@@ -102,5 +120,38 @@ float WaveProgressBar::GetProgress() {
 void WaveProgressBar::Update(float delta) {
     if (KeyboardEvent::IsPressing(KeyboardType::F5)) {
         this->SetProgress(this->GetProgress()+0.1*delta);
+    }
+    // cout << this->targetProgress << "|" << this->progress << "|" << this->step << endl;
+    // if (this->targetProgress < this->progress) {
+    //     float progress = this->progress + this->step * delta;
+    //     // this->progress = max(this->progress, this->targetProgress);
+    //     this->SetProgress(progress);
+    // }
+}
+
+void WaveProgressBar::ProcessEvent(Event* event) {
+    ZombieSpawnEvent* zombieSpawnEvent = dynamic_cast<ZombieSpawnEvent*>(event);
+    if (zombieSpawnEvent) {
+        bool handled = false;
+        float percent = 0;
+        float wavePercent = 1.0 / this->numWave;
+        for(int i=0; i<int(this->currentProcess.size()); i++) {
+            for(int j=0; j<int(this->currentProcess[i].size()); j++) {
+                if (this->zombieCount[i][j] > 0) {
+                    this->zombieCount[i][j] -= 1;
+                    handled = true;
+                    percent += (float(j+1) / this->currentProcess[i].size()) ;
+                    break;
+                }
+
+            }
+            if (handled) {
+                break;
+            } else {
+                percent += wavePercent;
+            }
+        }
+        this->SetProgress(percent);
+        zombieSpawnEvent->handled = true;
     }
 }

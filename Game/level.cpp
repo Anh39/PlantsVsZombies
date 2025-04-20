@@ -16,10 +16,17 @@ BaseZombie::BaseZombie() {
 }
 
 BaseZombie::~BaseZombie() {
-
+    ZombieDieEvent* event = new ZombieDieEvent();
+    EventQueue::PushEvent(event);
 }
 void BaseZombie::SetSize(const Vector2& size) {
 
+}
+void BaseZombie::Update(float delta) {
+    if (this->GetAbsolutePosition().x <= - this->GetSize().x) {
+        LoseEvent* event = new LoseEvent();
+        EventQueue::PushEvent(event);
+    }
 }
 Vector2 BaseZombie::GetSize() {
     return Vector2(0, 0);

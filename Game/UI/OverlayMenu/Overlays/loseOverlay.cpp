@@ -1,4 +1,5 @@
 #include "loseOverlay.h"
+#include "../../../level.h"
 
 LoseOverlay::LoseOverlay() {
     this->background = new TextureRect();
@@ -19,6 +20,13 @@ void LoseOverlay::Start() {
 
 void LoseOverlay::Update(float delta) {
     if (KeyboardEvent::JustPressed(KeyboardType::F8)) {
+        this->Start();
+    }
+}
+
+void LoseOverlay::ProcessEvent(Event* event) {
+    LoseEvent* loseEvent = dynamic_cast<LoseEvent*>(event);
+    if (loseEvent) {
         this->Start();
     }
 }

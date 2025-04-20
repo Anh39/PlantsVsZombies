@@ -13,5 +13,6 @@ TestZombie::~TestZombie() {
 }
 
 void TestZombie::Update(float delta) {
+    BaseZombie::Update(delta);
     this->position.x -= this->speed * delta;
 }
