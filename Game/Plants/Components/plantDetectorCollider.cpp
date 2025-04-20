@@ -15,11 +15,11 @@ void PlantDetectorColliderBox::OnCollide(CollideNode* node) {
     ZombieColliderBox* zombieHitbox = dynamic_cast<ZombieColliderBox*>(node);
     if (zombieHitbox) {
         this->hasZombie = true;
-    } else {
-        this->hasZombie = false;
     }
 }
 void PlantDetectorColliderBox::Update(float delta) {
     this->visualBox->size = this->size;
     this->visualBox->isVisible = KeyboardEvent::IsPressing(KeyboardType::F4);
+    this->hasZombie = false;
+
 }
