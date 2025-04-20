@@ -140,7 +140,7 @@ void WaveProgressBar::ProcessEvent(Event* event) {
                 if (this->zombieCount[i][j] > 0) {
                     this->zombieCount[i][j] -= 1;
                     handled = true;
-                    percent += (float(j+1) / this->currentProcess[i].size()) ;
+                    percent += (float(j+1) / this->currentProcess[i].size()) * wavePercent ;
                     break;
                 }
 

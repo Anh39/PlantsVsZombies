@@ -46,6 +46,18 @@ AdventureModeScene::AdventureModeScene() {
     this->root->AddChildren(titleTextRect);
     this->root->AddChildren(levelSelectMenu);
     this->root->AddChildren(backButton);
+
+    count = 0;
+    for(int y=0; y<gridSize.y; y++) {
+        for(int x=0; x<gridSize.x; x++) {
+            if (count < this->maxLevel) {
+                levelSelectMenu->cards[y][x]->isVisible = true;
+            } else {
+                levelSelectMenu->cards[y][x]->isVisible = false;
+            }
+            count += 1;
+        }
+    }
 }
 
 AdventureModeScene::~AdventureModeScene() {

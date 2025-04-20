@@ -2,6 +2,7 @@
 
 #include "engine.h"
 #include "../level.h"
+#include "../spriteRect.h"
 
 class TestZombie: public BaseZombie
 {
@@ -12,4 +13,5 @@ public:
     void Update(float delta) override;
 private:
     ColorRect* displayBox;
+    SpriteRect* spriteRect;
 };

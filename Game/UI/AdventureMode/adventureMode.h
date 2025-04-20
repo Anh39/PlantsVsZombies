@@ -10,5 +10,5 @@ public:
     std::function<void()> BackToTitleFunction;
     AdventureModeScene();
     ~AdventureModeScene();
-
+    int maxLevel = 1;
 };

@@ -3,12 +3,7 @@
 #include "../Zombies/testZombie.h"
 using namespace std;
 
-Level* GenerateLevel1() {
-    Level* level = new Level();
-    
-    level->plants.push_back(new TestPlant());
-    level->plants.push_back(new TestPlant());
-
+ZombieWave GetWave() {
     ZombieWave wave1 = ZombieWave();
     // 5s
     vector<ZombieWithLane> z1 = {
@@ -33,9 +28,23 @@ Level* GenerateLevel1() {
     wave1.zombies.push_back(t1);
     wave1.zombies.push_back(t2);
     wave1.zombies.push_back(t3);
+    return wave1;
+}
+
+Level* GenerateLevel1() {
+    Level* level = new Level();
+    
+    level->plants.push_back(new TestPlant());
+    level->plants.push_back(new TestPlant());
 
 
-    level->zombieWaves.push_back(wave1);
+
+
+    level->zombieWaves.push_back(GetWave());
+
+    level->zombieWaves.push_back(GetWave());
+
+    level->zombieWaves.push_back(GetWave());
 
 
     return level;
