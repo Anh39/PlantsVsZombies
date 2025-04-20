@@ -3,9 +3,9 @@
 /// @brief Mask for collision handling
 enum CollideMask 
 {
-    CollideLayer1 = 0b1,
-    CollideLayer2 = 0b10,
-    CollideLayer3 = 0b100,
+    Mask_Plant = 0b1,
+    Mask_Zombie = 0b10,
+    Mask_Bullet = 0b100,
     CollideLayer4 = 0b1000,
     CollideLayer5 = 0b10000,
     CollideLayer6 = 0b100000,

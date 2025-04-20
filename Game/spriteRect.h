@@ -12,6 +12,7 @@ public:
     void Update(float delta) override;
     void Draw(Renderer* renderer, Vector2 absolutePosition) override;
     void Step();
+    void Reset();
     float animationTime;
 private:
     float time;

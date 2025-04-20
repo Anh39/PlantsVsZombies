@@ -87,6 +87,7 @@ void Map::Update(float delta) {
             for(ZombieWithLane& zombie: zombies) {
                 BaseZombie* zom = zombie.zombie;
                 zom->position = Vector2(1800, zombie.lane * this->tileSize.y);
+                zom->SetSize(this->tileSize * 0.9);
                 ZombieSpawnEvent* event = new ZombieSpawnEvent();
                 EventQueue::PushEvent(event);
                 this->AddChildren(zom);

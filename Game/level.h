@@ -1,6 +1,8 @@
 #pragma once
 
 #include "engine.h"
+#include "Zombies/baseZombie.h"
+#include "Plants/basePlant.h"
 
 #include <vector>
 class WinEvent: public Event
@@ -15,44 +17,7 @@ public:
     LoseEvent() {};
     ~LoseEvent() {};
 };
-class ZombieDieEvent: public Event
-{
-public:
-    ZombieDieEvent() {};
-    ~ZombieDieEvent() {};
-};
 
-class BaseZombie: public Node
-{
-public:
-    float speed;
-
-    BaseZombie();
-    ~BaseZombie();
-    
-    void Update(float delta) override;
-    virtual void SetSize(const Vector2& size);
-    virtual Vector2 GetSize();
-};
-
-class BasePlant: public Node 
-{
-public:
-    float sunCost;
-    float cardCooldown;
-    float heathPoint;
-    float cooldown;
-    float time;
-
-    BasePlant();
-    ~BasePlant();
-    
-    virtual BasePlant* Create();
-    virtual void SetSize(const Vector2& size);
-    virtual Vector2 GetSize();
-    virtual Texture* GetIcon();
-
-};
 class ZombieWithLane
 {
 public:

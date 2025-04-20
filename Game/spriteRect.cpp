@@ -1,6 +1,7 @@
 #include "spriteRect.h"
 
 SpriteRect::SpriteRect() {
+    this->Name = "SpriteRect";
     this->animationTime = 10;
     this->totalIndex = 0;
     this->currentIndex = 0;
@@ -10,7 +11,9 @@ SpriteRect::SpriteRect() {
 SpriteRect::~SpriteRect() {
     delete this->texture;
 }
-
+void SpriteRect::Reset() {
+    this->currentIndex = 0;
+}
 void SpriteRect::SetTexture(Texture* texture, Vector2 gridSize, int totalImages) {
     this->width = gridSize.x;
     this->height = gridSize.y;

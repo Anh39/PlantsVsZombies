@@ -14,7 +14,9 @@ ENGINE_OBJ = $(ENGINE_SRC:.cpp=.o)
 GAME_SRC = main.cpp \
 	$(wildcard Game/*.cpp) \
 	$(wildcard Game/Plants/*.cpp) \
+	$(wildcard Game/Plants/Components/*.cpp) \
 	$(wildcard Game/Zombies/*.cpp) \
+	$(wildcard Game/Zombies/Components/*.cpp) \
 	$(wildcard Game/UI/*.cpp) \
 	$(wildcard Game/UI/Landing/*.cpp) \
 	$(wildcard Game/UI/TitleMenu/*.cpp) \
@@ -25,8 +27,6 @@ GAME_SRC = main.cpp \
 	$(wildcard Game/UI/Components/*.cpp) \
 	$(wildcard Game/UI/Widgets/*.cpp) \
 	$(wildcard Game/Levels/*.cpp) \
-	# $(wildcard Prototype/UI/*.cpp) \
-	# $(wildcard Prototype/Zombies/*.cpp) \
 
 
 GAME_OBJ = $(GAME_SRC:.cpp=.o)
