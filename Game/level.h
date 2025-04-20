@@ -1,39 +1,23 @@
 #pragma once
 
 #include "engine.h"
+#include "Zombies/baseZombie.h"
+#include "Plants/basePlant.h"
 
 #include <vector>
-
-class BaseZombie: public Node
+class WinEvent: public Event
 {
 public:
-    float speed;
-
-    BaseZombie();
-    ~BaseZombie();
-    
-    virtual void SetSize(const Vector2& size);
-    virtual Vector2 GetSize();
+    WinEvent() {};
+    ~WinEvent() {};
 };
-
-class BasePlant: public Node 
+class LoseEvent: public Event
 {
 public:
-    float sunCost;
-    float cardCooldown;
-    float heathPoint;
-    float cooldown;
-    float time;
-
-    BasePlant();
-    ~BasePlant();
-    
-    virtual BasePlant* Create();
-    virtual void SetSize(const Vector2& size);
-    virtual Vector2 GetSize();
-    virtual Texture* GetIcon();
-
+    LoseEvent() {};
+    ~LoseEvent() {};
 };
+
 class ZombieWithLane
 {
 public:

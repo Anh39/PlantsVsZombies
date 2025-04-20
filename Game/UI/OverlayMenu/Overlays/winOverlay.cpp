@@ -1,4 +1,5 @@
 #include "winOverlay.h"
+#include "../../../level.h"
 
 WinOverlay::WinOverlay() {
     this->trophy = new Trophy();
@@ -20,5 +21,14 @@ void WinOverlay::Update(float delta) {
     if (KeyboardEvent::JustPressed(KeyboardType::F7)) {
         this->trophy->isVisible = true;
         this->trophy->Start();
+    }
+}
+void WinOverlay::Start() {
+    this->trophy->Start();
+}
+void WinOverlay::ProcessEvent(Event* event) {
+    WinEvent* winEvent = dynamic_cast<WinEvent*>(event);
+    if (winEvent) {
+        this->Start();
     }
 }

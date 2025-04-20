@@ -4,6 +4,15 @@
 #include "mapTile.h"
 #include "../../../level.h"
 
+
+class ZombieSpawnEvent: public Event
+{
+public:
+    ZombieSpawnEvent() {};
+    ~ZombieSpawnEvent() {};
+};
+
+
 class Map : public EventNode
 {
 public:
@@ -29,4 +38,6 @@ private:
 
     MapTile* GetByPosition(const Vector2& position);
     std::vector<std::vector<MapTile*>> tileBoxs;
+
+    int totalZombie;
 };
