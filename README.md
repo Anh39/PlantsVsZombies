@@ -1,18 +1,18 @@
 # Plants vs Zombies Game
-![Loading screen](Demo Images/Landing.png)
+![Loading screen](DemoImages/Landing.png)
 
 ### Title menu
-![Title menu](Demo Images/Title.png)
+![Title menu](DemoImages/Title.png)
 
 ### Level select
-![Level select menu](Demo Images/LevelSelect.png)
+![Level select menu](DemoImages/LevelSelect.png)
 
 ### In game
-![Level1 demo](Demo Images/Level1.png)
-![Level3 demo](Demo Images/Level3.png)
+![Level1 demo](DemoImages/Level1.png)
+![Level3 demo](DemoImages/Level3.png)
 
 ### Win screen
-![Win screen](Demo Images/Win.png)
+![Win screen](DemoImages/Win.png)
 
 ### Lose screen
-![Lose screen](Demo Images/Lose.png)
+![Lose screen](DemoImages/Lose.png)
