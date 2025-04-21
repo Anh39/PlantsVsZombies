@@ -18,7 +18,7 @@ void BaseZombie::SetSize(const Vector2& size) {
     this->size = size;
     this->hitbox->size = Vector2(size.x * 0.5, size.y);
     this->hitbox->position.x = size.x * 0.5;
-    this->detectorBox->size = Vector2(size.x * this->range, size.y);
+    this->detectorBox->size = Vector2(size.x * this->range * 0.5, size.y);
     this->detectorBox->position.x = size.x * 0.5;
 }
 Vector2 BaseZombie::GetSize() {

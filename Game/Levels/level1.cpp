@@ -17,16 +17,16 @@ ZombieWave GetWave() {
     };
     ZombiesWithTime t2 = ZombiesWithTime(10, z2);
     // 9s
-    vector<ZombieWithLane> z3 = {
-        {2, new NormalZombie()},
-        {4, new NormalZombie()},
-        {1, new NormalZombie()}
-    };
-    ZombiesWithTime t3 = ZombiesWithTime(15, z3);
+    // vector<ZombieWithLane> z3 = {
+    //     {2, new NormalZombie()},
+    //     {4, new NormalZombie()},
+    //     {1, new NormalZombie()}
+    // };
+    // ZombiesWithTime t3 = ZombiesWithTime(15, z3);
 
     wave.zombies.push_back(t1);
     wave.zombies.push_back(t2);
-    wave.zombies.push_back(t3);
+    // wave.zombies.push_back(t3);
     return wave;
 }
 

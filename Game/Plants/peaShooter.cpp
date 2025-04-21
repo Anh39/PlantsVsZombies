@@ -66,6 +66,7 @@ void PeaShooter::Update(float delta) {
             this->time = 0;
             PeaBullet* bullet = new PeaBullet();
             bullet->velocity = Vector2(100, 0);
+            bullet->position = Vector2(100, 25);
             bullet->damage = this->damage;
             bullet->SetSize(Vector2(50, 50));
             this->AddChildren(bullet);
