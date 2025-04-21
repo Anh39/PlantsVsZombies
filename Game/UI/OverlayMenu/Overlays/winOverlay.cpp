@@ -19,16 +19,17 @@ WinOverlay::~WinOverlay() {
 
 void WinOverlay::Update(float delta) {
     if (KeyboardEvent::JustPressed(KeyboardType::F7)) {
-        this->trophy->isVisible = true;
-        this->trophy->Start();
+        this->Start();
     }
 }
 void WinOverlay::Start() {
+    this->trophy->isVisible = true;
     this->trophy->Start();
 }
 void WinOverlay::ProcessEvent(Event* event) {
     WinEvent* winEvent = dynamic_cast<WinEvent*>(event);
     if (winEvent) {
+        std::cout << "WIN" << std::endl;
         this->Start();
     }
 }

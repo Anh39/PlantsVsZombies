@@ -5,7 +5,7 @@ PeaShooter::PeaShooter() {
     this->Name = "PeaShooter";
     this->sunCost = 100;
     this->cooldown = 2;
-    this->range = 5;
+    this->range = 12;
     this->damage = 10;
 
     this->detectorBox = new PlantDetectorColliderBox();
@@ -40,7 +40,6 @@ BasePlant* PeaShooter::Create() {
 
 void PeaShooter::SetSize(const Vector2& size) {
     BasePlant::SetSize(size);
-    this->hitbox->size = size;
     this->detectorBox->size = Vector2(size.x * this->range, size.y);
     this->idleSpriteRect->size = size;
     this->attackSpriteRect->size = size;

@@ -12,14 +12,14 @@ BaseZombie::BaseZombie() {
 }
 
 BaseZombie::~BaseZombie() {
-    ZombieDieEvent* event = new ZombieDieEvent();
-    EventQueue::PushEvent(event);
 }
+
 void BaseZombie::SetSize(const Vector2& size) {
     this->size = size;
     this->hitbox->size = Vector2(size.x * 0.5, size.y);
     this->hitbox->position.x = size.x * 0.5;
     this->detectorBox->size = Vector2(size.x * this->range, size.y);
+    this->detectorBox->position.x = size.x * 0.5;
 }
 Vector2 BaseZombie::GetSize() {
     return this->size;
@@ -32,5 +32,8 @@ void BaseZombie::Update(float delta) {
     }
     if (this->heathPoint <= 0){
         this->Delete();
+        ZombieDieEvent* event = new ZombieDieEvent();
+        EventQueue::PushEvent(event);
+        std::cout << "DIED" << std::endl;
     }
 }

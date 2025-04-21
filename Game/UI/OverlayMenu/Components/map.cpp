@@ -67,6 +67,7 @@ void Map::ProcessEvent(Event* event) {
     ZombieDieEvent* zombieDieEvent = dynamic_cast<ZombieDieEvent*>(event);
     if (zombieDieEvent) {
         this->totalZombie -= 1;
+        std::cout << "Zombie left: " << this->totalZombie << std::endl;
         if (this->totalZombie == 0) {
             WinEvent* event = new WinEvent();
             EventQueue::PushEvent(event);
